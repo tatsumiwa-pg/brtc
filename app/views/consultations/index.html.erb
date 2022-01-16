@@ -1,1 +1,19 @@
-<h1>consultations/index</h1>
+<h1>index</h1>
+<div class="header-box">
+  <div class="nav-bar">
+    <div class="logo">
+      <%= link_to "#{src="#"}", root_path %>
+    </div>
+    <div class="home-btn">
+    </div>
+  </div>
+</div>
+
+<% if user_signed_in? %>
+  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+  <%= link_to 'ユーザー編集', edit_user_registration_path, method: :get %>
+  <%= current_user.nickname %>
+<% else %>
+  <%= link_to '新規登録', new_user_registration_path %>
+  <%= link_to 'ログイン', new_user_session_path %>
+<% end %>
