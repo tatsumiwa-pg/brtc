@@ -1,19 +1,19 @@
 <mxfile host="65bd71144e">
     <diagram id="WjuMftYrR1vNwsWyqfVY" name="ページ1">
-        <mxGraphModel dx="357" dy="627" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="728" dy="627" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="40" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;startArrow=none;startFill=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="2" target="6" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="2" value="users/registration&lt;br&gt;new" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="2" value="users/registrations&lt;br&gt;new" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="240" y="80" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="3" value="consultations&lt;br&gt;index&lt;br&gt;(root_path)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="40" y="80" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" value="users/session&lt;br&gt;new" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="4" value="users/sessions&lt;br&gt;new" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="240" y="180" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="6" value="profiles&lt;br&gt;new" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -274,6 +274,15 @@
                 </mxCell>
                 <mxCell id="64" value="back_to_root_path" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="1" vertex="1" connectable="0">
                     <mxGeometry x="672.8569424599921" y="810.0004040947524" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="user/registrations&lt;br&gt;edit" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="180" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;endArrow=classic;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="65" target="7">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="370" y="320" as="sourcePoint"/>
+                        <mxPoint x="450" y="420" as="targetPoint"/>
+                    </mxGeometry>
                 </mxCell>
             </root>
         </mxGraphModel>

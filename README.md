@@ -14,11 +14,13 @@ ___
 # *user-related*
 
 ## users
-| Column             | Type   | Options                   |
-|--------------------|--------|---------------------------|
-| nickname           | string | null: false, unique: true |
-| email              | string | null: false, unique: true |
-| encrypted_password | string | null: false               |
+| Column             | Type     | Options                   |
+|--------------------|----------|---------------------------|
+| nickname           | string   | null: false, unique: true |
+| email              | string   | null: false, unique: true |
+| encrypted_password | string   | null: false               |
+| deleted_at         | datetime |                           |
+
 
 ### Association
 - has_many :consultations
