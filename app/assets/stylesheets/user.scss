@@ -59,9 +59,8 @@
   }
 }
 
-.sub-btn{
+.sub-btn {
   display       : inline-block;
-  border-radius : 4%;
   font-size     : 14pt;
   text-align    : center;
   cursor        : pointer;
@@ -71,26 +70,29 @@
   line-height   : 0.9em;
   transition    : .3s;
   border        : 2px solid rgba(153, 153, 153, 0.75);
+  border-radius : 4%;
   text-decoration: none;
-}
-.sub-btn:hover {
-  color         : rgba(153, 153, 153, 0.75);
-  background    : #ffffff;
-}
 
+  &:hover {
+    color         : rgba(153, 153, 153, 0.75);
+    background    : #ffffff;
+  }
+}
 
 
 .cancel-account-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 3px solid black; 
+  border: 2px solid black; 
+  border-radius : 2%;
   padding: 3px;
 }
 
 .cancel-btn {
   width: 40%;
-  border: 1px solid black;
+  border: 2px solid black;
+  border-radius : 2%;
   background-color: lightgrey;
   padding: 5px;
   font-size: 20px;
@@ -98,6 +100,11 @@
   font-family: "游ゴシック", "YuGothic";
   text-decoration: none;
   text-align: center;
+
+  &:hover {
+    color         : rgba(153, 153, 153, 0.75);
+    background    : #ffffff;
+  }
 }
 
 .back-btn {
