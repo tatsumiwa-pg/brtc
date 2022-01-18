@@ -9,7 +9,7 @@
 
         <div class="form-group">
           <div class='form-text-wrap'>
-            <label class="form-text">ニックネーム -nickname- </label>
+            <label class="form-text">ニックネーム -Nickname- </label>
             <span class="indispensable">必須</span>
           </div>
           <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例）ﾈｺ太郎", maxlength:"40", autofocus: true %>
@@ -48,7 +48,7 @@
       <br>
       <h4>アカウントをお持ちですか？</h4>
       <%= link_to 'ログイン画面へ', new_user_session_path, class:"sub-btn" %>
-      <%= link_to '一覧へ戻る', :back, class:"back-btn" %>
+      <%= link_to '一覧へ戻る', root_path, class:"back-btn" %>
     </div>
   </div>
 </div>
