@@ -26,6 +26,12 @@ RSpec.describe User, type: :model do
       @user1.valid?
       expect(@user1.errors.full_messages).to include("Nickname is too long (maximum is 40 characters)")
     end
+    it '既に登録されているnicknameではユーザー登録できない' do
+      @user1.save
+      @user2.nickname = @user1.nickname
+      @user2.valid?
+      expect(@user2.errors.full_messages).to include('Nickname has already been taken')
+    end
     it 'emailがカラではユーザー登録できない' do
       @user1.email = ''
       @user1.valid?
