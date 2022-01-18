@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "新規登録", type: :system do
+RSpec.describe '新規登録', type: :system do
   before do
     @user = FactoryBot.build(:user)
   end
@@ -19,9 +19,9 @@ RSpec.describe "新規登録", type: :system do
       fill_in 'password', with: @user.password
       fill_in 'password-confirmation', with: @user.password_confirmation
       # サインアップボタンを押すとユーザーモデルのカウントが1上がることを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
-      }.to change { User.count }.by(1)
+      end.to change { User.count }.by(1)
       # トップページへ遷移したことを確認する
       expect(current_path).to eq(root_path)
       # カーソルを合わせるとログアウトボタンが表示されることを確認する
@@ -40,14 +40,14 @@ RSpec.describe "新規登録", type: :system do
       # 新規登録ページへ移動する
       visit new_user_registration_path
       # ユーザー情報を入力する
-      fill_in 'nickname', with: ""
-      fill_in 'email', with: ""
-      fill_in 'password', with: ""
-      fill_in 'password-confirmation', with: ""
+      fill_in 'nickname', with: ''
+      fill_in 'email', with: ''
+      fill_in 'password', with: ''
+      fill_in 'password-confirmation', with: ''
       # サインアップボタンを押してもユーザーモデルのカウントは上がらないことを確認する
-      expect{
+      expect  do
         find('input[name=commit]').click
-      }.to change { User.count }.by(0)
+      end.to change { User.count }.by(0)
       # 新規登録ページへ戻されることを確認する
       expect(current_path).to eq user_registration_path
     end
@@ -64,14 +64,14 @@ RSpec.describe 'ログイン', type: :system do
       # トップページに移動する
       visit root_path
       # トップページにログインページへ遷移するボタンがあることを確認する
-      expect(page).to have_content("ログイン")
+      expect(page).to have_content('ログイン')
       # ログインページへ遷移する
       visit new_user_session_path
       # 正しいユーザー情報を入力する
       fill_in 'email', with: @user.email
       fill_in 'password', with: @user.password
       # ログインボタンを押す
-      find('input[name="commit"]').click 
+      find('input[name="commit"]').click
       # トップページへ遷移することを確認する
       expect(current_path).to eq(root_path)
       # カーソルを合わせるとログアウトボタンが表示されることを確認する
@@ -86,12 +86,12 @@ RSpec.describe 'ログイン', type: :system do
       # トップページに移動する
       visit root_path
       # トップページにログインページへ遷移するボタンがあることを確認する
-      expect(page).to have_content("ログイン")
+      expect(page).to have_content('ログイン')
       # ログインページへ遷移する
       visit new_user_session_path
       # ユーザー情報を入力する
-      fill_in 'email', with: ""
-      fill_in 'password', with: ""
+      fill_in 'email', with: ''
+      fill_in 'password', with: ''
       # ログインボタンを押す
       find('input[name="commit"]').click
       # ログインページへ戻されることを確認する
@@ -113,7 +113,7 @@ RSpec.describe '編集', type: :system do
       # トップページへ遷移する
       visit root_path
       # トップページに編集ページへ遷移するボタンがあることを確認する
-      expect(page).to have_content("#{@user.nickname}")
+      expect(page).to have_content(@user.nickname.to_s)
       # 編集ページへ遷移する
       visit edit_user_registration_path
       # 正しいユーザー情報を入力する
@@ -123,11 +123,11 @@ RSpec.describe '編集', type: :system do
       fill_in 'password-confirmation', with: @user2.password_confirmation
       fill_in 'current-password', with: @user.password
       # 変更ボタンを押す
-      find('input[name="commit"]').click 
+      find('input[name="commit"]').click
       # トップページへ遷移することを確認する
       expect(current_path).to eq(root_path)
       # ユーザーの変更後のニックネームボタンが表示されることを確認する
-      expect(page).to have_content("#{@user2.nickname}")
+      expect(page).to have_content(@user2.nickname.to_s)
     end
   end
   context '編集できないとき' do
@@ -137,12 +137,12 @@ RSpec.describe '編集', type: :system do
       # トップページへ遷移する
       visit root_path
       # トップページに編集ページへ遷移するボタンがあることを確認する
-      expect(page).to have_content("#{@user.nickname}")
+      expect(page).to have_content(@user.nickname.to_s)
       # 編集ページへ遷移する
       visit edit_user_registration_path
       # ユーザー情報を入力する
-      fill_in 'nickname', with: ""
-      fill_in 'email', with: ""
+      fill_in 'nickname', with: ''
+      fill_in 'email', with: ''
       fill_in 'password', with: @user2.password
       fill_in 'password-confirmation', with: @user2.password_confirmation
       fill_in 'current-password', with: @user.password
@@ -157,6 +157,7 @@ end
 RSpec.describe '削除', type: :system do
   before do
     @user = FactoryBot.create(:user)
+    @user2 = FactoryBot.build(:user)
   end
 
   context 'ユーザー削除完了まで' do
@@ -164,7 +165,7 @@ RSpec.describe '削除', type: :system do
       # ログインする
       sign_in(@user)
       # トップページに編集ページへ遷移するボタンがあることを確認する
-      expect(page).to have_content("#{@user.nickname}")
+      expect(page).to have_content(@user.nickname.to_s)
       # 編集ページへ遷移する
       visit edit_user_registration_path
       # 退会ボタンを押す
@@ -173,8 +174,8 @@ RSpec.describe '削除', type: :system do
       end
       # ユーザーモデルのdeleted_atカラムがnullではないことが確認できる
       # データベースが処理完了するまで待機
-        # sleep 0.1
-        # expect(User.find_by(id: @user.id).deleted_at.present?).to be true 
+      # sleep 0.1
+      # expect(User.find_by(id: @user.id).deleted_at.present?).to be true
       # トップページへ遷移することを確認する
       expect(current_path).to eq(root_path)
       # サインアップページへ遷移するボタンや、ログインページへ遷移するボタンが表示されていることを確認する
@@ -189,14 +190,15 @@ RSpec.describe '削除', type: :system do
       # ユーザー削除する
       delete_user(@user)
       # 同じメールアドレスを使って新規登録する
+      visit new_user_registration_path
       fill_in 'nickname', with: @user2.nickname
       fill_in 'email', with: @user.email
       fill_in 'password', with: @user.password
       fill_in 'password-confirmation', with: @user.password_confirmation
       # サインアップボタンを押すとユーザーモデルのカウントが1上がることを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
-      }.to change { User.count }.by(1)
+      end.to change { User.count }.by(1)
       # トップページへ遷移したことを確認する
       expect(current_path).to eq(root_path)
     end

@@ -24,7 +24,7 @@ RSpec.describe User, type: :model do
     it 'nicknameが40文字を超過した場合は登録できない' do
       @user1.nickname = '12345678901234567890123456789012345678901'
       @user1.valid?
-      expect(@user1.errors.full_messages).to include("Nickname is too long (maximum is 40 characters)")
+      expect(@user1.errors.full_messages).to include('Nickname is too long (maximum is 40 characters)')
     end
     it '既に登録されているnicknameではユーザー登録できない' do
       @user1.save
