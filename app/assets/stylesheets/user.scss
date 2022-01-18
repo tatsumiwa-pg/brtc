@@ -1,0 +1,112 @@
+.whole {
+  background-image: url("to_cat_be_reconciled_tobira.png");
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  font-family: "游ゴシック", "YuGothic";
+}
+
+.bg {
+  height    : 100vh; 
+  background:rgba(255,255,255,0.9);
+}
+
+.content {
+  width: 100vw;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.message {
+  font-size: 5vw;
+}
+
+.form-group {
+  width: 80vw;
+  margin-top: 20px;
+}
+
+
+.input-default {
+  width: 80vw;
+  height: 40px;
+  border-radius:5px;
+}
+
+.submit {
+  text-align: center;
+
+  .submit-btn {
+    display       : inline-block;
+    border-radius : 5px;
+    font-size     : 18pt;
+    text-align    : center;
+    cursor        : pointer;
+    padding       : 12px 14px;
+    background    : rgba(0, 0, 0, 0.64); 
+    color         : #ffffff;
+    line-height   : 1em;
+    transition    : .3s;
+    border        : 2px solid #000066;
+  }
+  .submit-btn:hover {
+    box-shadow    : none;
+    color         : #000066;
+    background    : #ffffff;
+  }
+}
+
+.sub-btn {
+  display       : inline-block;
+  font-size     : 14pt;
+  text-align    : center;
+  cursor        : pointer;
+  padding       : 12px 14px;
+  background    : rgba(153, 153, 153, 0.75);
+  color         : #ffffff;
+  line-height   : 0.9em;
+  transition    : .3s;
+  border        : 2px solid rgba(153, 153, 153, 0.75);
+  border-radius : 4%;
+  text-decoration: none;
+
+  &:hover {
+    color         : rgba(153, 153, 153, 0.75);
+    background    : #ffffff;
+  }
+}
+
+
+.cancel-account-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid black; 
+  border-radius : 2%;
+  padding: 3px;
+}
+
+.cancel-btn {
+  width: 40%;
+  border: 2px solid black;
+  border-radius : 2%;
+  background-color: lightgrey;
+  padding: 5px;
+  font-size: 20px;
+  color: black;
+  font-family: "游ゴシック", "YuGothic";
+  text-decoration: none;
+  text-align: center;
+
+  &:hover {
+    color         : rgba(153, 153, 153, 0.75);
+    background    : #ffffff;
+  }
+}
+
+.back-btn {
+  margin: 10px 0;
+}

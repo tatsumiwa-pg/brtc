@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tcbr</title>
+    <title>User-Tcbr</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link href="https://unpkg.com/sanitize.css" rel="stylesheet"/>
@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <%= render 'shared/header' %>
+  <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

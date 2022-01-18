@@ -7,6 +7,9 @@
 
 ___
 
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
+
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rubystyle.guide)
 <br>
 
 <h1 align="center">DB</h1>
@@ -14,11 +17,13 @@ ___
 # *user-related*
 
 ## users
-| Column             | Type   | Options                   |
-|--------------------|--------|---------------------------|
-| nickname           | string | null: false, unique: true |
-| email              | string | null: false, unique: true |
-| encrypted_password | string | null: false               |
+| Column             | Type     | Options                   |
+|--------------------|----------|---------------------------|
+| nickname           | string   | null: false, unique: true |
+| email              | string   | null: false, unique: true |
+| encrypted_password | string   | null: false               |
+| deleted_at         | datetime |                           |
+
 
 ### Association
 - has_many :consultations

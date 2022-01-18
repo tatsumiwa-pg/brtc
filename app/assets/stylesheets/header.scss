@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+  font-family: "游ゴシック", "YuGothic";
+}
+
+.header-wrap {
+  background-color : rgb(46, 45, 45);
+  display          : flex;
+  width            : 100vw;
+  height           : 10vh;
+  padding          : 1vh
+}
+
+.nav-bar {
+  display     : flex;
+  margin-left : 5vw;
+}
+
+.btn {
+  display         : flex;
+  border-radius   : 5px;
+  font-size       : 4.375;
+  align-items     : center;
+  justify-content : center;
+  cursor          : pointer;
+  padding         : 12px 14px;
+  background      : rgba(73, 73, 73, 0.64); 
+  color           : #ffffff;
+  line-height     : 1em;
+  transition      : .3s;
+  border          : 2px solid #c5c5c5;
+  text-decoration : none;
+}
+.btn:hover {
+  box-shadow    : none;
+  color         : #ffffff;
+  background    : #a3a2a2;
+}
+
+
+.search-form {
+  display         : flex;
+  justify-content : flex-end;
+  align-items     : center;
+  margin          : auto 3vh; 
+
+  input {
+    height     : 4.5vh;
+    min-height : 2.5vh;
+    min-width  : 5vw
+  }
+}
+
+.search-icon {
+  min-width  : 1.0vw;
+  height     : 3.5vh;
+  width      : 1.5vw;
+  min-height : 2.5vh;
+}
+
+.user-menu-wrap {
+  margin: 0 0 0 auto;
+}
+
+.user-menu-list  {
+  display    : flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style : none;
+}
+
+.top-icon-img {
+  min-width  : 2.5vw;
+  height     : 8vh;
+  min-height : 2.5vh
+}
