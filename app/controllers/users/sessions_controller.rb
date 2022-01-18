@@ -33,7 +33,7 @@ class Users::SessionsController < Devise::SessionsController
           redirect_to root_path
         else
           flash[:alert] = "Failed to log-in."
-          redirect_to new_user_session_path
+          render :new
         end
       end
     end
