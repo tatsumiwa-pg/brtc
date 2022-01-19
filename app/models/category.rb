@@ -27,4 +27,8 @@ class Category < ActiveHash::Base
     { id: 25, name: '仕事・サービス'}
     { id: 26, name: 'その他'}
   ]
+
+  include ActiveHash::Associations
+  has_many :consultations
+  
 end
