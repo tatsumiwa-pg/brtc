@@ -1,0 +1,52 @@
+<div class="content-wrap-n">
+  <div class="main-content">
+    <p class="form-title-nav">what happened?</p >
+
+    <%= form_with model: @consultation, class:"form-field", locals: true do |f| %>
+
+      <%# render 'shared/error_messages', model: f.object %>
+
+      <div class="form-input-field">
+
+        <div class="cons-form-parts">
+          <p class="cons-form-label">タイトル -Title-</p>
+          <%= f.text_field :cons_title, class:"cons-title-input", id:"cons-title", placeholder:"相談タイトル（必須 50文字まで)", maxlength:"50" %>
+        </div>
+
+        <div class="cons-form-parts">
+          <p class="cons-form-label">カテゴリー -Category-</p>
+          <%= f.collection_select(:category_id, Category.all, :id, :name, { include_blank: "未選択" }, { class:"category-select-box", id:"cons-catergory" }) %>
+        </div>
+
+        <div class="cons-form-parts">
+          <p class="cons-form-label">簡単に言うと？ -Summary-</p>
+          <%= f.text_area :cons_summary, class:"cons-summary-input", id:"cons-summary", placeholder:"相談の要約（必須 150文字まで)", maxlength:"150" %>
+        </div>
+
+        <div class="cons-form-parts">
+          <p class="cons-form-label">状況や環境等 -Situation-</p>
+          <%= f.text_area :cons_situation, class:"cons-situation-input", id:"cons-situation", placeholder:"どんな状況？（必須 2000文字まで)", maxlength:"2000" %>
+        </div>
+
+        <div class="cons-form-parts">
+          <p class="cons-form-label">問題 -Problems-</p>
+          <%= f.text_area :cons_problem, class:"cons-problem-input", id:"cons-problem", placeholder:"具体的に何を解決したい？（必須 2000文字まで)", maxlength:"2000" %>
+        </div>
+      </div>
+
+      <div class="post-btn-contents">
+        <%= link_to "送信", "#" ,class:"post-btn" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="nav-bar">
+    <div class="nav-messages">
+      <h3>？何を書けばいいの？</h3>
+      <p><strong>タイトル</strong>: ひと目でどうしたいのかわかるタイトルにしましょう</p><br>
+      <p><strong>カテゴリー</strong>: 一番近いカテゴリーを選んでください</p><br>
+      <p><strong>簡単に言うと</strong>？: 今回の相談の要約。ひと言でも大丈夫です</p><br>
+      <p><strong>状況や環境等</strong>: あなたが置かれている状況を教えてください! できるだけ詳しく書くと答える人も、よりあなたの親身になって考えられますよ</p><br>
+      <p><strong>問題</strong>: 結局、あなたはどんなふうに悩みを解決したいですか？ 具体的に書いてみましょう</p><br>
+    </div>
+  </div>
+</div>

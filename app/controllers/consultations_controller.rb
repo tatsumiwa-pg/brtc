@@ -3,5 +3,6 @@ class ConsultationsController < ApplicationController
   end
 
   def new
+    @consultation = Consultation.new
   end
 end
