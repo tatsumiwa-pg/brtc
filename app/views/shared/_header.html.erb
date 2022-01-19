@@ -1,19 +1,19 @@
 <header>
   <div class="header-wrap">
-    <div class="icon">
+    <div class="icons">
       <%= link_to image_tag("tcbr-home.png", class:"top-icon-img"), "/" %>
     </div>
-    <div class="icon">
+    <div class="icons">
       <%= link_to image_tag("home.png", class:"top-icon-img"), "/" %>
     </div>
-    <div class="nav-bar">
-      <%= link_to 'カテゴリー', "#", class:"btn" %>
+    <div class="menu-bar">
       <form class="search-form" action="#">
         <input class='input-box' placeholder='キーワードから探す'>
         <button class="search-button">
           <%= image_tag "search.png", class:"search-icon" %>
         </button>
       </form>
+      <%= link_to 'カテゴリー', "#", class:"btn" %>
       <%= link_to '相談する', new_consultation_path, class:"btn" %>
     </div>
     <div class="user-menu-wrap">
