@@ -62,14 +62,14 @@ ___
 # *consultation-related*
 
 ## consultations
-| Column     | Type       | Options                        |
-|------------|------------|--------------------------------|
-| cons_title | string     | null: false                    |
-| category   | integer    | null: false                    |
-| summary    | string     | null: false                    |
-| situation  | text       | null: false                    |
-| problem    | text       | null: false                    |
-| user       | references | null: false, foreign_key: true |
+| Column      | Type       | Options                        |
+|-------------|------------|--------------------------------|
+| cons_title  | string     | null: false                    |
+| category_id | integer    | null: false                    |
+| summary     | string     | null: false                    |
+| situation   | text       | null: false                    |
+| problem     | text       | null: false                    |
+| user        | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
