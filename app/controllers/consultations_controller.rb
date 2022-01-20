@@ -7,9 +7,8 @@ class ConsultationsController < ApplicationController
   end
 
   def create
-    consultation = Consultation.new(consultation_params)
-    if consultation.valid?
-      consultation.save
+    @consultation = Consultation.new(consultation_params)
+    if @consultation.save
       redirect_to root_path
     else
       render :new

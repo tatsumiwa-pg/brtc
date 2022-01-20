@@ -2,9 +2,9 @@
   <div class="main-content">
     <p class="form-title-nav">what happened?</p >
 
-    <%= form_with model: @consultation, class:"form-field", locals: true do |f| %>
+    <%= form_with model: @consultation, class:"form-field", local: true do |f| %>
 
-      <%# render 'shared/error_messages', model: f.object %>
+      <%= render 'shared/errors_messages', model: @consultation %>
 
       <div class="form-input-field">
 
