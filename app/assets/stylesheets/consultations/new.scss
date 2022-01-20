@@ -92,6 +92,19 @@
             background-color : #222222;
           }
         }
+
+        .file-upload {
+          height : 50px;
+          color :#ffffff;
+          display: flex;
+          justify-content : center;
+          align-items :center;
+
+          .file-upload input{
+            width :100%;
+            height :100%;
+         }
+        }
       }
       .post-btn-contents {
         width            : 100%;

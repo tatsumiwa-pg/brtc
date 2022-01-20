@@ -32,6 +32,14 @@
           <p class="cons-form-label">問題 -Problems-</p>
           <%= f.text_area :problem, class:"cons-problem-input", id:"cons-problem", placeholder:"具体的に何を解決したい？（必須 2000文字まで)", maxlength:"2000" %>
         </div>
+
+        <div class="image-field">
+          <%#  <div id="previews"></div>  %>
+          <div class="file-upload">
+            <%= f.file_field :image, id:"cons-image", name:'consultation[image]' %>
+          </div>
+        </div>
+
       </div>
 
       <div class="post-btn-contents">
