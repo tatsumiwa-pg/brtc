@@ -1,5 +1,7 @@
 class Consultation < ApplicationRecord
   belongs_to :user
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
 
   with_options presence: true do
