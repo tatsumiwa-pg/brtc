@@ -1,21 +1,25 @@
 <header>
   <div class="header-wrap">
-    <div class="icons">
-      <%= link_to image_tag("tcbr-home.png", class:"top-icon-img"), "/" %>
+
+    <div class="icon1">
+      <%= link_to image_tag("tcbr-home.png", class:"tcbr-icon-img"), "/" %>
     </div>
-    <div class="icons">
-      <%= link_to image_tag("home.png", class:"top-icon-img"), "/" %>
+    <div class="icon2">
+      <%= link_to image_tag("home.png", class:"home-icon-img"), "/" %>
     </div>
+
     <div class="menu-bar">
       <form class="search-form" action="#">
         <input class='input-box' placeholder='キーワードから探す'>
-        <button class="search-button">
-          <%= image_tag "search.png", class:"search-icon" %>
+        <%= image_tag "search.png", class:"search-icon" %>
         </button>
       </form>
-      <%= link_to 'カテゴリー', "#", class:"btn" %>
-      <%= link_to '相談する', new_consultation_path, class:"btn" %>
+      <div class="menu-buttons">
+        <%= link_to 'カテゴリー', "#", class:"btn" %>
+        <%= link_to '相談する', new_consultation_path, class:"btn" %>
+      </div>
     </div>
+
     <div class="user-menu-wrap">
       <ul class="user-menu-list">
         <% if user_signed_in? %>
@@ -27,5 +31,6 @@
         <% end %>
       </ul>
     </div>
+
   </div>
 </header>
