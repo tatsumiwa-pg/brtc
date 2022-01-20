@@ -20,22 +20,22 @@
 
         <div class="cons-form-parts">
           <p class="cons-form-label">簡単に言うと？ -Summary-</p>
-          <%= f.text_area :cons_summary, class:"cons-summary-input", id:"cons-summary", placeholder:"相談の要約（必須 150文字まで)", maxlength:"150" %>
+          <%= f.text_area :summary, class:"cons-summary-input", id:"cons-summary", placeholder:"相談の要約（必須 150文字まで)", maxlength:"150" %>
         </div>
 
         <div class="cons-form-parts">
           <p class="cons-form-label">状況や環境等 -Situation-</p>
-          <%= f.text_area :cons_situation, class:"cons-situation-input", id:"cons-situation", placeholder:"どんな状況？（必須 2000文字まで)", maxlength:"2000" %>
+          <%= f.text_area :situation, class:"cons-situation-input", id:"cons-situation", placeholder:"どんな状況？（必須 2000文字まで)", maxlength:"2000" %>
         </div>
 
         <div class="cons-form-parts">
           <p class="cons-form-label">問題 -Problems-</p>
-          <%= f.text_area :cons_problem, class:"cons-problem-input", id:"cons-problem", placeholder:"具体的に何を解決したい？（必須 2000文字まで)", maxlength:"2000" %>
+          <%= f.text_area :problem, class:"cons-problem-input", id:"cons-problem", placeholder:"具体的に何を解決したい？（必須 2000文字まで)", maxlength:"2000" %>
         </div>
       </div>
 
       <div class="post-btn-contents">
-        <%= link_to "送信", "#" ,class:"post-btn" %>
+        <%= f.submit "送信", class:"post-btn" %>
       </div>
     <% end %>
   </div>
