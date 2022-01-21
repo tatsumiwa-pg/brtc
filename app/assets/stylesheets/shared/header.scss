@@ -4,6 +4,7 @@
   align-items      : center;
   width            : 100vw;
   height           : 8vh;
+  min-height: 50px;
   padding          : 0.5vh;
   position         : fixed;
 }
@@ -19,6 +20,7 @@
 }
 .icon2 {
   width      : 10%;
+  max-width  : 100px;
   height     : 100%;
 
   .home-icon-img {

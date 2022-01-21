@@ -1,112 +1,117 @@
 .content-wrap {
   width            : 100vw;
-  height           : 100vh;
+  height           : 100%;
   background-color : #444444;
   display          : flex;
   justify-content  : space-around;
-  align-items      : center ;
+  align-items      : flex-start ;
   padding-top      : 8vh;
-}
+  overflow-y       : scroll;
 
-.contents-block {
-  width            : 48.5%;
-  height           : 89.5vh;
-  background-color : rgb(153, 152, 152);
-  border           : 2px solid black;
-  border-radius    : 8px;
-  margin           : 0.01% 0.1%;
-  padding          : 0.1% 0.1%;
-  display          : flex;
-  flex-direction   : column;
-  justify-content  : center;
-  align-items      : center;
+  .contents-block {
+    width            : 48.5%;
+    height           : 89.5%;
+    background-color : rgb(153, 152, 152);
+    border           : 2px solid black;
+    border-radius    : 8px;
+    margin           : 0.01% 0.1%;
+    padding          : 0.1% 0.1%;
+    display          : flex;
+    flex-direction   : column;
+    justify-content  : center;
+    align-items      : center;
 
-}
+  }
 
-.list-title {
-  width            : 100%;
-  height           : 8%;
-  background-color : #131313;
-  border           : 2px solid #ffffff;
-  border-radius    : 8px;
-  display          : flex;
-  justify-content  : center;
-  align-items      : center;
-  padding          : 0.1vh auto;
-  font-size        : 2vw;
+  .list-title {
+    width            : 100%;
+    height           : 8%;
+    background-color : #131313;
+    border           : 2px solid #ffffff;
+    border-radius    : 8px;
+    display          : flex;
+    justify-content  : center;
+    align-items      : center;
+    padding          : 0.1vh auto;
+    font-size        : 2vw;
+    
+    p {
+      color      : #d6d6d6;
+      text-align : center;
+    }
+  }
+
+  .content-list {
+    width            : 100%;
+    height           : 92%;
+    background-color : #000000;
+    border           : 2px solid #ffffff;
+    border-radius    : 8px;
+    display          : flex;
+    flex-direction   : column;
+    align-items      : center;
+    overflow         : scroll;
+  }
+
+  .consultations {
+    width            : 96%;
+    height           : 15%;
+    background-color : #222222;
+    margin           : 1.5vh 0;
+    padding          : 0.5% 2%;
+    border           : 1px solid #999999;
+    border-radius    : 8px;
+    color            : #ffffff;
+    text-decoration  : none;
+    display          : flex;
+    flex-direction   : column;
+    justify-content  : center;
+
+    .consultation-title-link {
+      width            : 100%;
+      height           : 40%;
+      background-color : rgb(20, 20, 20); 
+      color            : #ffffff;
+      text-decoration  : none;
+      border           : 1px solid #999999;
+      border-radius    : 8px;
+      padding          : auto 1%;
+    }
   
-  p {
-    color      : #d6d6d6;
-    text-align : center;
+    .user-name {
+      width  : 100%;
+      height : 30%;
+  
+      .consultation-user-link {
+        color            : #ffffff;
+        text-decoration  : none;
+      }
+    }
+  
+    .answer-category {
+      width   : 100%;
+      height  : 20%;
+      display : flex;
+  
+      .consultation-category {
+        margin-left: 10%;
+    
+        .consultation-category-link {
+          color            : #ffffff;
+          text-decoration  : none;
+        }
+      }
+    
+      .posted-time {
+        margin-left : 10%;
+        font-size   : 10%; 
+      }
+    }
   }
 }
 
-.content-list {
-  width            : 100%;
-  height           : 92%;
-  background-color : #000000;
-  border           : 2px solid #ffffff;
-  border-radius    : 8px;
-  display          : flex;
-  flex-direction   : column;
-  align-items      : center;
-  overflow         : scroll;
-}
 
-.consultations {
-  width            : 96%;
-  height           : 15vh;
-  background-color : #222222;
-  margin           : 1.5vh 0;
-  padding          : 0.5% 2%;
-  border           : 1px solid #999999;
-  border-radius    : 8px;
-  color            : #ffffff;
-  text-decoration  : none;
-  display          : flex;
-  flex-direction   : column;
-  justify-content  : center;
-}
 
-.consultation-title-link {
-  width            : 100%;
-  height           : 40%;
-  background-color : rgb(20, 20, 20); 
-  color            : #ffffff;
-  text-decoration  : none;
-  border           : 1px solid #999999;
-  border-radius    : 8px;
-  padding          : auto 1%;
-}
-
-.user-name {
-  width  : 100%;
-  height : 30%;
-}
-
-.consultation-user-link {
-  color            : #ffffff;
-  text-decoration  : none;
-}
-
-.answer-category {
-  width   : 100%;
-  height  : 20%;
-  display : flex;
-}
-
-.consultation-category {
-  margin-left: 10%;
-}
-
-.posted-time {
-  margin-left: 10%;
-}
-
-.consultation-category-link {
-  color            : #ffffff;
-  text-decoration  : none;
-}
 
 @media (max-width: 1024px) {
 
