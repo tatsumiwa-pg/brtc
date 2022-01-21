@@ -5,21 +5,23 @@
   display          : flex;
   justify-content  : space-around;
   align-items      : flex-start ;
-  padding-top      : 8vh;
+  padding-top      : 50px;
+
   overflow-y       : scroll;
 
   .contents-block {
     width            : 48.5%;
     height           : 89.5%;
+    min-height       : 600px;
     background-color : rgb(153, 152, 152);
     border           : 2px solid black;
     border-radius    : 8px;
-    margin           : 0.01% 0.1%;
+    margin           : 0.1% 0.1%;
     padding          : 0.1% 0.1%;
     display          : flex;
     flex-direction   : column;
     justify-content  : center;
-    align-items      : center;
+    //align-items      : center;
 
   }
 
@@ -117,29 +119,31 @@
 
   .content-wrap {
     height: 100%;
+    width : 100%;
+    padding-top : 8.5vh;
     display          : flex;
     flex-direction   : column;
-    justify-content  : center;
+    justify-content  : flex-start;
     overflow : scroll;
-  }
 
-  .contents-block {
-    width            : 100vw;
-    height           : 100%;
-    margin-bottom    : 1vh;
-    overflow : scroll;
-  }
-
-  .consutation-list {
-    overflow : scroll;
-  }
-
-  .consultations {
-    width  : 98%;
-    height : 30%;
-  }
-
-  .list-title {
-    font-size        : 2vh 3.7vw;
+    .contents-block {
+      width            : 100vw;
+      height           : 100%;
+      margin-bottom    : 1vh;
+      overflow : scroll;
+    }
+  
+    .consutation-list {
+      overflow : scroll;
+    }
+  
+    .consultations {
+      width  : 98%;
+      height : 30%;
+    }
+  
+    .list-title {
+      font-size        : 2vh 3.7vw;
+    }
   }
 }
