@@ -2,6 +2,7 @@ class ConsultationsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
+    @consultations = Consultation.includes(:user).order("updated_at DESC")
   end
 
   def new

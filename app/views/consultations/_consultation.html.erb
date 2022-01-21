@@ -1,0 +1,25 @@
+<% @consultations.each do |consultation| %>
+
+  <div class="consultations">
+
+    <%= link_to consultation.cons_title, "#", class:"consultation-title-link" %>
+    
+    <div class="user-name">
+      <%= link_to consultation.user.nickname, "#", class:"consultation-user-link" %>
+    </div>
+
+    <div class="answer-category">
+      <div class="answers">
+        <%= "●件の回答"%>
+      </div>
+      <div class="consultation-category">
+        <%= link_to consultation.category.name, "#", class:"consultation-category-link" %>
+      </div>
+      <div class="posted-time">
+        <%= "投稿日時: #{consultation.updated_at}" %>
+      </div>
+    </div>
+    
+  </div>
+
+<% end %>
