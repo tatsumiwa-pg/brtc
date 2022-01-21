@@ -5,7 +5,11 @@
       <p>回答募集中 -Must be reconciled-</p>
     </div>
     <div class="content-list">
-      <%= render 'consultation', collection: @consultations %>
+      <% if @consultations.blank? %>
+        <%= render 'sample_consultation' %>
+      <% else %>
+        <%= render 'consultation', collection: @consultations %>
+      <% end %>
     </div>
   </div>
 
