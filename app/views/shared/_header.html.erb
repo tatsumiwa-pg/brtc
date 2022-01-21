@@ -11,7 +11,7 @@
     <div class="menu-bar">
       <form class="search-form" action="#">
         <input class='input-box' placeholder='キーワードから探す'>
-        <%= image_tag "search.png", class:"search-icon" %>
+        <%= link_to image_tag("search.png", class:"search-icon"), "/" %>
         </button>
       </form>
       <div class="menu-buttons">
@@ -24,7 +24,7 @@
       <ul class="user-menu-list">
         <% if user_signed_in? %>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-        <li><%= link_to "#{current_user.nickname}", edit_user_registration_path %></li>
+        <li><%= link_to current_user.nickname, edit_user_registration_path %></li>
         <% else %>
         <li><%= link_to '新規登録', new_user_registration_path %></li>
         <li><%= link_to 'ログイン', new_user_session_path %></li>

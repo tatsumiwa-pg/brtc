@@ -6,12 +6,11 @@
   justify-content  : space-around;
   align-items      : flex-start ;
   padding-top      : 50px;
-
   overflow-y       : scroll;
 
   .contents-block {
     width            : 48.5%;
-    height           : 89.5%;
+    height           : 100%;
     min-height       : 600px;
     background-color : rgb(153, 152, 152);
     border           : 2px solid black;
@@ -21,7 +20,7 @@
     display          : flex;
     flex-direction   : column;
     justify-content  : center;
-    //align-items      : center;
+    align-items      : center;
 
   }
 
@@ -57,7 +56,7 @@
 
   .consultations {
     width            : 96%;
-    height           : 15%;
+    height           : 30%;
     background-color : #222222;
     margin           : 1.5vh 0;
     padding          : 0.5% 2%;
@@ -71,18 +70,24 @@
 
     .consultation-title-link {
       width            : 100%;
-      height           : 40%;
+      height           : 50%;
       background-color : rgb(20, 20, 20); 
-      color            : #ffffff;
-      text-decoration  : none;
       border           : 1px solid #999999;
       border-radius    : 8px;
-      padding          : auto 1%;
+      display          : flex;
+      justify-content  : flex-start;
+      align-items      : center;
+      color            : #ffffff;
+      text-decoration  : none;
+      font-size        : 16px;
     }
   
     .user-name {
       width  : 100%;
       height : 30%;
+      display          : flex;
+      justify-content  : flex-start;
+      align-items      : center;
   
       .consultation-user-link {
         color            : #ffffff;
@@ -94,13 +99,14 @@
       width   : 100%;
       height  : 20%;
       display : flex;
+      justify-content  : flex-start;
+      align-items      : center;
   
       .consultation-category {
         margin-left: 10%;
     
         .consultation-category-link {
           color            : #ffffff;
-          text-decoration  : none;
         }
       }
     
@@ -118,32 +124,47 @@
 @media (max-width: 1024px) {
 
   .content-wrap {
-    height: 100%;
-    width : 100%;
     padding-top : 8.5vh;
     display          : flex;
     flex-direction   : column;
     justify-content  : flex-start;
-    overflow : scroll;
+    align-items      : center;
 
     .contents-block {
-      width            : 100vw;
+      width            : 95vw;
       height           : 100%;
       margin-bottom    : 1vh;
       overflow : scroll;
-    }
+
+      .list-title {
+        font-size : 2vmax;
+      }
+
+      .content-list {
+        overflow : scroll;
   
-    .consutation-list {
-      overflow : scroll;
-    }
-  
-    .consultations {
-      width  : 98%;
-      height : 30%;
-    }
-  
-    .list-title {
-      font-size        : 2vh 3.7vw;
+        .consultations {
+          width  : 98%;
+          height : 45%;
+          min-height : 20vh;
+
+          .consultation-title-link{
+            font-size : 14px;
+            margin    : 1px 1px;
+            padding   : 1px 5px;
+          }
+         
+          .user-name {
+            height    : 20%;
+            //font-size : 12px;
+          }
+
+          .answer-category {
+            height : 30%;
+            font-size :12px;
+          }
+        }
+      }
     }
   }
 }
