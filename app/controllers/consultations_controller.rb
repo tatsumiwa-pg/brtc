@@ -22,6 +22,10 @@ class ConsultationsController < ApplicationController
     @consultation = Consultation.find(params[:id])
   end
 
+  def edit
+    @consultation = Consultation.find(params[:id])
+  end
+
   private
 
   def consultation_params
