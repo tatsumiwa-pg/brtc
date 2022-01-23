@@ -1,0 +1,169 @@
+<div class="content-wrap-s">
+  <div class="main-content">
+
+    <% if user_signed_in? %>
+      <% if current_user.id == @consultation.user.id %>
+        <p class="what-do-you-want">あなたの投稿</p>
+        <div class="button-box">
+          <div class="button">
+            <%= link_to '編集する', "#" %>
+          </div>
+          <div class="button">
+            <%= link_to '削除する', "#" %>
+            </div>
+          <div class="button">
+            <%= link_to '和解する', "#" %>
+          </div>
+        </div>
+      <% else %>
+        <p class="what-do-you-want"><%= link_to @consultation.user.nickname, "#" %>さんの投稿</p>
+        <div class="button-box">
+          <%= link_to '回答する', "#" %>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="what-do-you-want"><%= @consultation.user.nickname %>さんの投稿</p>
+    <% end %>
+
+    <div class="cons-title-box">
+      <p><%= @consultation.cons_title %></p>
+    </div>
+    <div class="is-reconciled">
+      <%# link_to image_tag(@consultation.user.profile.image), class:"cons-user-image" %>
+      <%#<p><% "{ #{@consultation.reconciliration.rec_text} )" "%"></p>%>
+    </div>
+    <div class="category-box">
+      <p>カテゴリー:</p><%= link_to @consultation.category.name, "#" %>
+    </div>
+    <div class="tags-box">
+      <%# <p>タグ:</p><%# @consultation.tags.each do |tag|%>
+    </div>
+
+    <p class="cons-contents-box-label">-contents-</p>
+
+    <div class="cons-contents-box">
+      <div class="content-parts">
+        <p class="content-label">要約するとこんな話 -summary-</p>
+        <div class="content-text">
+          <p><%= @consultation.summary %></p>
+        </div>
+      </div>
+
+      <div class="content-parts">
+        <p class="content-label">こんな状況です -situation-</p>
+        <div class="content-text">
+          <p><%= @consultation.situation %></p>
+        </div>
+      </div>
+
+      <div class="content-parts">
+        <p class="content-label">何が問題？どう解決したい？ -problem & solution-</p>
+        <div class="content-text">
+          <p><%= @consultation.problem %></p>
+        </div>
+      </div>
+    </div>
+
+    <% if @consultation.image.attached? %>
+      <p class="images-text" style="color : white;">image</p>
+      <div class="cons-images-box">
+        <%= image_tag @consultation.image.variant(resize: '500x500'), class: "images" %>
+      </div>
+    <% else %>
+      <p class="no-images" style="color : white;">No image</p>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <% if current_user.id == @consultation.user.id %>
+        <br>
+        <div class="button-box">
+          <div class="button">
+            <%= link_to '編集する', "#" %>
+          </div>
+          <div class="button">
+            <%= link_to '削除する', "#" %>
+            </div>
+          <div class="button">
+            <%= link_to '和解する', "#" %>
+          </div>
+        </div>
+      <% else %>
+        <div class="button-box">
+          <%= link_to '回答する', "#" %>
+        </div>
+      <% end %>
+    <% end %>
+
+  </div>
+
+  <div class="sub-bar">
+    <div class="sub-content-wrapper">
+      <div class="sub-content-label">
+        <p>Answers</p>
+      </div>
+      <div class="sub-content-box">
+
+        <div class="answer-box-sub">
+          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
+          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
+        </div>
+
+        <div class="answer-box-sub">
+          <p class="ans-title-sub"><%= link_to "１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０", "#" %></p>
+          <p class="ans-username-sub"><%= "by １２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０" %></p>
+        </div>
+
+        <div class="answer-box-sub">
+          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
+          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
+        </div>
+
+        <div class="answer-box-sub">
+          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
+          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
+        </div>
+
+        <div class="answer-box-sub">
+          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
+          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-content-wrapper">
+      <div class="sub-content-label">
+        <p>Comments</p>
+      </div>
+      <div class="sub-content-box">
+
+        <div class="cons-comment-box-sub">
+          <p class="cons-comment-text-sub"><%= "@consultation.cons_comment.cons_c_text" %></p>
+          <p class="cons-comment-username-sub">by: <%= link_to "@consultation.cons_comment.user.nickname", "#" %></p>
+        </div>
+
+        <div class="answer-box-sub">
+          <p class="ans-title-sub"><%= link_to "１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０", "#" %></p>
+          <p class="ans-username-sub"><%= "by １２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０" %></p>
+        </div>
+
+        <div class="answer-box-sub">
+          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
+          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
+        </div>
+
+        <div class="answer-box-sub">
+          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
+          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
+        </div>
+
+        <div class="answer-box-sub">
+          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
+          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
+        </div>
+      </div>
+
+      <div class="cons-comment-form-wrapper">
+      </div>
+    </div>
+  </div>
+</div>
