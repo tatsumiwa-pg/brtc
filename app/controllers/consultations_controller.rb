@@ -1,5 +1,5 @@
 class ConsultationsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @consultations = Consultation.includes(:user).order("updated_at DESC")
@@ -16,6 +16,10 @@ class ConsultationsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @consultation = Consultation.find(params[:id])
   end
 
   private
