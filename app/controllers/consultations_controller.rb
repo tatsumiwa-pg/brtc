@@ -1,5 +1,6 @@
 class ConsultationsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_consultation, only: [:show, :edit, :update]
 
   def index
     @consultations = Consultation.includes(:user).order('updated_at DESC')
@@ -19,15 +20,12 @@ class ConsultationsController < ApplicationController
   end
 
   def show
-    @consultation = Consultation.find(params[:id])
   end
 
   def edit
-    @consultation = Consultation.find(params[:id])
   end
 
   def update
-    @consultation = Consultation.find(params[:id])
     if @consultation.update(consultation_params)
       redirect_to consultation_path(params[:id])
     else
@@ -40,5 +38,9 @@ class ConsultationsController < ApplicationController
   def consultation_params
     params.require(:consultation).permit(:cons_title, :category_id, :summary, :situation, :problem,
                                          :image).merge(user_id: current_user.id)
+  end
+
+  def set_consultation
+    @consultation = Consultation.find(params[:id])
   end
 end
