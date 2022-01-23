@@ -10,7 +10,7 @@ RSpec.describe Consultation, type: :model do
       expect(@consultation).to be_valid
     end
     it 'imageがカラでも相談を投稿できる' do
-      @consultation.image = nil 
+      @consultation.image = nil
       expect(@consultation).to be_valid
     end
   end

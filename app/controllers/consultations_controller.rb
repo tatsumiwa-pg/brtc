@@ -2,7 +2,7 @@ class ConsultationsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @consultations = Consultation.includes(:user).order("updated_at DESC")
+    @consultations = Consultation.includes(:user).order('updated_at DESC')
   end
 
   def new
@@ -25,6 +25,7 @@ class ConsultationsController < ApplicationController
   private
 
   def consultation_params
-    params.require(:consultation).permit(:cons_title, :category_id, :summary, :situation, :problem, :image).merge(user_id: current_user.id)
+    params.require(:consultation).permit(:cons_title, :category_id, :summary, :situation, :problem,
+                                         :image).merge(user_id: current_user.id)
   end
 end

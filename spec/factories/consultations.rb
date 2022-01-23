@@ -7,7 +7,7 @@ FactoryBot.define do
     problem     { Faker::Lorem.characters(number: 1..2000) }
 
     association :user
-    
+
     after(:build) do |consultation|
       consultation.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
     end

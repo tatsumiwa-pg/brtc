@@ -70,7 +70,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def soft_delete(user)
-    deleted_email = user.email + '_deleted_' + Time.current.to_i.to_s
+    deleted_email = "#{user.email}_deleted_#{Time.current.to_i}"
     user.assign_attributes(email: deleted_email, deleted_at: Time.current)
 
     user.skip_email_changed_notification!
