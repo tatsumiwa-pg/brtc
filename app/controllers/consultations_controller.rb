@@ -26,6 +26,15 @@ class ConsultationsController < ApplicationController
     @consultation = Consultation.find(params[:id])
   end
 
+  def update
+    @consultation = Consultation.find(params[:id])
+    if @consultation.update(consultation_params)
+      redirect_to consultation_path(params[:id])
+    else
+      render :edit
+    end
+  end
+
   private
 
   def consultation_params
