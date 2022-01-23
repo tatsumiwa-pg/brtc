@@ -1,6 +1,7 @@
 class ConsultationsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_consultation, only: [:show, :edit, :update]
+  before_action :move_to_index, only: [:edit]
 
   def index
     @consultations = Consultation.includes(:user).order('updated_at DESC')
@@ -42,5 +43,9 @@ class ConsultationsController < ApplicationController
 
   def set_consultation
     @consultation = Consultation.find(params[:id])
+  end
+
+  def move_to_index
+    redirect_to root_path if current_user.id != @consultation.user.id
   end
 end
