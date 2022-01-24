@@ -18,7 +18,7 @@
       <% else %>
         <p class="what-do-you-want"><%= link_to @consultation.user.nickname, "#" %>さんの投稿</p>
         <div class="button-box">
-          <%= link_to '回答する', "#" %>
+          <%= link_to '回答する', new_consultation_answer_path(@consultation.id) %>
         </div>
       <% end %>
     <% else %>
