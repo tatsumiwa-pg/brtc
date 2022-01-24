@@ -56,7 +56,7 @@
 
   .consultations {
     width            : 96%;
-    height           : 30%;
+    height           : fit-content;
     background-color : #222222;
     margin           : 1.5vh 0;
     padding          : 0.5% 2%;
@@ -70,21 +70,24 @@
 
     .consultation-title-link {
       width            : 100%;
-      height           : 50%;
+      height           : fit-content;
+      min-height       : 40px;
       background-color : rgb(20, 20, 20); 
       border           : 1px solid #999999;
       border-radius    : 8px;
       display          : flex;
       justify-content  : flex-start;
       align-items      : center;
+      padding-left     : 10px;
+      padding-right    : 10px;
       color            : #ffffff;
       text-decoration  : none;
       font-size        : 16px;
     }
   
     .user-name {
-      width  : 100%;
-      height : 30%;
+      width            : 100%;
+      height           : fit-content;
       display          : flex;
       justify-content  : flex-start;
       align-items      : center;
@@ -96,9 +99,9 @@
     }
   
     .answer-category {
-      width   : 100%;
-      height  : 20%;
-      display : flex;
+      width            : 100%;
+      height           : fit-content;
+      display          : flex;
       justify-content  : flex-start;
       align-items      : center;
   
@@ -106,7 +109,7 @@
         margin-left: 10%;
     
         .consultation-category-link {
-          color            : #ffffff;
+          color : #ffffff;
         }
       }
     
@@ -124,17 +127,17 @@
 @media (max-width: 1024px) {
 
   .content-wrap {
-    padding-top : 8.5vh;
-    display          : flex;
-    flex-direction   : column;
-    justify-content  : flex-start;
-    align-items      : center;
+    padding-top     : 8.5vh;
+    display         : flex;
+    flex-direction  : column;
+    justify-content : flex-start;
+    align-items     : center;
 
     .contents-block {
-      width            : 95vw;
-      height           : 100%;
-      margin-bottom    : 1vh;
-      overflow : scroll;
+      width         : 95vw;
+      height        : 100%;
+      margin-bottom : 1vh;
+      overflow      : scroll;
 
       .list-title {
         font-size : 2vmax;
@@ -144,23 +147,15 @@
         overflow : scroll;
   
         .consultations {
-          width  : 98%;
-          height : 45%;
-          min-height : 20vh;
-
+          width      : 98%;
+          
           .consultation-title-link{
             font-size : 14px;
             margin    : 1px 1px;
             padding   : 1px 5px;
           }
          
-          .user-name {
-            height    : 20%;
-            //font-size : 12px;
-          }
-
           .answer-category {
-            height : 30%;
             font-size :12px;
           }
         }

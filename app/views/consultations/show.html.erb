@@ -9,7 +9,7 @@
             <%= link_to '編集する', edit_consultation_path(@consultation.id) %>
           </div>
           <div class="button">
-            <%= link_to '削除する', "#" %>
+            <%= link_to '削除する', consultation_path(@consultation.id), method: :delete, data: { confirm: '本当によろしいですか？ -Are you sure-?' }, class:"delete-btn", id:"delete_btn" %>
             </div>
           <div class="button">
             <%= link_to '和解する', "#" %>

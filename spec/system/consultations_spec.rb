@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Consultations", type: :system do
+RSpec.describe 'Consultations', type: :system do
   before do
     @user = FactoryBot.create(:user)
-    @consultation = FactoryBot.build(:consultation, category_id: 1 ,user_id: @user.id )
+    @consultation = FactoryBot.build(:consultation, category_id: 1, user_id: @user.id)
   end
 
   context '相談の新規登録ができるとき' do
@@ -20,11 +20,11 @@ RSpec.describe "Consultations", type: :system do
       fill_in 'cons-summary', with: @consultation.summary
       fill_in 'cons-situation', with: @consultation.situation
       fill_in 'cons-problem', with: @consultation.problem
-      attach_file 'cons-image', "public/images/test_image.png"
+      attach_file 'cons-image', 'public/images/test_image.png'
       # 送信ボタンを押すと相談モデルのカウントが1上がることを確認する
-      expect {
+      expect do
         find('input[name="commit"]').click
-      }.to change { Consultation.count }.by(1)
+      end.to change { Consultation.count }.by(1)
       # トップページへ遷移したことを確認する
       expect(current_path).to eq(root_path)
       # トップページには先ほど投稿した内容の相談が存在する（タイトル）
@@ -49,9 +49,9 @@ RSpec.describe "Consultations", type: :system do
       fill_in 'cons-situation', with: @consultation.situation
       fill_in 'cons-problem', with: @consultation.problem
       # 送信ボタンを押すと相談モデルのカウントが1上がることを確認する
-      expect {
+      expect do
         find('input[name="commit"]').click
-      }.to change { Consultation.count }.by(1)
+      end.to change { Consultation.count }.by(1)
       # トップページへ遷移したことを確認する
       expect(current_path).to eq(root_path)
       # トップページには先ほど投稿した内容の相談が存在する（タイトル）
@@ -72,15 +72,15 @@ RSpec.describe "Consultations", type: :system do
       # 相談新規投稿ページへ移動する
       find('a', text: '相談する').click
       # 相談情報を入力する
-      fill_in 'cons-title', with: ""
+      fill_in 'cons-title', with: ''
       find('option[value=""]').select_option
-      fill_in 'cons-summary', with: ""
-      fill_in 'cons-situation', with: ""
-      fill_in 'cons-problem', with: ""
+      fill_in 'cons-summary', with: ''
+      fill_in 'cons-situation', with: ''
+      fill_in 'cons-problem', with: ''
       # サインアップボタンを押してもユーザーモデルのカウントは上がらないことを確認する
-      expect {
+      expect do
         find('input[name=commit]').click
-      }.to change { Consultation.count }.by(0)
+      end.to change { Consultation.count }.by(0)
       # 新規登録ページへ戻されることを確認する
       expect(page).to have_content('what happened?')
     end
@@ -229,6 +229,37 @@ RSpec.describe '編集', type: :system do
       visit edit_consultation_path(@consultation.id)
       # ログインページへ戻されることを確認する
       expect(current_path).to eq new_user_session_path
+    end
+  end
+end
+
+RSpec.describe '削除', type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+    @consultation = FactoryBot.create(:consultation, category_id: 1, user_id: @user.id)
+    @cons_title = @consultation.cons_title
+  end
+
+  context '相談の削除ができるとき' do
+    it 'ログインしていれば、自身の投稿した相談の詳細ページから相談を削除できる' do
+      # ログインする
+      sign_in(@user)
+      # トップページに相談詳細表示ページへ遷移するための相談タイトル（ボタン）があることを確認する
+      expect(page).to have_link @cons_title
+      # 詳細ページへ遷移する
+      find('a', text: @cons_title).click
+      # 現在のページが相談詳細ページであること確認する
+      expect(current_path).to eq consultation_path(@consultation.id)
+      # 削除ボタン（削除する）が存在すること
+      expect(page).to have_selector('a', text: '削除する')
+      # 削除ボタンを押し、確認メッセージで承認する
+      page.accept_confirm do
+        click_on :delete_btn
+      end
+      # トップページへ遷移することを確認する
+      expect(current_path).to eq(root_path)
+      # トップページには先ほど削除した相談が存在しない（タイトル）
+      expect(page).to have_no_content(@consultation.cons_title)
     end
   end
 end

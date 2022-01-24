@@ -1,7 +1,7 @@
 class ConsultationsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_consultation, only: [:show, :edit, :update]
-  before_action :move_to_index, only: [:edit]
+  before_action :set_consultation, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_index, only: [:edit, :destroy]
 
   def index
     @consultations = Consultation.includes(:user).order('updated_at DESC')
@@ -32,6 +32,11 @@ class ConsultationsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @consultation.destroy
+    redirect_to root_path
   end
 
   private
