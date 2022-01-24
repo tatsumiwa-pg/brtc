@@ -31,6 +31,7 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.include BasicAuthSupport
   config.include SignInSupport
   config.include DeleteUserSupport
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

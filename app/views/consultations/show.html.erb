@@ -6,7 +6,7 @@
         <p class="what-do-you-want">あなたの投稿</p>
         <div class="button-box">
           <div class="button">
-            <%= link_to '編集する', "#" %>
+            <%= link_to '編集する', edit_consultation_path(@consultation.id) %>
           </div>
           <div class="button">
             <%= link_to '削除する', "#" %>
@@ -78,7 +78,7 @@
         <br>
         <div class="button-box">
           <div class="button">
-            <%= link_to '編集する', "#" %>
+            <%= link_to '編集する', edit_consultation_path(@consultation.id) %>
           </div>
           <div class="button">
             <%= link_to '削除する', "#" %>
