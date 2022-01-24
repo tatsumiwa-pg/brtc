@@ -232,3 +232,34 @@ RSpec.describe '編集', type: :system do
     end
   end
 end
+
+RSpec.describe "削除", type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+    @consultation = FactoryBot.create(:consultation, category_id: 1 ,user_id: @user.id )
+    @cons_title = @consultation.cons_title
+  end
+
+  context '相談の削除ができるとき' do
+    it 'ログインしていれば、自身の投稿した相談の詳細ページから相談を削除できる' do
+      # ログインする
+      sign_in(@user)
+      # トップページに相談詳細表示ページへ遷移するための相談タイトル（ボタン）があることを確認する
+      expect(page).to have_link @cons_title
+      # 詳細ページへ遷移する
+      find('a', text: @cons_title).click
+      # 現在のページが相談詳細ページであること確認する
+      expect(current_path).to eq consultation_path(@consultation.id)
+      # 削除ボタン（削除する）が存在すること
+      expect(page).to have_selector('a', text: '削除する')
+      # 削除ボタンを押し、確認メッセージで承認する
+      page.accept_confirm do
+        click_on :delete_btn
+      end
+      # トップページへ遷移することを確認する
+      expect(current_path).to eq(root_path)    
+      # トップページには先ほど削除した相談が存在しない（タイトル）
+      expect(page).to have_no_content(@consultation.cons_title)
+    end
+  end
+end
