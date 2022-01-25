@@ -4,5 +4,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   root to: 'consultations#index'
-  resources :consultations
+  resources :consultations, shallow: true do
+    resources :answers, only: [:index, :new, :create]
+  end
 end

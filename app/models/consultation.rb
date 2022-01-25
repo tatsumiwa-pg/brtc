@@ -1,6 +1,7 @@
 class Consultation < ApplicationRecord
-  belongs_to :user
+  belongs_to       :user
   has_one_attached :image
+  has_many         :answers
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category

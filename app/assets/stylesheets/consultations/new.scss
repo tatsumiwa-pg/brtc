@@ -18,25 +18,27 @@
     .form-title-nav {
       font-size     : 30px;
       margin-bottom : 1px;
-      color         : #ffffff;
+      color         : #dddddd;
     }
 
     .form-field {
       width : 90%;
-      //height: 83%;
-      //overflow : scroll;
+      display          : flex;
+      flex-direction   : column;
+      justify-content  : flex-start;
+      align-items      : center;
       
       .form-input-field {
         width            : 100%;
-        //height           : 91%;
+        height           : fit-content;
         background-color : #000000;
-        border           : 2px ridge #ffffff;
-        border-radius    : 2%;
+        border           : 2px ridge #dddddd;
+        border-radius    : 10px;
         display          : flex;
         flex-direction   : column;
         justify-content  : flex-start;
         align-items      : center;
-        //overflow         : scroll;
+        
 
         .cons-form-parts {
           width            : 97%;
@@ -44,96 +46,103 @@
           margin-top           : 0.5% ;
 
           .cons-form-label {
-            color         : #ffffff;
-            height        : 3%;
+            color         : #dddddd;
+            height        : fit-content;
             margin-bottom :  1px;
           }
           
           .cons-title-input {
             width            : 100%;
             height           : 40px;
-            border           : 1px solid #ffffff;
+            padding          : 10px;
+            border           : 1px solid #dddddd;
             border-radius    : 10px;
-            color            : #ffffff;
+            color            : #dddddd;
             background-color : #222222;
           }
 
           .category-select-box {
             width            : 50%;
             height           : 40px;
-            border           : 1px solid #ffffff;
+            padding          : 10px;
+            border           : 1px solid #dddddd;
             border-radius    : 10px;
-            color            : #ffffff;
+            color            : #dddddd;
             background-color : #222222;
           }
 
           .cons-summary-input {
             width            : 100%;
             height           : 60px;
-            border           : 1px solid #ffffff;
+            padding          : 10px;
+            border           : 1px solid #dddddd;
             border-radius    : 10px;
-            color            : #ffffff;
+            color            : #dddddd;
             background-color : #222222;
           }
 
           .cons-situation-input {
             width            : 100%;
             height           : 200px;
-            border           : 1px solid #ffffff;
+            padding          : 10px;
+            border           : 1px solid #dddddd;
             border-radius    : 10px;
-            color            : #ffffff;
+            color            : #dddddd;
             background-color : #222222;
           }
 
           .cons-problem-input {
             width            : 100%;
             height           : 200px;
-            border           : 1px solid #ffffff;
+            padding          : 10px;
+            border           : 1px solid #dddddd;
             border-radius    : 10px;
-            color            : #ffffff;
+            color            : #dddddd;
             background-color : #222222;
           }
         }
 
         .file-upload {
-          height : 50px;
-          color :#ffffff;
-          display: flex;
+          height          : 50px;
+          color           :#ffffff;
+          display         : flex;
           justify-content : center;
-          align-items :center;
+          align-items     :center;
 
           .file-upload input{
-            width :100%;
+            width  :100%;
             height :100%;
           }
         }
       }
       .post-btn-contents {
-        width            : 100%;
-        height           : 8%;
-        margin           : 1% 0;
-        display          : flex;
-        justify-content  : center;
-        align-items      : center;
+        width           : fit-content;
+        height          : fit-content;
+        display         : flex;
+        justify-content : center;
+        align-items     : center;
+        margin          : 5px 0 20px 0;
         
         .post-btn {
           width            : 30%;
-          height           : 100%;
+          min-width        : 150px;
+          height           : 10%;
+          min-height       : 50px;
           background-color : #000000;
           display          : flex;
           justify-content  : center;
           align-items      : center;
-          border           : 2px solid #ffffff;
+          border           : 2px solid #dddddd;
           border-radius    : 10px;
-          color            : #ffffff;
+          color            : #dddddd;
           text-align       : center;
           text-decoration  : none;
           font-size        : 30px;
         }
         .post-btn:hover {
-          box-shadow    : none;
-          color         : #ffffff;
-          background    : #a3a2a2;
+          box-shadow : none;
+          color      : #ffffff;
+          background : #a3a2a2;
         }
       }
     }
@@ -144,8 +153,8 @@
     height           : 100%;
     overflow         : scroll;
     background-color : rgb(54, 54, 54);
-    padding: 1% 1%;
-    color :#ffffff;
+    padding          : 1% 1%;
+    color            :#dddddd;
 
     h3 {
       text-align :center;
@@ -156,7 +165,7 @@
 
 .error-alert {
   display :contents;
-  color : #ffffff;
+  color   : #dddddd;
 }
 
 @media (max-width: 1024px) {
@@ -166,11 +175,11 @@
 
     .main-content {
       width            : 100%;
-      height           : 100%;
+      height           : fit-content;
       background-color : black;
     
       .form-title-nav {
-        font-size      : 3vh;
+        font-size : 30px;
       }
 
       .form-field {
@@ -211,8 +220,8 @@
           height : 6%;
           
           .post-btn {
-            height           : 100%;
-            font-size        : 3vh;
+            height    : 100%;
+            font-size : 3vh;
           }
         }
       }
@@ -220,7 +229,7 @@
 
     .nav-bar {
       width  : 100%;
-      height : 200px;
+      height : fit-content;
     }
   }
 }

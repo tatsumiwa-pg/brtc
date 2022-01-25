@@ -5,20 +5,26 @@
       <% if current_user.id == @consultation.user.id %>
         <p class="what-do-you-want">あなたの投稿</p>
         <div class="button-box">
+
+          <% if @answers.blank? %>
+            <div class="button">
+              <%= link_to '削除する', consultation_path(@consultation.id), method: :delete, data: { confirm: '本当によろしいですか？ -Are you sure-?' }, class:"delete-btn", id:"delete_btn" %>
+            </div>
+          <% else %>
+            <div class="button">
+              <%= link_to '和解する', "#" %>
+            </div>
+          <% end%>
+          
           <div class="button">
             <%= link_to '編集する', edit_consultation_path(@consultation.id) %>
-          </div>
-          <div class="button">
-            <%= link_to '削除する', consultation_path(@consultation.id), method: :delete, data: { confirm: '本当によろしいですか？ -Are you sure-?' }, class:"delete-btn", id:"delete_btn" %>
-            </div>
-          <div class="button">
-            <%= link_to '和解する', "#" %>
-          </div>
+          </div>          
+          
         </div>
       <% else %>
         <p class="what-do-you-want"><%= link_to @consultation.user.nickname, "#" %>さんの投稿</p>
         <div class="button-box">
-          <%= link_to '回答する', "#" %>
+          <%= link_to '回答する', new_consultation_answer_path(@consultation.id) %>
         </div>
       <% end %>
     <% else %>
@@ -72,24 +78,31 @@
     <% else %>
       <p class="no-images" style="color : white;">No image</p>
     <% end %>
+    <br>
 
     <% if user_signed_in? %>
       <% if current_user.id == @consultation.user.id %>
-        <br>
         <div class="button-box">
+
+          <% if @answers.blank? %>
+            <div class="button">
+              <%= link_to '削除する', consultation_path(@consultation.id), method: :delete, data: { confirm: '本当によろしいですか？ -Are you sure-?' }, class:"delete-btn", id:"delete_btn" %>
+            </div>
+          <% else %>
+            <div class="button">
+              <%= link_to '和解する', "#" %>
+            </div>
+          <% end%>
+          
           <div class="button">
             <%= link_to '編集する', edit_consultation_path(@consultation.id) %>
-          </div>
-          <div class="button">
-            <%= link_to '削除する', "#" %>
-            </div>
-          <div class="button">
-            <%= link_to '和解する', "#" %>
-          </div>
+          </div>          
+          
         </div>
       <% else %>
+        <p class="what-do-you-want"><%= link_to @consultation.user.nickname, "#" %>さんの投稿</p>
         <div class="button-box">
-          <%= link_to '回答する', "#" %>
+          <%= link_to '回答する', new_consultation_answer_path(@consultation.id) %>
         </div>
       <% end %>
     <% end %>
@@ -102,31 +115,16 @@
         <p>Answers</p>
       </div>
       <div class="sub-content-box">
-
-        <div class="answer-box-sub">
-          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
-          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
-        </div>
-
-        <div class="answer-box-sub">
-          <p class="ans-title-sub"><%= link_to "１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０", "#" %></p>
-          <p class="ans-username-sub"><%= "by １２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０" %></p>
-        </div>
-
-        <div class="answer-box-sub">
-          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
-          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
-        </div>
-
-        <div class="answer-box-sub">
-          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
-          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
-        </div>
-
-        <div class="answer-box-sub">
-          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
-          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
-        </div>
+        <% if @answers.blank? %>
+          <p style="color:#dddddd;">回答がまだありません</p>
+        <% else %>
+          <% @answers.each do |answer| %>
+            <div class="answer-box-sub">
+              <p class="ans-title-sub"><%= link_to answer.ans_title, "#" %></p>
+              <p class="ans-username-sub">by: <%= answer.user.nickname %></p>
+            </div>
+          <% end%>
+        <% end%>
       </div>
     </div>
 

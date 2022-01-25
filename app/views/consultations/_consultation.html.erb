@@ -10,7 +10,7 @@
 
     <div class="answer-category">
       <div class="answers">
-        <%= "●件の回答"%>
+        <%= "#{(consultation.answers).count}件の回答"%>
       </div>
       <div class="consultation-category">
         <%= link_to consultation.category.name, "#", class:"consultation-category-link" %>
