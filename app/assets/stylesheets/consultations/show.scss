@@ -22,9 +22,9 @@
     .what-do-you-want {
       margin-top : 30px;
       font-size : 30px;
-      color     : #ffffff; 
+      color     : #dddddd; 
       a {
-        color :#ffffff;
+        color :#dddddd;
       }
     }
 
@@ -38,7 +38,7 @@
       font-size       : 20px;
 
       .button {
-        color     : #ffffff;
+        color     : #dddddd;
         width     : 30%;
       }
 
@@ -53,13 +53,13 @@
         align-items     : center;
         justify-content : center;
         margin-left     : 3%;
-        color           : #ffffff;
+        color           : #dddddd;
         text-decoration : none;
         transition      : .3s;
       }
       a:hover {
         box-shadow    : none;
-        color         : #ffffff;
+        color         : #dddddd;
         background    : #a3a2a2;
       }
     }
@@ -68,20 +68,20 @@
     .cons-title-box{
       width            : 90%;
       height           : fit-content;
-      border           : 4px double #ffffff;
+      border           : 4px double #dddddd;
       display          : flex;
       justify-content  : flex-start;
 
       p {
         font-size : 30px;
-        color     : #ffffff;
+        color     : #dddddd;
       }      
     }
 
     .is-reconciled {
       width  : 90%;
       //height : fit-content;
-      background-color: #ffffff;
+      background-color: #dddddd;
     }
 
     .category-box {
@@ -93,7 +93,7 @@
       font-size       : 20px;
 
       p {
-        color     : #ffffff;
+        color     : #dddddd;
       }
 
       a {
@@ -108,13 +108,13 @@
         align-items     : center;
         justify-content : center;
         margin-left     : 3%;
-        color           : #ffffff;
+        color           : #dddddd;
         text-decoration : none;
         transition      : .3s;
       }
       a:hover {
         box-shadow    : none;
-        color         : #ffffff;
+        color         : #dddddd;
         background    : #a3a2a2;
       }
     }
@@ -122,26 +122,26 @@
     .tags {
       width  : 90%;
       //height : fit-content;
-      background-color: #ffffff;
+      background-color: #dddddd;
     }
 
 
     .cons-contents-box-label {
       margin : 30px auto 5px;
-      color      :#ffffff;
+      color      :#dddddd;
       font-size  : 40px;
     }
 
     .cons-contents-box {
       width            : 90%;
       height           : fit-content;
-      border           : 2px solid #ffffff;
+      border           : 2px solid #dddddd;
       border-radius    : 10px;
       display          : flex;
       flex-direction   : column;
       justify-content  : flex-start;
       align-items      : center;
-      color            : #ffffff;
+      color            : #dddddd;
 
       .content-parts{
         width            : 96%;
@@ -155,7 +155,7 @@
         }
 
         .content-text {
-          border : 1px solid #ffffff;
+          border : 1px solid #dddddd;
           padding : 10px;
         }
       }
@@ -171,7 +171,7 @@
     width            : 30%;
     height           : 100%;
     background-color : rgb(54, 54, 54);
-    color            :#ffffff;
+    color            :#dddddd;
     overflow-y       : scroll;
     overflow-x       : hidden;
 
@@ -215,7 +215,7 @@
           .ans-title-sub {
             margin : 3px 0 0 5px;
             a {
-              color  : #ffffff;
+              color  : #dddddd;
               text-decoration: none;
             }
           }
@@ -233,7 +233,7 @@
 
           .cons-comment-text-sub {
             margin : 3px 0 0 5px;
-            color  : #ffffff;
+            color  : #dddddd;
           }
           .cons-comment-username-sub {
             margin : 0 3px 0 5px;
@@ -269,13 +269,13 @@
           align-items     : center;
           justify-content : center;
           margin-left     : 3%;
-          color           : #ffffff;
+          color           : #dddddd;
           text-decoration : none;
           transition      : .3s;
         }
         a:hover {
           box-shadow    : none;
-          color         : #ffffff;
+          color         : #dddddd;
           background    : #a3a2a2;
         }
       }
