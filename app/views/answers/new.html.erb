@@ -49,6 +49,15 @@
       <p class="sub-ans-text"><%= @consultation.problem %></p>
     </div>
 
+    <% if @consultation.image.attached? %>
+      <p class="images-text" style="color:#dddddd;">image</p>
+      <div class="cons-images-box">
+        <%= image_tag @consultation.image.variant(resize: '500x500'), class: "images" %>
+      </div>
+    <% else %>
+      <p class="no-images" style="color:#dddddd;">No image</p>
+    <% end %>
+
     <div class="button">
       <%= link_to '相談詳細へ戻る', consultation_path(@consultation.id), class:"consultation-title-link" %>
     </div>

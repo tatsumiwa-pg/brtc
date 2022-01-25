@@ -186,6 +186,15 @@
       }
     }
 
+    .cons-images-box {
+      width  : 90%;
+      height : fit-content;
+
+      .images {
+        max-width : 100%;
+      }
+    }
+
     .button {
       width            : fit-content;
       height           : fit-content;
@@ -233,6 +242,7 @@
     .sub-content {
       width  : 100%;
       height : fit-content;
+      padding-top : 30px;
     }
   }
 }
