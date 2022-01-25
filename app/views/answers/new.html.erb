@@ -3,6 +3,8 @@
     <p class="main-content-title">回答作成</p>
     <%= form_with(model: [@consultation, @answer], class: "answer-form-filed", local: true) do |f| %>
 
+      <%= render 'shared/errors_messages', model: @answer %>
+
       <div class="form-input-field">
 
         <div class="ans-form-parts">
