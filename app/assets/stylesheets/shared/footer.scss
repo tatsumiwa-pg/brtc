@@ -7,9 +7,23 @@
   display          : flex;
   justify-content  : center;
   align-items      : center;
+
+  .title {
+    margin: 5px;
+  }
+
+  h4 {
+    color        : #ffffff;
+  }
 }
 
-h4 {
-  color        : #ffffff;
-  margin-right : 3vw;
+@media (max-width: 400px) {
+  
+  .footer-wrap {
+    min-height : 70px;
+
+    h4 {
+      font-size : 15px;
+    }
+  }
 }

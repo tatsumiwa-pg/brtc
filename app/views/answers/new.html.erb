@@ -1,3 +1,54 @@
-<div class="content-wrap">
-  <h1>Answers#new</h1>
+<div class="ans-n-content-wrapper">
+  <div class="main-content">
+    <p class="main-content-title">回答作成</p>
+    <%= form_with(model: [@consultation, @answer], class: "answer-form-filed", local: true) do |f| %>
+
+      <div class="form-input-field">
+
+        <div class="ans-form-parts">
+          <p class="ans-form-label">タイトル -Title-</p>
+          <%= f.text_field :ans_title, class:"ans-title-input", id:"ans-title", placeholder:"回答タイトル（必須 40文字まで)", maxlength:"40" %>
+        </div>
+        <div class="ans-form-parts">
+          <p class="ans-form-label">本文 -text-</p>
+          <%= f.text_area :ans_text, class:"ans-text-input", id:"ans-text", placeholder:"あなたの提案は？（必須 2000文字まで)", maxlength:"2000" %>
+        </div>
+        <div class="image-field">
+          <%#  <div id="previews"></div>  %>
+          <div class="file-upload">
+            <%= f.file_field :image, id:"cons-image", name:'consultation[image]' %>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="post-btn-contents">
+        <%= f.submit "送信", class:"post-btn" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="sub-content">
+
+    <p class="sub-content-title"><%= link_to @consultation.cons_title, consultation_path(@consultation.id) %></p>
+    <p class="sub-ans-category"><%= "カテゴリー: #{@consultation.category.name}" %></p>
+
+    <div class="sub-ans-parts">
+      <p class="sub-ans-label">要約</p>
+      <p class="sub-ans-text"><%= @consultation.summary %></p>
+    </div>
+
+    <div class="sub-ans-parts">
+      <p class="sub-ans-label">状況</p>
+      <p class="sub-ans-text"><%= @consultation.situation %></p>
+    </div>
+
+    <div class="sub-ans-parts">
+      <p class="sub-ans-label">問題</p>
+      <p class="sub-ans-text"><%= @consultation.problem %></p>
+    </div>
+
+    <div class="button">
+      <%= link_to '相談詳細へ戻る', consultation_path(@consultation.id), class:"consultation-title-link" %>
+    </div>
+  </div>
 </div>
