@@ -102,31 +102,16 @@
         <p>Answers</p>
       </div>
       <div class="sub-content-box">
-
-        <div class="answer-box-sub">
-          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
-          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
-        </div>
-
-        <div class="answer-box-sub">
-          <p class="ans-title-sub"><%= link_to "１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０", "#" %></p>
-          <p class="ans-username-sub"><%= "by １２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０" %></p>
-        </div>
-
-        <div class="answer-box-sub">
-          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
-          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
-        </div>
-
-        <div class="answer-box-sub">
-          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
-          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
-        </div>
-
-        <div class="answer-box-sub">
-          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
-          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
-        </div>
+        <% if @answers.blank? %>
+          <p style="color:#dddddd;">回答がまだありません</p>
+        <% else %>
+          <% @answers.each do |answer| %>
+            <div class="answer-box-sub">
+              <p class="ans-title-sub"><%= link_to answer.ans_title, "#" %></p>
+              <p class="ans-username-sub">by: <%= answer.user.nickname %></p>
+            </div>
+          <% end%>
+        <% end%>
       </div>
     </div>
 
