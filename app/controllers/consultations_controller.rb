@@ -21,7 +21,7 @@ class ConsultationsController < ApplicationController
   end
 
   def show
-    @answers = Answer.where(consultation_id: @consultation.id).includes(:user).order("updated_at DESC")
+    @answers = Answer.where(consultation_id: @consultation.id).includes(:user).order('updated_at DESC')
   end
 
   def edit

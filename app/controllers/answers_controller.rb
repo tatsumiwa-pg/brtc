@@ -27,7 +27,8 @@ class AnswersController < ApplicationController
   end
 
   def answer_params
-    params.require(:answer).permit(:ans_title, :ans_text, :image).merge(user_id: current_user.id, consultation_id: @consultation.id)
+    params.require(:answer).permit(:ans_title, :ans_text, :image).merge(user_id: current_user.id,
+                                                                        consultation_id: @consultation.id)
   end
 
   def refuse_self_answer
