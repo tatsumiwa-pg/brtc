@@ -38,8 +38,8 @@
       font-size       : 20px;
 
       .button {
-        color     : #dddddd;
-        width     : 30%;
+        color : #dddddd;
+        width : 30%;
       }
 
       a {
@@ -65,16 +65,18 @@
     }
 
 
-    .cons-title-box{
-      width            : 90%;
+    .cons-title-box {
+      max-width        : 90%;
       height           : fit-content;
       border           : 4px double #dddddd;
       display          : flex;
       justify-content  : flex-start;
+      padding          : 10px;
+      font-size        : 30px;
+      word-break       : break-all;
 
       p {
-        font-size : 30px;
-        color     : #dddddd;
+        color : #dddddd;
       }      
     }
 
@@ -93,7 +95,7 @@
       font-size       : 20px;
 
       p {
-        color     : #dddddd;
+        color : #dddddd;
       }
 
       a {
@@ -113,41 +115,41 @@
         transition      : .3s;
       }
       a:hover {
-        box-shadow    : none;
-        color         : #dddddd;
-        background    : #a3a2a2;
+        box-shadow : none;
+        color      : #dddddd;
+        background : #a3a2a2;
       }
     }
 
     .tags {
-      width  : 90%;
+      width           : 90%;
       //height : fit-content;
       background-color: #dddddd;
     }
 
 
     .cons-contents-box-label {
-      margin : 30px auto 5px;
-      color      :#dddddd;
-      font-size  : 40px;
+      margin    : 30px auto 5px;
+      color     :#dddddd;
+      font-size : 40px;
     }
 
     .cons-contents-box {
-      width            : 90%;
-      height           : fit-content;
-      border           : 2px solid #dddddd;
-      border-radius    : 10px;
-      display          : flex;
-      flex-direction   : column;
-      justify-content  : flex-start;
-      align-items      : center;
-      color            : #dddddd;
+      width           : 90%;
+      height          : fit-content;
+      border          : 2px solid #dddddd;
+      border-radius   : 10px;
+      display         : flex;
+      flex-direction  : column;
+      justify-content : flex-start;
+      align-items     : center;
+      color           : #dddddd;
 
       .content-parts{
         width            : 96%;
         height           : fit-content;
         background-color : rgb(0, 0, 0);
-        margin    : 20px 0;
+        margin           : 20px 0;
 
         .content-label {
           font-size : 30px;
@@ -155,7 +157,7 @@
         }
 
         .content-text {
-          border : 1px solid #dddddd;
+          border  : 1px solid #dddddd;
           padding : 10px;
         }
       }
@@ -184,9 +186,9 @@
       align-items      : center;
 
       .sub-content-label {
-        height : fit-content;
-        display: flex;
-        align-items: flex-end;
+        height      : fit-content;
+        display     : flex;
+        align-items : flex-end;
 
         p {
           font-size            : 24px;
@@ -215,8 +217,8 @@
           .ans-title-sub {
             margin : 3px 0 0 5px;
             a {
-              color  : #dddddd;
-              text-decoration: none;
+              color           : #dddddd;
+              text-decoration : none;
             }
           }
           .ans-username-sub {
@@ -226,7 +228,7 @@
         }
 
         .cons-comment-box-sub {
-          width: 90%;
+          width            : 90%;
           height           : fit-content;
           background-color : #222222;
           margin           : 10px;
@@ -238,8 +240,8 @@
           .cons-comment-username-sub {
             margin : 0 3px 0 5px;
             a {
-              color  : #8a8a8a;
-              text-decoration: none;
+              color           : #8a8a8a;
+              text-decoration : none;
             }
           }
         }
