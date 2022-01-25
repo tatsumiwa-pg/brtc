@@ -5,15 +5,21 @@
       <% if current_user.id == @consultation.user.id %>
         <p class="what-do-you-want">あなたの投稿</p>
         <div class="button-box">
+
+          <% if @answers.blank? %>
+            <div class="button">
+              <%= link_to '削除する', consultation_path(@consultation.id), method: :delete, data: { confirm: '本当によろしいですか？ -Are you sure-?' }, class:"delete-btn", id:"delete_btn" %>
+            </div>
+          <% else %>
+            <div class="button">
+              <%= link_to '和解する', "#" %>
+            </div>
+          <% end%>
+          
           <div class="button">
             <%= link_to '編集する', edit_consultation_path(@consultation.id) %>
-          </div>
-          <div class="button">
-            <%= link_to '削除する', consultation_path(@consultation.id), method: :delete, data: { confirm: '本当によろしいですか？ -Are you sure-?' }, class:"delete-btn", id:"delete_btn" %>
-            </div>
-          <div class="button">
-            <%= link_to '和解する', "#" %>
-          </div>
+          </div>          
+          
         </div>
       <% else %>
         <p class="what-do-you-want"><%= link_to @consultation.user.nickname, "#" %>さんの投稿</p>
