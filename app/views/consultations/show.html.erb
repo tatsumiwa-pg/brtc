@@ -34,10 +34,16 @@
     <div class="cons-title-box">
       <p><%= @consultation.cons_title %></p>
     </div>
+
+    <div class="date-box">
+      <p><%= @consultation.created_at %></p>
+    </div>
+
     <div class="is-reconciled">
       <%# link_to image_tag(@consultation.user.profile.image), class:"cons-user-image" %>
       <%#<p><% "{ #{@consultation.reconciliration.rec_text} )" "%"></p>%>
     </div>
+
     <div class="category-box">
       <p>カテゴリー:</p><%= link_to @consultation.category.name, "#" %>
     </div>
@@ -141,24 +147,24 @@
           <p class="cons-comment-username-sub">by: <%= link_to "@consultation.cons_comment.user.nickname", "#" %></p>
         </div>
 
-        <div class="answer-box-sub">
-          <p class="ans-title-sub"><%= link_to "１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０", "#" %></p>
-          <p class="ans-username-sub"><%= "by １２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０" %></p>
+        <div class="cons-comment-box-sub">
+          <p class="cons-comment-text-sub"><%= "１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０" %></p>
+          <p class="cons-comment-username-sub"><%= link_to "by １２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０" %></p>
         </div>
 
-        <div class="answer-box-sub">
-          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
-          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
+        <div class="cons-comment-box-sub">
+          <p class="cons-comment-text-sub"><%= "@consultation.cons_comment.cons_c_text" %></p>
+          <p class="cons-comment-username-sub">by: <%= link_to "@consultation.cons_comment.user.nickname", "#" %></p>
         </div>
 
-        <div class="answer-box-sub">
-          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
-          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
+        <div class="cons-comment-box-sub">
+          <p class="cons-comment-text-sub"><%= "@consultation.cons_comment.cons_c_text" %></p>
+          <p class="cons-comment-username-sub">by: <%= link_to "@consultation.cons_comment.user.nickname", "#" %></p>
         </div>
 
-        <div class="answer-box-sub">
-          <p class="ans-title-sub"><%= link_to "@consultation.answer.ans_title", "#" %></p>
-          <p class="ans-username-sub"><%= 'by @consultation.answer.user.nickname' %></p>
+        <div class="cons-comment-box-sub">
+          <p class="cons-comment-text-sub"><%= "@consultation.cons_comment.cons_c_text" %></p>
+          <p class="cons-comment-username-sub">by: <%= link_to "@consultation.cons_comment.user.nickname", "#" %></p>
         </div>
       </div>
 
