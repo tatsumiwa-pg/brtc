@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   root to: 'consultations#index'
   resources :consultations, shallow: true do
     resources :answers, only: [:index, :new, :create, :show]
+    resources :reconciliation, only: [:index, :new, :create]
   end
 end
