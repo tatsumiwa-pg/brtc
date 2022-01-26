@@ -121,6 +121,18 @@
       }
     }
 
+    .date-box {
+      width           : 90%;
+      height          : fit-content;
+      display         : flex;
+      justify-content : flex-end;
+      p {
+        margin    : 5px 0;
+        color     : #dddddd;
+        font-size : 15px;
+      }
+    }
+
     .answer-user-wrapper {
       width           : 90%;
       min-width       : fit-content;
