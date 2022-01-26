@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Consultations', type: :system do
+RSpec.describe '相談新規投稿', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @consultation = FactoryBot.build(:consultation, category_id: 1, user_id: @user.id)
@@ -77,7 +77,7 @@ RSpec.describe 'Consultations', type: :system do
       fill_in 'cons-summary', with: ''
       fill_in 'cons-situation', with: ''
       fill_in 'cons-problem', with: ''
-      # サインアップボタンを押してもユーザーモデルのカウントは上がらないことを確認する
+      # 送信ボタンを押してもConsultationモデルのカウントは上がらないことを確認する
       expect do
         find('input[name=commit]').click
       end.to change { Consultation.count }.by(0)
