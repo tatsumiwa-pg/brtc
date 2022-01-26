@@ -3,6 +3,7 @@ class ReconciliationsController < ApplicationController
   end
 
   def new
+    @reconciliation = Reconciliation.new
   end
 
   def create

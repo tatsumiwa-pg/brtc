@@ -12,7 +12,7 @@
             </div>
           <% else %>
             <div class="button">
-              <%= link_to '和解する', "#" %>
+              <%= link_to '和解する', new_consultation_reconciliation_path(@consultation.id) %>
             </div>
           <% end%>
           
