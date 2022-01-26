@@ -4,7 +4,7 @@ class ConsultationsController < ApplicationController
   before_action :move_to_index, only: [:edit, :destroy]
 
   def index
-    @consultations = Consultation.includes(:user).order('updated_at DESC')
+    @consultations = Consultation.includes(:user, :answers).order('updated_at DESC')
   end
 
   def new
