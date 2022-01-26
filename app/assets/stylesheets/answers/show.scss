@@ -1,0 +1,415 @@
+.ans-s-content-wrapper {
+  width            : 100%;
+  height           : 100%;
+  background-color : #444444;
+  display          : flex;
+  align-items      : flex-start ;
+  padding-top      : 50px;
+  overflow         : scroll;
+
+  .top-content {
+    width            : 20%;
+    height           : 100%;
+    background-color : #222222;
+    display          : flex;
+    flex-direction   : column;
+    align-items      : center;
+
+
+    .page-title {
+      font-size : 30px;
+      color     : #dddddd;
+    }
+
+    .review-box {
+      width            : 90%;
+      height           : fit-content;
+      background-color : #000000;
+      display          : flex;
+      justify-content  : center;
+      border           : 2px solid #dddddd;
+      border-radius    : 5px;
+      margin-bottom    : 20px;
+      font-size        : 25px;
+
+      .review-stars {
+        margin : 5px auto;
+        color  : #dddddd;
+      }
+    }
+
+    .button-box {
+      width           : 90%;
+      height          : fit-content;
+      display         : flex;
+      flex-direction  : column ;
+      justify-content : space-around;
+      margin-top      : 10px;
+      margin-bottom   : 50px;
+      font-size       : 20px;
+
+      .button {
+        width         : 100%;
+        color         : #dddddd;
+        margin-bottom : 20px;
+
+        a {
+          height          : 50px;
+          min-width       : 150px;
+          background      : #222222;
+          border-radius   : 5px;
+          border          : 2px solid #c5c5c5;
+          cursor          : pointer;
+          display         : flex;
+          align-items     : center;
+          justify-content : center;
+          color           : #dddddd;
+          text-decoration : none;
+          transition      : .3s;
+          
+          &:hover {
+            box-shadow    : none;
+            color         : #dddddd;
+            background    : #a3a2a2;
+          }
+        }
+      }
+    }
+
+    .messages {
+      width  : 95%;
+      height : fit-content;
+      color  : #dddddd;
+
+      .message {
+        font-size : 15px;
+      }
+    }
+  }
+
+
+  .main-content {
+    width            : 50%;
+    height           : 100%;
+    background-color : #000000;
+    display          : flex;
+    flex-direction   : column;
+    justify-content  : flex-start;
+    align-items      : center;
+    overflow-y       : scroll;
+
+
+    .main-top-line {
+      display : none;
+    }
+
+    .answer-title-wrapper {
+      width  : 95%;
+      height : fit-content;
+      color  : #dddddd;
+
+      .answer-title-label {
+        margin    : 5px 0;
+        color     : #dddddd;
+        font-size : 15px;
+      }
+      .answer-title-box {
+        .answer-title {
+          margin :5px 3px;
+          font-size  : 25px;
+        }
+      }
+    }
+
+    .answer-user-wrapper {
+      width           : 90%;
+      min-width       : fit-content;
+      height          : fit-content;
+      display         : flex;
+      justify-content : flex-end;
+
+      .answer-user-box {
+        width         : fit-content;
+        border        : 2px solid #999999;
+        border-radius : 10px;
+
+        .answer-user-nickname {
+          margin    : 5px 5px;
+          color     : #aaaaaa;
+          font-size : 20px;
+          a {
+            color           : #dddddd;
+            text-decoration : none;
+          }
+        }
+      }
+    }
+
+    .answer-text-wrapper {
+      width  : 95%;
+      height : fit-content;
+      color  : #dddddd;
+
+      .answer-text-label {
+        margin    : 5px 0;
+        color     : #dddddd;
+        font-size : 15px;
+      }
+      .answer-text-box {
+        .answer-text {
+          border        : 2px solid #aaaaaa;
+          border-radius : 10px;
+          margin        : 5px 3px;
+          padding       : 10px;
+          font-size     : 15px;
+        }
+      }
+    }
+
+    .ans-images-box {
+      width           : 90%;
+      height          : fit-content;
+      display         : flex;
+      justify-content : center;
+
+      .images {
+        max-width : 100%;
+      }
+    }
+
+    .top-menus {
+      display :none;
+    }
+
+  }
+
+  .sub-content {
+    width            : 30%;
+    height           : 100%;
+    display          : flex;
+    flex-direction   : column;
+    align-items      : center;
+    background-color : #000000;
+    
+
+    .comment-menu-title {
+      font-size     : 25px;
+      color         : #dddddd;
+      margin        : 10px 0;
+    }
+
+    .comment-menu {
+      width            : 95%;
+      height           : fit-content;
+      min-height       : 90%;
+      display          : flex;
+      flex-direction   : column;
+      align-items      : center;
+      background-color : #000000;
+      border           : 2px solid #bbbbbb;
+      border-radius    : 10px;
+      overflow-y       : scroll;
+
+      .comment-form-wrapper {
+        width          : 100%;
+        height         : fit-content;
+        display        : flex;
+        flex-direction : column;
+        align-items    : center;
+
+        .message {
+          margin    : 5px;
+          font-size : 15px;
+          color     : #dddddd;
+        }
+
+        .comment-form-box {
+          width         : 90%;
+          height        : fit-content;
+          min-height    : 80px;
+          color         : #dddddd;
+          border        : 1px solid #777777;
+          border-radius : 10px;
+
+          .post-btn-contents {
+            width            : 90%;
+            height           : fit-content;
+            display          : flex;
+            justify-content  : flex-end;
+            
+            .post-btn {
+              width            : 30%;
+              min-width        : 100px;
+              height           : 10px;
+              min-height       : 30px;
+              background-color : #202020;
+              display          : flex;
+              justify-content  : center;
+              align-items      : center;
+              border           : 2px solid #cecece;
+              border-radius    : 5px;
+              margin           : 5px 0;
+              color            : #dddddd;
+              text-align       : center;
+              text-decoration  : none;
+              font-size        : 15px;
+
+              &:hover {
+                box-shadow    : none;
+                color         : #ffffff;
+                background    : #a3a2a2;
+              }
+            } 
+          }
+        }
+      }
+
+      .comments-list-wrapper {
+        width            : 90%;
+        height           : fit-content;
+        min-height       : calc(100% - 200px);
+        display          : flex;
+        flex-direction   : column;
+        align-items      : center;
+        background-color : #000000;
+        border           : 2px solid #505050;
+        border-radius    : 10px;
+        margin-bottom    : 15px;
+
+        .list-label {
+          color     : #dddddd;
+          font-size : 14px;
+        }
+      }
+    }
+  }
+
+}
+
+@media (max-width: 1024px) {
+
+  .ans-s-content-wrapper {
+    padding-top : 8vh;
+
+    .top-content {
+      display : none;
+    }
+
+    .main-content {
+      width : 65%;
+
+      .main-top-line {
+        display         : flex;
+        justify-content : space-between ;
+        align-items     : center;
+        width           : 90%;
+  
+        .page-title {
+          font-size     : 30px;
+          color         : #dddddd;
+        }
+  
+        .review-box {
+          width            : 30%;
+          min-width        : 230px;
+          height           : fit-content;
+          max-height       : 200px;
+          display          : flex;
+          justify-content  : center;
+          align-items      : center;
+          font-size        : 20px;
+          color            : #dddddd;
+ 
+          .review-stars {
+            min-width        : 150px;
+            height           : fit-content;
+            background-color : #000000;
+            border           : 2px solid #dddddd;
+            border-radius    : 5px;
+            margin           : 5px auto;
+            text-align       : center;
+          }
+        }
+      }
+
+      .top-menus {
+        width            : 95%;
+        height           : fit-content;
+        display          : flex;
+        flex-direction   : column;
+        align-items      : flex-start;
+    
+        .button-box {
+          width           : 100%;
+          height          : 50px;
+          display         : flex;
+          justify-content : space-evenly;
+          margin-top      : 30px;
+          margin-bottom   : 10px;
+          font-size       : 20px;
+    
+          .button {
+            width         : 30%;
+            height        : 50px;
+            color         : #dddddd;
+            margin-bottom : 10px;
+    
+            a {
+              height          : 50px;
+              min-width       : 150px;
+              background      : #222222;
+              border-radius   : 5px;
+              border          : 2px solid #c5c5c5;
+              cursor          : pointer;
+              display         : flex;
+              align-items     : center;
+              justify-content : center;
+              color           : #dddddd;
+              text-decoration : none;
+              transition      : .3s;
+            
+              &:hover {
+                box-shadow : none;
+                color      : #dddddd;
+                background : #a3a2a2;
+              }
+            }
+          }
+        }
+    
+        .messages {
+          width  : 95%;
+          height : fit-content;
+          margin : auto 5%;
+          color  : #dddddd;
+    
+          .message {
+            font-size : 15px;
+          }
+        }
+      }
+    }
+
+    .sub-content {
+      width : 35%;
+    }
+  }
+}
+
+@media (max-width: 858px) {
+  .ans-s-content-wrapper {
+    display : block;
+
+    .main-content {
+      width  : 100%;
+      height : fit-content;
+
+    }
+
+    .sub-content {
+      width      : 100%;
+      height     : fit-content;
+      overflow-y : scroll;
+    }
+  }
+}

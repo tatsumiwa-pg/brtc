@@ -213,13 +213,11 @@
           height           : fit-content;
           background-color : #222222;
           margin           : 10px;
+          text-decoration : none;
 
           .ans-title-sub {
             margin : 3px 0 0 5px;
-            a {
-              color           : #dddddd;
-              text-decoration : none;
-            }
+            color  : #dddddd;
           }
           .ans-username-sub {
             margin : 0 3px 0 5px;
