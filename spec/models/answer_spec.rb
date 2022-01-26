@@ -9,8 +9,8 @@ RSpec.describe Answer, type: :model do
     it 'すべての項目が正しく入力されていれば回答を投稿できる' do
       expect(@answer).to be_valid
     end
-    it 'imageがカラでも回答を投稿できる' do
-      @answer.image = nil
+    it 'ans_imageがカラでも回答を投稿できる' do
+      @answer.ans_image = nil
       expect(@answer).to be_valid
     end
   end

@@ -4,7 +4,7 @@
   align-items      : center;
   width            : 100vw;
   height           : 50px;
-  padding          : 0.5vh;
+  padding          : 3px;
   position         : fixed;
 
   .icon1 {
@@ -93,7 +93,7 @@
   }
   
   .user-menu-wrap {
-    width  : 10%;
+    width  : calc(10% + 20px);
     height : 90%;
   
     .user-menu-list  {
@@ -169,7 +169,7 @@
     .user-menu-wrap {
       width : 15%;
       .user-menu-list {
-        font-size : 2px;
+        font-size : 2%;
       }
     }
   }

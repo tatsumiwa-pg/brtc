@@ -9,8 +9,8 @@ RSpec.describe Consultation, type: :model do
     it 'すべての項目が正しく入力されていれば相談を投稿できる' do
       expect(@consultation).to be_valid
     end
-    it 'imageがカラでも相談を投稿できる' do
-      @consultation.image = nil
+    it 'cons_imageがカラでも相談を投稿できる' do
+      @consultation.cons_image = nil
       expect(@consultation).to be_valid
     end
   end

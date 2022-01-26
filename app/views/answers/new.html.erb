@@ -18,7 +18,7 @@
         <div class="image-field">
           <%#  <div id="previews"></div>  %>
           <div class="file-upload">
-            <%= f.file_field :image, id:"cons-image", name:'consultation[image]' %>
+            <%= f.file_field :ans_image, id:"ans-image", name:'answer[ans_image]' %>
           </div>
         </div>
 
@@ -49,10 +49,10 @@
       <p class="sub-ans-text"><%= @consultation.problem %></p>
     </div>
 
-    <% if @consultation.image.attached? %>
+    <% if @consultation.cons_image.attached? %>
       <p class="images-text" style="color:#dddddd;">image</p>
       <div class="cons-images-box">
-        <%= image_tag @consultation.image.variant(resize: '500x500'), class: "images" %>
+        <%= image_tag @consultation.cons_image.variant(resize: '500x500'), class: "images" %>
       </div>
     <% else %>
       <p class="no-images" style="color:#dddddd;">No image</p>

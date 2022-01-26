@@ -5,7 +5,7 @@
     <%= link_to consultation.cons_title, consultation_path(consultation.id), class:"consultation-title-link" %>
     
     <div class="user-name">
-      <%= link_to consultation.user.nickname, "#", class:"consultation-user-link" %>
+      <%= link_to "by: #{consultation.user.nickname}", "#", class:"consultation-user-link" %>
     </div>
 
     <div class="answer-category">

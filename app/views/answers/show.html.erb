@@ -1,0 +1,117 @@
+<div class="ans-s-content-wrapper">
+
+  <div class="top-content">
+
+    <p class="page-title">回答詳細</p>
+    <div class="review-box">
+      <p class="review-stars">★★★</p>
+    </div>
+
+    <div class="button-box">
+      <%if current_user.id == @consultation.user.id %>
+        <div class="button">
+          <%= link_to '評価する', "#" %>
+        </div>
+      <% end %>
+      <div class="button">
+        <%= link_to '戻る', consultation_path(@consultation.id) %>
+      </div>
+      <div class="messages">
+        <h3>info.</h3>
+        <p class="message">もし回答を見てもわからないことがあったらコメントで質問してみましょう!</p>
+        <% if current_user.id == @answer.user_id %>
+          <p class="message">回答に訂正がある場合はコメント欄に記入しよう！</p>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="main-content">
+
+    <div class="main-top-line">
+      <p class="page-title">回答詳細</p>
+      <div class="review-box">
+        <p class="review-label">評価:</p><p class="review-stars">★★★</p>
+      </div>
+    </div>
+
+    <div class="answer-title-wrapper">
+      <p class="answer-title-label">-TITLE-</p>
+      <div class="answer-title-box">
+        <p class="answer-title"><%= @answer.ans_title %></p>
+      </div>
+    </div>
+
+    <div class="date-box">
+      <p><%= @answer.created_at %></p>
+    </div>
+
+    <div class="answer-user-wrapper">
+      <div class="answer-user-box">
+        <p class="answer-user-nickname">by: <%= link_to @answer.user.nickname, "#" %></p>
+      </div>
+    </div>
+
+    <div class="answer-text-wrapper">
+      <p class="answer-text-label">-TEXT-</p>
+      <div class="answer-text-box">
+        <p class="answer-text"><%= @answer.ans_text %></p>
+      </div>
+    </div>
+
+    <% if @answer.ans_image.attached? %>
+      <p class="images-label" style="color:#dddddd;">image</p>
+      <div class="ans-images-box">
+        <%= image_tag @answer.ans_image.variant(resize: '500x500'), class: "images" %>
+      </div>
+    <% else %>
+      <p class="no-images" style="color:#dddddd;">No image</p>
+    <% end %>
+
+    <div class="top-menus">
+      <div class="button-box">
+        <%if current_user.id == @consultation.user.id %>
+          <div class="button">
+            <%= link_to '評価する', "#" %>
+          </div>
+        <% end %>
+        <div class="button">
+          <%= link_to '戻る', consultation_path(@consultation.id) %>
+        </div>
+      </div>
+      <div class="messages">
+        <h3>info.</h3>
+        <p class="message">もし回答を見てもわからないことがあったらコメントで質問してみましょう!</p>
+        <% if current_user.id == @answer.user_id %>
+          <p class="message">回答に訂正がある場合はコメント欄に記入しよう！</p>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sub-content">
+
+    <p class="comment-menu-title">コメント</p>
+
+    <div class="comment-menu">
+      <div class="comment-form-wrapper">
+        <p class="message">コメントは取り消せません。投稿者は自身のコメントに責任を持ちます</p>
+        <div class="comment-form-box">
+          <p>テキストが入ります</p>
+          <div class="post-btn-contents">
+          <p class="post-btn">送信</p>
+        </div>
+        </div>
+      </div>
+
+      <div class="comments-list-wrapper">
+        <p class="list-label"><%= "●件のコメント" %></p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -14,10 +14,11 @@
     display          : flex;
     flex-direction   : column;
     align-items      : center;
-    overflow-y       : scroll;
-    overflow-x       : hidden;
+    border-right     : 2px double #dddddd;
     padding-top      : 50px;
     padding-bottom   : 30px;
+    overflow-y       : scroll;
+    overflow-x       : hidden;
 
     .what-do-you-want {
       margin-top : 30px;
@@ -56,11 +57,11 @@
         color           : #dddddd;
         text-decoration : none;
         transition      : .3s;
-      }
-      a:hover {
-        box-shadow    : none;
-        color         : #dddddd;
-        background    : #a3a2a2;
+        &:hover {
+          box-shadow    : none;
+          color         : #dddddd;
+          background    : #a3a2a2;
+        }
       }
     }
 
@@ -74,10 +75,21 @@
       padding          : 10px;
       font-size        : 30px;
       word-break       : break-all;
-
       p {
         color : #dddddd;
       }      
+    }
+
+    .date-box {
+      width           : 90%;
+      height          : fit-content;
+      display         : flex;
+      justify-content : flex-end;
+      p {
+        margin    : 5px 0;
+        color     : #dddddd;
+        font-size : 15px;
+      }
     }
 
     .is-reconciled {
@@ -93,7 +105,6 @@
       justify-content : flex-start;
       margin-top      : 30px;
       font-size       : 20px;
-
       p {
         color : #dddddd;
       }
@@ -113,11 +124,11 @@
         color           : #dddddd;
         text-decoration : none;
         transition      : .3s;
-      }
-      a:hover {
-        box-shadow : none;
-        color      : #dddddd;
-        background : #a3a2a2;
+        &:hover {
+          box-shadow : none;
+          color      : #dddddd;
+          background : #a3a2a2;
+        }
       }
     }
 
@@ -129,9 +140,9 @@
 
 
     .cons-contents-box-label {
-      margin    : 30px auto 5px;
+      margin    : 25px auto 5px;
       color     :#dddddd;
-      font-size : 40px;
+      font-size : 25px;
     }
 
     .cons-contents-box {
@@ -152,7 +163,7 @@
         margin           : 20px 0;
 
         .content-label {
-          font-size : 30px;
+          font-size : 20px;
           margin    :5px 0 5px;
         }
 
@@ -172,24 +183,24 @@
   .sub-bar {
     width            : 30%;
     height           : 100%;
-    background-color : rgb(54, 54, 54);
+    background-color : #000000;
     color            :#dddddd;
     overflow-y       : scroll;
     overflow-x       : hidden;
 
     .sub-content-wrapper {
-      height           : 100%;
-      background-color : #1f1f1f;
+      height           : 90%;
+      background-color : #000000;
       display          : flex;
       flex-direction   : column;
       justify-content  : flex-start;
       align-items      : center;
+      margin-bottom    : 10px;
 
       .sub-content-label {
         height      : fit-content;
         display     : flex;
         align-items : flex-end;
-
         p {
           font-size            : 24px;
           text-decoration-line : underline;
@@ -199,27 +210,29 @@
 
       .sub-content-box {
         width            : 90%;
-        height           : 80%;
+        height           : 850%;
         background-color : #000000;
         display          : flex;
         flex-direction   : column ;
         justify-items    : flex-start ; 
         align-items      : center;
+        border           : 1px solid #555555;
+        border-radius    : 10px;
         padding-top      : 10px;
         overflow-y       : scroll;
 
         .answer-box-sub {
           width            : 90%;
           height           : fit-content;
-          background-color : #222222;
+          background-color : #000000;
+          border           : 1px solid #dddddd;
+          border-radius    : 5px;
           margin           : 10px;
+          text-decoration  : none;
 
           .ans-title-sub {
             margin : 3px 0 0 5px;
-            a {
-              color           : #dddddd;
-              text-decoration : none;
-            }
+            color  : #dddddd;
           }
           .ans-username-sub {
             margin : 0 3px 0 5px;
@@ -230,7 +243,9 @@
         .cons-comment-box-sub {
           width            : 90%;
           height           : fit-content;
-          background-color : #222222;
+          background-color : #000000;
+          border           : 1px solid #555555;
+          border-radius    : 5px;
           margin           : 10px;
 
           .cons-comment-text-sub {
@@ -257,7 +272,9 @@
     
 
     .main-content{
-      width  : 100%;      
+      width         : 100%;
+      border-right  : none;
+      border-bottom : 2px double #dddddd;
 
       .button-box {
         a {
@@ -274,11 +291,11 @@
           color           : #dddddd;
           text-decoration : none;
           transition      : .3s;
-        }
-        a:hover {
-          box-shadow    : none;
-          color         : #dddddd;
-          background    : #a3a2a2;
+          &:hover {
+            box-shadow    : none;
+            color         : #dddddd;
+            background    : #a3a2a2;
+          }
         }
       }
       

@@ -9,7 +9,7 @@ FactoryBot.define do
     association :user
 
     after(:build) do |consultation|
-      consultation.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
+      consultation.cons_image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
     end
   end
 end

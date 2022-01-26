@@ -44,7 +44,7 @@ class ConsultationsController < ApplicationController
 
   def consultation_params
     params.require(:consultation).permit(:cons_title, :category_id, :summary, :situation, :problem,
-                                         :image).merge(user_id: current_user.id)
+                                         :cons_image).merge(user_id: current_user.id)
   end
 
   def set_consultation
