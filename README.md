@@ -84,7 +84,7 @@ ___
 ## reconciliation
 | Column       | Type       | Options                        |
 |--------------|------------|--------------------------------|
-| rec_text     | string     |                                |
+| rec_text     | string     | null: false                    |
 | consultation | references | null: false, foreign_key: true |
 
 ### Association
