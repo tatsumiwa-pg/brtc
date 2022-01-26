@@ -20,6 +20,11 @@ class AnswersController < ApplicationController
     end
   end
 
+  def show
+    @answer = Answer.find(params[:id])
+    @consultation = Consultation.find_by(id: @answer.consultation_id)
+  end
+
   private
 
   def set_consultation
@@ -27,7 +32,7 @@ class AnswersController < ApplicationController
   end
 
   def answer_params
-    params.require(:answer).permit(:ans_title, :ans_text, :image).merge(user_id: current_user.id,
+    params.require(:answer).permit(:ans_title, :ans_text, :ans_image).merge(user_id: current_user.id,
                                                                         consultation_id: @consultation.id)
   end
 

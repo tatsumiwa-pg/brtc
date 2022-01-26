@@ -70,13 +70,13 @@
       </div>
     </div>
 
-    <% if @consultation.image.attached? %>
-      <p class="images-text" style="color : white;">image</p>
+    <% if @consultation.cons_image.attached? %>
+      <p class="images-text" style="color:#dddddd;">image</p>
       <div class="cons-images-box">
-        <%= image_tag @consultation.image.variant(resize: '500x500'), class: "images" %>
+        <%= image_tag @consultation.cons_image.variant(resize: '500x500'), class: "images" %>
       </div>
     <% else %>
-      <p class="no-images" style="color : white;">No image</p>
+      <p class="no-images" style="color:#dddddd;">No image</p>
     <% end %>
     <br>
 
@@ -120,7 +120,7 @@
         <% else %>
           <% @answers.each do |answer| %>
             <div class="answer-box-sub">
-              <p class="ans-title-sub"><%= link_to answer.ans_title, "#" %></p>
+              <p class="ans-title-sub"><%= link_to answer.ans_title, answer_path(answer.id) %></p>
               <p class="ans-username-sub">by: <%= answer.user.nickname %></p>
             </div>
           <% end%>
