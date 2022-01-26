@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "回答新規投稿", type: :system do
+RSpec.describe '回答新規投稿', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @consultation = FactoryBot.create(:consultation, user_id: @user.id)
@@ -68,7 +68,7 @@ RSpec.describe "回答新規投稿", type: :system do
       expect(page).to have_content(@consultation.user.nickname)
     end
   end
-  
+
   context '回答の新規登録ができないとき' do
     it '誤った情報では回答を新規登録することができずに新規登録ページへ戻ってくる' do
       # ログインする
@@ -127,8 +127,7 @@ RSpec.describe "回答新規投稿", type: :system do
   end
 end
 
-
-RSpec.describe "詳細表示", type: :system do
+RSpec.describe '詳細表示', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @user2 = FactoryBot.create(:user)
