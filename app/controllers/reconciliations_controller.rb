@@ -32,7 +32,7 @@ class ReconciliationsController < ApplicationController
   end
 
   def refuse_reconciliation
-    if @consultation.answers.empty? || current_user.id != @consultation.user_id
+    if @consultation.answers.empty? || @consultation.reconciliation.present? || current_user.id != @consultation.user_id
       redirect_to consultation_path(@consultation.id)
     end
   end
