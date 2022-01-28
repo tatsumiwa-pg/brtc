@@ -1,7 +1,7 @@
 class ReconciliationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_consultation
-
+  before_action :refuse_reconciliation
 
   def index
   end
@@ -31,5 +31,9 @@ class ReconciliationsController < ApplicationController
     params.require(:reconciliation).permit(:rec_text).merge(consultation_id: @consultation.id)
   end
 
-
+  def refuse_reconciliation
+    if @consultation.answers.empty? || current_user.id != @consultation.user_id
+      redirect_to consultation_path(@consultation.id)
+    end
+  end
 end
