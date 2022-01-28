@@ -1,4 +1,65 @@
-<div class="content-wrap-n">
-  <h1>Reconciliations#new</h1>
-  <p>Find me in app/views/reconciliations/new.html.erb</p>
+<div class="rec-n-content-wrapper">
+
+  <div class="side-bar">
+    <p class="side-bar-title">相談の締め切り</p>
+
+    <div class="message-box">
+      <p class="message1">問題が無事に解決したら相談を締め切りましょう！</p><br>
+      <p class="message1">締め切り後は以下のことができなくなります</p>
+      <p class="message2">・相談の編集</p>
+      <p class="message2">・新規回答の受付</p>
+      <br>
+      <div class="button"> 
+        <%= link_to '相談詳細へ', consultation_path(@consultation.id) %>
+      </div>
+      <div class="button"> 
+        <%= link_to 'ホームへ', root_path %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="main-content">
+
+    <div class="title-wrapper">
+      <p class="title-label">-TITLE-</p>
+      <div class="title-box">
+        <p><%= @consultation.cons_title %></p>
+      </div>
+    </div>
+
+    <div class="message-box">
+      <p class="nav-message">無事に問題が解決し、ﾈｺと和解できましたか？</p>
+      <p class="nav-message">メッセージを残すことができます</p>
+      <p class="nav-message">（何も入力しない場合、相談の詳細画面で「ありがとうございました！」と表示されます。）</p>
+    </div>
+
+    <%= form_with model: [@consultation, @reconciliation], class:"form-wrapper", local: true do |f| %>
+      <div class="input-field">
+        <p class="form-label">-message-</p>
+        <%= f.text_field :rec_text,  class:"rec-text-input", id:"rec-text", placeholder:"お礼メッセージ（任意 40文字まで)", maxlength:"40", autofocus: true %>
+      </div>
+      <%= f.submit 'ﾈｺと和解した!', class:"post-btn" %>
+    <% end %>
+
+    <div class="info-box">
+      <p class="info-title">Info.</p>
+
+      <div class="message-box">
+        <p class="message1">問題が無事に解決したら相談を締め切りましょう！</p><br>
+        <p class="message1">締め切り後は以下のことができなくなります</p>
+        <p class="message2">・相談の編集</p>
+        <p class="message2">・新規回答の受付</p>
+        <br>
+      </div>
+    </div>
+
+    <div class="button"> 
+      <%= link_to 'やっぱり戻る', consultation_path(@consultation.id) %>
+      <br>
+      <%= link_to 'ホームへ', root_path %>
+    </div>
+    
+  </div>
+
 </div>

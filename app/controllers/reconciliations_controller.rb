@@ -3,6 +3,7 @@ class ReconciliationsController < ApplicationController
   end
 
   def new
+    @consultation = Consultation.find(params[:consultation_id])
     @reconciliation = Reconciliation.new
   end
 
