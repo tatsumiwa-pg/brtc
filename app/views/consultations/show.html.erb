@@ -1,6 +1,8 @@
 <div class="content-wrap-s">
   <div class="main-content">
 
+    <p class="alert"><%= alert %></p>
+
     <% if user_signed_in? %>
       <% if current_user.id == @consultation.user.id %>
         <p class="what-do-you-want">あなたの投稿</p>
