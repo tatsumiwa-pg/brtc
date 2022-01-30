@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :show
   before_action :set_consultation, only: [:index, :new, :create]
   before_action :refuse_answer, only: [:new, :create]
 
