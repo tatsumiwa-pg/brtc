@@ -3,6 +3,7 @@ class Consultation < ApplicationRecord
   has_one_attached :cons_image
   has_many         :answers
   has_one          :reconciliation
+  has_many         :cons_comments
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
