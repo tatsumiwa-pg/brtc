@@ -1,10 +1,11 @@
 class ConsultationsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_consultation, only: [:show, :edit, :update, :destroy]
-  before_action :move_to_index, only: [:edit, :destroy]
+  before_action :move_to_details_page, only: [:edit, :destroy]
 
   def index
-    @consultations = Consultation.includes(:user, :answers).order('updated_at DESC')
+    @consultations = Consultation.left_joins(:reconciliation).where(reconciliations: { consultation_id: nil }).includes(:user, :answers).order('updated_at DESC')
+    @reconciled_consultations = Consultation.left_joins(:reconciliation).where.not(reconciliations: { consultation_id: nil }).includes(:user, :answers).order('updated_at DESC')
   end
 
   def new
@@ -51,7 +52,7 @@ class ConsultationsController < ApplicationController
     @consultation = Consultation.find(params[:id])
   end
 
-  def move_to_index
-    redirect_to root_path if current_user.id != @consultation.user.id
+  def move_to_details_page
+    redirect_to consultation_path(@consultation.id) if current_user.id != @consultation.user.id || @consultation.reconciliation.present?
   end
 end
