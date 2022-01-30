@@ -1,0 +1,2 @@
+class ConsCommentsController < ApplicationController
+end
