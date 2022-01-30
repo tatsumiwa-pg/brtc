@@ -4,7 +4,7 @@
     <div class="list-title">
       <p>回答募集中 -Must be reconciled-</p>
     </div>
-    <div class="content-list">
+    <div class="content-list" id="list1">
       <% if @consultations.blank? %>
         <%= render 'sample_consultation' %>
       <% else %>
@@ -17,8 +17,12 @@
     <div class="list-title">
       <p>和解済み -Reconciled consultations-</p>
     </div>
-    <div class="content-list">
-      <p style="color: #ffffff">工事中</p>
+    <div class="content-list" id="list2">
+      <% if @reconciled_consultations.blank? %>
+        <%= render 'sample_consultation' %>
+      <% else %>
+        <%= render 'reconciled_consultation', collection: @reconciled_consultations %>
+      <% end %>
     </div>
   </div>
 
