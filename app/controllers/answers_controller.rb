@@ -37,6 +37,8 @@ class AnswersController < ApplicationController
   end
 
   def refuse_answer
-    redirect_to consultation_path(@consultation.id) if current_user.id == @consultation.user_id || @consultation.reconciliation.present?
+    if current_user.id == @consultation.user_id || @consultation.reconciliation.present?
+      redirect_to consultation_path(@consultation.id)
+    end
   end
 end

@@ -32,7 +32,7 @@ RSpec.describe '和解情報登録', type: :system do
       # 和解情報登録ページへ遷移するためのボタンをクリックする
       find('a', text: '和解する', match: :first).click
       # 現在のページが和解情報登録ページであること確認する
-      expect(current_path).to eq  new_consultation_reconciliation_path(@consultation.id)
+      expect(current_path).to eq new_consultation_reconciliation_path(@consultation.id)
       # お礼のメッセージを入力する
       fill_in 'reconciliation[rec_text]', with: @rec_text
       # 「ﾈｺと和解した」ボタンを押すと和解情報モデルのカウントが1上がることを確認する
@@ -87,7 +87,7 @@ RSpec.describe '和解情報登録', type: :system do
       # 和解情報登録ページへ遷移するためのボタンをクリックする
       find('a', text: '和解する', match: :first).click
       # 現在のページが和解情報登録ページであること確認する
-      expect(current_path).to eq  new_consultation_reconciliation_path(@consultation.id)
+      expect(current_path).to eq new_consultation_reconciliation_path(@consultation.id)
       # お礼のメッセージを入力する
       fill_in 'reconciliation[rec_text]', with: ''
       # 「ﾈｺと和解した」ボタンを押すと和解情報モデルのカウントが1上がることを確認する
@@ -192,7 +192,7 @@ RSpec.describe '和解情報保存後の挙動（異常系）', type: :system do
       # 相談詳細表示ページへ遷移したことを確認する
       expect(current_path).to eq consultation_path(@consultation.id)
     end
-  
+
     it '既に和解情報がある相談の編集ページへ遷移しようとすると、元の相談詳細表示ページへ遷移する' do
       # ログインする
       sign_in(@user)
@@ -244,4 +244,3 @@ RSpec.describe '和解情報保存後の挙動（異常系）', type: :system do
     end
   end
 end
-

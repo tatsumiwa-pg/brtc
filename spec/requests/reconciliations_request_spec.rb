@@ -1,26 +1,24 @@
 require 'rails_helper'
 
-RSpec.describe "Reconciliations", type: :request do
-
-  describe "GET /index" do
-    it "returns http success" do
-      get "/reconciliations/index"
+RSpec.describe 'Reconciliations', type: :request do
+  describe 'GET /index' do
+    it 'returns http success' do
+      get '/reconciliations/index'
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /new" do
-    it "returns http success" do
-      get "/reconciliations/new"
+  describe 'GET /new' do
+    it 'returns http success' do
+      get '/reconciliations/new'
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /create" do
-    it "returns http success" do
-      get "/reconciliations/create"
+  describe 'GET /create' do
+    it 'returns http success' do
+      get '/reconciliations/create'
       expect(response).to have_http_status(:success)
     end
   end
-
 end

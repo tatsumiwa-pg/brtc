@@ -4,7 +4,7 @@ RSpec.describe Reconciliation, type: :model do
   before do
     @reconciliation = FactoryBot.build(:reconciliation)
   end
-  
+
   context '和解情報の入力内容に問題がない場合' do
     it 'すべての項目が正しく入力されていれば和解情報を保存できる' do
       expect(@reconciliation).to be_valid
