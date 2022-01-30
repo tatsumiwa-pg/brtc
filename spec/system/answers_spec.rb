@@ -149,6 +149,8 @@ RSpec.describe '詳細表示', type: :system do
       # 投稿された回答のタイトルと投稿者の名前があることを確認する
       expect(page).to have_selector('a', text: @ans_title)
       expect(page).to have_selector('a', text: @answer.user.nickname)
+      # 相談詳細表示ページに、相談を削除するためのボタンがないことを確認する
+      expect(page).to have_no_selector('a', text: '削除する')
       # 回答詳細表示ページへ遷移する
       find('a', text: @ans_title).click
       # 現在のページが回答詳細表示ページであること確認する
