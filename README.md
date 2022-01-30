@@ -1,7 +1,8 @@
 <h1 align="center">ﾈｺと和解せよ<br>
--ToCatBeReconciled-</h1>
+-BeReconciledToCat-</h1>
 
-![to_cat_be_reconciled_tobira](https://user-images.githubusercontent.com/91407881/149545046-2ed7d879-45bb-4d90-b72b-e59fc1c8c8d2.png)
+![nekotowakaiseyo-title](https://user-images.githubusercontent.com/91407881/151696574-a4bdbe4c-1750-4e5a-9210-c03542124952.png)
+
 
 <br>
 
