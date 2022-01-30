@@ -1,9 +1,10 @@
 class ReconciliationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_consultation
-  before_action :refuse_reconciliation
+  before_action :refuse_reconciliation, only: [:new, :create]
 
   def index
+    redirect_to consultation_path(@consultation.id)
   end
 
   def new
