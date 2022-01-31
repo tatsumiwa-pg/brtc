@@ -341,7 +341,7 @@
               width           : 30%;
               min-width       : 100px;
               height          : 40px;
-              background      : #222222;
+              background      : #000000;
               border-radius   : 5px;
               border          : 1px solid #c5c5c5;
               cursor          : pointer;
@@ -379,6 +379,11 @@
               color           : #8a8a8a;
               text-decoration : none;
             }
+          }
+          .cons-comment-date-sub {
+            color     : #8a8a8a;
+            font-size : 14px;
+            margin    : 0 3px 0 5px;
           }
         }
       }

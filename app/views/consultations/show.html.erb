@@ -165,7 +165,7 @@
       </div>
       <div class="sub-content-box">
         
-          <%= form_with model: [@consultation, @cons_comment], class:"comment-form-wrapper", local: true do |f| %>
+          <%= form_with model: [@consultation, @cons_comment], class:"comment-form-wrapper", id:"comment-form-wrapper", local: true do |f| %>
             <p><strong>※コメントは取り消せません<br>※投稿者は自身のコメントに責任を持ちます</strong></p>
             <% if user_signed_in? %>
               <%= f.text_area :cons_c_text, class:"input-form", id:"cons-c-text", placeholder:"コメントを入力（150文字まで)", maxlength:"150" %>
@@ -176,13 +176,16 @@
               <p><strong>※コメントをするにはログインが必要です</strong></p>
             <% end %>
           <% end %>
-
+        
+        <div class="cons_comments_wrapper", id="comments">
         <% @cons_comments.each do |comment| %>
           <div class="cons-comment-box-sub">
             <p class="cons-comment-text-sub"><%= comment.cons_c_text %></p>
             <p class="cons-comment-username-sub">by: <%= link_to comment.user.nickname, "#" %></p>
+            <p class="cons-comment-date-sub">__<%= comment.created_at %></p>
           </div>
         <% end %>
+        </div>
 
       </div>
 

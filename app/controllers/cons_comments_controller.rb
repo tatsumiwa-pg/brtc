@@ -6,7 +6,7 @@ class ConsCommentsController < ApplicationController
     @consultation = Consultation.find(params[:consultation_id])
     @cons_comment = ConsComment.new(cons_comment_params)
     if @cons_comment.save
-      redirect_to consultation_path(@consultation.id)
+      ConsCommentChannel.broadcast_to @consultation, { cons_comment: @cons_comment, user: @cons_comment.user }
     end
   end
 
