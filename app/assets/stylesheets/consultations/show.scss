@@ -5,7 +5,6 @@
   display          : flex;
   padding-top      : 50px;
   overflow-y       : scroll;
-  overflow-x       : hidden;
     
   .main-content {
     width            : 70%;
@@ -18,7 +17,6 @@
     padding-top      : 50px;
     padding-bottom   : 30px;
     overflow-y       : scroll;
-    overflow-x       : hidden;
 
     .alert {
       color :#dddddd;
@@ -309,23 +307,85 @@
           }
         }
 
-        .cons-comment-box-sub {
-          width            : 90%;
-          height           : fit-content;
-          background-color : #000000;
-          border           : 1px solid #555555;
-          border-radius    : 5px;
-          margin           : 10px;
+        .comment-form-wrapper {
+          width          : 100%;
+          height         : fit-content;
+          display        : flex;
+          flex-direction : column;
+          align-items    : center;
 
-          .cons-comment-text-sub {
-            margin : 3px 0 0 5px;
-            color  : #dddddd;
+          p {
+            padding   : 5px;
+            color     : #dddddd;
+            font-size : 15px;
           }
-          .cons-comment-username-sub {
-            margin : 0 3px 0 5px;
-            a {
-              color           : #8a8a8a;
-              text-decoration : none;
+
+          .input-form {
+            width            : 90%;
+            height           : 100px;
+            background-color : #000000;
+            border-bottom    : 1px solid #858585;
+            border-top: none;
+            border-left : none;
+            border-right: none;
+            padding          : 5px;
+            color            : #dddddd;
+            font-size        : 14px;
+          }
+
+          .button-box {
+            width           : 90%;
+            display         : flex;
+            justify-content : flex-end;
+            .submit-btn {
+              width           : 30%;
+              min-width       : 100px;
+              height          : 40px;
+              background      : #000000;
+              border-radius   : 5px;
+              border          : 1px solid #c5c5c5;
+              cursor          : pointer;
+              display         : flex;
+              align-items     : center;
+              justify-content : center;
+              margin-left     : 3%;
+              color           : #dddddd;
+              font-size       : 25px;
+              transition      : .3s;
+              &:hover {
+                box-shadow : none;
+                color      : #dddddd;
+                background : #a3a2a2;
+              }
+            }
+          }
+        }
+
+        .cons-comments-wrapper {
+          width : 100%;
+          .cons-comment-box-sub {
+            width            : 90%;
+            height           : fit-content;
+            background-color : #000000;
+            border           : 1px solid #555555;
+            border-radius    : 5px;
+            margin           : 10px;
+
+            .cons-comment-text-sub {
+              margin : 3px 0 0 5px;
+              color  : #dddddd;
+            }
+            .cons-comment-username-sub {
+              margin : 0 3px 0 5px;
+              a {
+                color           : #8a8a8a;
+                text-decoration : none;
+              }
+            }
+            .cons-comment-date-sub {
+              color     : #8a8a8a;
+              font-size : 14px;
+              margin    : 0 3px 0 5px;
             }
           }
         }

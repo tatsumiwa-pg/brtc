@@ -10,4 +10,5 @@ class User < ApplicationRecord
 
   has_many :consultations
   has_many :answers
+  has_many :cons_comments
 end

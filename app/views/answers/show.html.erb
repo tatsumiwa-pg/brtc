@@ -8,7 +8,7 @@
     </div>
 
     <div class="button-box">
-      <%if current_user.id == @consultation.user.id %>
+      <% if user_signed_in? && current_user.id == @consultation.user.id %>
         <div class="button">
           <%= link_to '評価する', "#" %>
         </div>
@@ -19,7 +19,7 @@
       <div class="messages">
         <h3>info.</h3>
         <p class="message">もし回答を見てもわからないことがあったらコメントで質問してみましょう!</p>
-        <% if current_user.id == @answer.user_id %>
+        <% if user_signed_in? && current_user.id == @answer.user_id %>
           <p class="message">回答に訂正がある場合はコメント欄に記入しよう！</p>
         <% end %>
       </div>
@@ -71,7 +71,7 @@
 
     <div class="top-menus">
       <div class="button-box">
-        <%if current_user.id == @consultation.user.id %>
+        <%if user_signed_in? && current_user.id == @consultation.user.id %>
           <div class="button">
             <%= link_to '評価する', "#" %>
           </div>
@@ -83,7 +83,7 @@
       <div class="messages">
         <h3>info.</h3>
         <p class="message">もし回答を見てもわからないことがあったらコメントで質問してみましょう!</p>
-        <% if current_user.id == @answer.user_id %>
+        <% if user_signed_in? && current_user.id == @answer.user_id %>
           <p class="message">回答に訂正がある場合はコメント欄に記入しよう！</p>
         <% end %>
       </div>
@@ -97,13 +97,17 @@
 
     <div class="comment-menu">
       <div class="comment-form-wrapper">
-        <p class="message">コメントは取り消せません。投稿者は自身のコメントに責任を持ちます</p>
-        <div class="comment-form-box">
-          <p>テキストが入ります</p>
-          <div class="post-btn-contents">
-          <p class="post-btn">送信</p>
-        </div>
-        </div>
+        <p class="message">※コメントは取り消せません<br>※投稿者は自身のコメントに責任を持ちます</p>
+        <% if user_signed_in? %>
+          <div class="comment-form-box">
+            <p>テキストが入ります</p>
+            <div class="post-btn-contents">
+              <p class="post-btn">送信</p>
+            </div>
+          </div>
+        <% else %>
+          <p class="message">※コメントをするにはログインが必要です</p>
+        <% end %>
       </div>
 
       <div class="comments-list-wrapper">

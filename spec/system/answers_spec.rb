@@ -164,5 +164,31 @@ RSpec.describe '詳細表示', type: :system do
       # 回答詳細表示ページには、投稿された回答の詳細情報があること確認できる（投稿者名）
       expect(page).to have_content(@answer.user.nickname)
     end
+
+    it 'ログアウト状態でも回答詳細表示ページに遷移できる' do
+      # Basic認証（ログインはしない）
+      basic_auth(path)
+      # 相談詳細表示ページへ移動する
+      find('a', text: @cons_title).click
+      # 現在のページが相談詳細表示ページであること確認する
+      expect(current_path).to eq consultation_path(@consultation.id)
+      # 投稿された回答のタイトルと投稿者の名前があることを確認する
+      expect(page).to have_selector('a', text: @ans_title)
+      expect(page).to have_selector('a', text: @answer.user.nickname)
+      # 相談詳細表示ページに、相談を削除するためのボタンがないことを確認する
+      expect(page).to have_no_selector('a', text: '削除する')
+      # 回答詳細表示ページへ遷移する
+      find('a', text: @ans_title).click
+      # 現在のページが回答詳細表示ページであること確認する
+      expect(current_path).to eq answer_path(@answer.id)
+      # 回答詳細表示ページには、投稿された回答の詳細情報があることを確認できる（タイトル）
+      expect(page).to have_content(@ans_title)
+      # 回答詳細表示ページには、投稿された回答の詳細情報があること確認できる（本文）
+      expect(page).to have_content(@ans_text)
+      # 回答詳細表示ページには、投稿された回答の詳細情報があること確認できる（画像）
+      expect(page).to have_selector "img[src$='test_image.png']"
+      # 回答詳細表示ページには、投稿された回答の詳細情報があること確認できる（投稿者名）
+      expect(page).to have_content(@answer.user.nickname)
+    end
   end
 end

@@ -12,7 +12,7 @@ RSpec.describe Reconciliation, type: :model do
   end
 
   context '和解情報の入力内容に問題がある場合' do
-    it 'rec_textがカラではユーザー登録できない' do
+    it 'rec_textがカラでは和解情報を登録できない' do
       @reconciliation.rec_text = ''
       @reconciliation.valid?
       expect(@reconciliation.errors.full_messages).to include("Rec text can't be blank")
