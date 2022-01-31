@@ -13,11 +13,12 @@
               <%= link_to '編集する', edit_consultation_path(@consultation.id) %>
             </div> 
 
-            <% if @answers.blank? %>
+            <% if @answers.blank? && @cons_comments.blank? %>
               <div class="button">
                 <%= link_to '削除する', consultation_path(@consultation.id), method: :delete, data: { confirm: '本当によろしいですか？ -Are you sure-?' }, class:"delete-btn", id:"delete_btn" %>
               </div>
-            <% else %>
+            <% end %>
+            <% if @nswers.present? %>
               <div class="button">
                 <%= link_to '和解する', new_consultation_reconciliation_path(@consultation.id) %>
               </div>
@@ -114,11 +115,12 @@
               <%= link_to '編集する', edit_consultation_path(@consultation.id) %>
             </div> 
 
-            <% if @answers.blank? %>
+            <% if @answers.blank? && @cons_comments.blank? %>
               <div class="button">
                 <%= link_to '削除する', consultation_path(@consultation.id), method: :delete, data: { confirm: '本当によろしいですか？ -Are you sure-?' }, class:"delete-btn", id:"delete_btn" %>
               </div>
-            <% else %>
+            <% end %>
+            <% if @answers.present? %>
               <div class="button">
                 <%= link_to '和解する', new_consultation_reconciliation_path(@consultation.id) %>
               </div>
