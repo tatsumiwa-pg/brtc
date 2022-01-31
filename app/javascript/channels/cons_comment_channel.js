@@ -29,6 +29,10 @@ document.addEventListener('turbolinks:load', function() {
         comments.insertAdjacentHTML('afterbegin', html)
         const commentForm = document.getElementById("comment-form-wrapper")
         commentForm.reset();
+        const delete_btn = document.getElementById('delete_btn'); 
+        delete_btn.remove();
+        const delete_btn2 = document.getElementById('delete_btn2'); 
+        delete_btn2.remove();
       }
 
     });

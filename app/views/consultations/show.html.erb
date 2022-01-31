@@ -6,7 +6,7 @@
     <% if user_signed_in? %>
       <% if current_user.id == @consultation.user.id %>
         <p class="what-do-you-want">あなたの投稿</p>
-        <div class="button-box">
+        <div class="button-box" id="buttons1">
 
           <% if @consultation.reconciliation.blank? %>
             <div class="button">
@@ -109,7 +109,7 @@
     <% if user_signed_in? %>
       <% if current_user.id == @consultation.user.id %>
 
-        <div class="button-box">
+        <div class="button-box" id="buttons2">
           <% if @consultation.reconciliation.blank? %>
             <div class="button">
               <%= link_to '編集する', edit_consultation_path(@consultation.id) %>
@@ -117,7 +117,7 @@
 
             <% if @answers.blank? && @cons_comments.blank? %>
               <div class="button">
-                <%= link_to '削除する', consultation_path(@consultation.id), method: :delete, data: { confirm: '本当によろしいですか？ -Are you sure-?' }, class:"delete-btn", id:"delete_btn" %>
+                <%= link_to '削除する', consultation_path(@consultation.id), method: :delete, data: { confirm: '本当によろしいですか？ -Are you sure-?' }, class:"delete-btn", id:"delete_btn2" %>
               </div>
             <% end %>
             <% if @answers.present? %>
@@ -179,14 +179,14 @@
             <% end %>
           <% end %>
         
-        <div class="cons_comments_wrapper", id="comments">
-        <% @cons_comments.each do |comment| %>
-          <div class="cons-comment-box-sub">
-            <p class="cons-comment-text-sub"><%= comment.cons_c_text %></p>
-            <p class="cons-comment-username-sub">by: <%= link_to comment.user.nickname, "#" %></p>
-            <p class="cons-comment-date-sub">__<%= comment.created_at %></p>
-          </div>
-        <% end %>
+        <div class="cons-comments-wrapper", id="comments">
+          <% @cons_comments.each do |comment| %>
+            <div class="cons-comment-box-sub">
+              <p class="cons-comment-text-sub"><%= comment.cons_c_text %></p>
+              <p class="cons-comment-username-sub">by: <%= link_to comment.user.nickname, "#" %></p>
+              <p class="cons-comment-date-sub">__<%= comment.created_at %></p>
+            </div>
+          <% end %>
         </div>
 
       </div>
