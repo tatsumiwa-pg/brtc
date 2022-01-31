@@ -167,36 +167,23 @@
         
           <%= form_with model: [@consultation, @cons_comment], class:"comment-form-wrapper", local: true do |f| %>
             <p><strong>※コメントは取り消せません<br>※投稿者は自身のコメントに責任を持ちます</strong></p>
-            <%= f.text_area :cons_c_text, class:"input-form", id:"cons-c-text", placeholder:"コメントを入力（150文字まで)", maxlength:"150" %>
-            <div class="button-box">
-              <%= f.submit '送信', class:"submit-btn" %>
-            </div>
+            <% if user_signed_in? %>
+              <%= f.text_area :cons_c_text, class:"input-form", id:"cons-c-text", placeholder:"コメントを入力（150文字まで)", maxlength:"150" %>
+              <div class="button-box">
+                <%= f.submit '送信', class:"submit-btn" %>
+              </div>
+            <% else %>
+              <p><strong>※コメントをするにはログインが必要です</strong></p>
+            <% end %>
           <% end %>
 
-        <div class="cons-comment-box-sub">
-          <p class="cons-comment-text-sub"><%= "@consultation.cons_comment.cons_c_text" %></p>
-          <p class="cons-comment-username-sub">by: <%= link_to "@consultation.cons_comment.user.nickname", "#" %></p>
-        </div>
+        <% @cons_comments.each do |comment| %>
+          <div class="cons-comment-box-sub">
+            <p class="cons-comment-text-sub"><%= comment.cons_c_text %></p>
+            <p class="cons-comment-username-sub">by: <%= link_to comment.user.nickname, "#" %></p>
+          </div>
+        <% end %>
 
-        <div class="cons-comment-box-sub">
-          <p class="cons-comment-text-sub"><%= "１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０" %></p>
-          <p class="cons-comment-username-sub"><%= link_to "by １２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０" %></p>
-        </div>
-
-        <div class="cons-comment-box-sub">
-          <p class="cons-comment-text-sub"><%= "@consultation.cons_comment.cons_c_text" %></p>
-          <p class="cons-comment-username-sub">by: <%= link_to "@consultation.cons_comment.user.nickname", "#" %></p>
-        </div>
-
-        <div class="cons-comment-box-sub">
-          <p class="cons-comment-text-sub"><%= "@consultation.cons_comment.cons_c_text" %></p>
-          <p class="cons-comment-username-sub">by: <%= link_to "@consultation.cons_comment.user.nickname", "#" %></p>
-        </div>
-
-        <div class="cons-comment-box-sub">
-          <p class="cons-comment-text-sub"><%= "@consultation.cons_comment.cons_c_text" %></p>
-          <p class="cons-comment-username-sub">by: <%= link_to "@consultation.cons_comment.user.nickname", "#" %></p>
-        </div>
       </div>
 
     </div>

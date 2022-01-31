@@ -28,7 +28,7 @@ class ConsultationsController < ApplicationController
   def show
     @answers = Answer.where(consultation_id: @consultation.id).includes(:user).order('updated_at DESC')
     @cons_comment = ConsComment.new
-
+    @cons_comments = ConsComment.where(consultation_id: @consultation.id).includes(:user, :consultation).order('created_at DESC')
   end
 
   def edit
