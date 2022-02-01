@@ -1,4 +1,3 @@
-require 'benchmark'
 class ConsCommentsController < ApplicationController
   before_action :authenticate_user!
 

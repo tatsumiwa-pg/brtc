@@ -1,0 +1,2 @@
+class AnsCommentsController < ApplicationController
+end
