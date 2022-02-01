@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(version: 2022_02_01_082607) do
   create_table "ans_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "ans_c_text", null: false
     t.bigint "user_id", null: false
-    t.bigint "consultation_id", null: false
+    t.bigint "answer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["consultation_id"], name: "index_ans_comments_on_consultation_id"
+    t.index ["answer_id"], name: "index_ans_comments_on_answer_id"
     t.index ["user_id"], name: "index_ans_comments_on_user_id"
   end
 
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2022_02_01_082607) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "ans_comments", "consultations"
+  add_foreign_key "ans_comments", "answers"
   add_foreign_key "ans_comments", "users"
   add_foreign_key "answers", "consultations"
   add_foreign_key "answers", "users"
