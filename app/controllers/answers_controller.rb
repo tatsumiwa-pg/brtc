@@ -23,6 +23,7 @@ class AnswersController < ApplicationController
   def show
     @answer = Answer.find(params[:id])
     @consultation = Consultation.find_by(id: @answer.consultation_id)
+    @ans_comment = AnsComment.new
   end
 
   private

@@ -229,49 +229,49 @@
         flex-direction : column;
         align-items    : center;
 
-        .message {
-          margin    : 5px;
+        p {
+          padding    : 5px;
           font-size : 15px;
           color     : #dddddd;
         }
 
-        .comment-form-box {
-          width         : 90%;
-          height        : fit-content;
-          min-height    : 80px;
-          color         : #dddddd;
-          border        : 1px solid #777777;
-          border-radius : 10px;
+        .input-form {
+          width            : 90%;
+          height           : 100px;
+          background-color : #000000;
+          border-bottom    : 1px solid #858585;
+          border-top: none;
+          border-left : none;
+          border-right: none;
+          padding          : 5px;
+          color            : #dddddd;
+          font-size        : 14px;
+        }
 
-          .post-btn-contents {
-            width            : 90%;
-            height           : fit-content;
-            display          : flex;
-            justify-content  : flex-end;
-            
-            .post-btn {
-              width            : 30%;
-              min-width        : 100px;
-              height           : 10px;
-              min-height       : 30px;
-              background-color : #202020;
-              display          : flex;
-              justify-content  : center;
-              align-items      : center;
-              border           : 2px solid #cecece;
-              border-radius    : 5px;
-              margin           : 5px 0;
-              color            : #dddddd;
-              text-align       : center;
-              text-decoration  : none;
-              font-size        : 15px;
-
-              &:hover {
-                box-shadow    : none;
-                color         : #ffffff;
-                background    : #a3a2a2;
-              }
-            } 
+        .button-box {
+          width           : 90%;
+          display         : flex;
+          justify-content : flex-end;
+          .submit-btn {
+            width           : 30%;
+            min-width       : 100px;
+            height          : 40px;
+            background      : #000000;
+            border-radius   : 5px;
+            border          : 1px solid #c5c5c5;
+            cursor          : pointer;
+            display         : flex;
+            align-items     : center;
+            justify-content : center;
+            margin-left     : 3%;
+            color           : #dddddd;
+            font-size       : 25px;
+            transition      : .3s;
+            &:hover {
+              box-shadow : none;
+              color      : #dddddd;
+              background : #a3a2a2;
+            }
           }
         }
       }
