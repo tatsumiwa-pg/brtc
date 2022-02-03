@@ -147,18 +147,14 @@
       </div>
 
       <div class="sub-content-box">
-        <% if @answers.blank? %>
-          <p style="color:#dddddd;">回答がまだありません</p>
-        <% else %>
-          <% @answers.each do |answer| %>
-            <%= link_to answer_path(answer.id), class:"answer-box-sub" do %>
-              <p class="ans-title-sub"><%= answer.ans_title %></p>
-              <p class="ans-username-sub">by: <%= answer.user.nickname %></p>
-            <% end %>
-          <% end%>
+        <p><%= "#{@answers.size}件の回答" %></p>
+        <% @answers.each do |answer| %>
+          <%= link_to answer_path(answer.id), class:"answer-box-sub" do %>
+            <p class="ans-title-sub"><%= answer.ans_title %></p>
+            <p class="ans-username-sub">by: <%= answer.user.nickname %></p>
+          <% end %>
         <% end%>
       </div>
-
     </div>
 
     <div class="sub-content-wrapper">
@@ -167,10 +163,10 @@
       </div>
       <div class="sub-content-box">
         
-          <%= form_with model: [@consultation, @cons_comment], class:"comment-form-wrapper", id:"comment-form-wrapper", local: true do |f| %>
+          <%= form_with model: [@consultation, @cons_comment], class:"comment-form-wrapper", id:"comment_form_wrapper" do |f| %>
             <p><strong>※コメントは取り消せません<br>※投稿者は自身のコメントに責任を持ちます</strong></p>
             <% if user_signed_in? %>
-              <%= f.text_area :cons_c_text, class:"input-form", id:"cons-c-text", placeholder:"コメントを入力（150文字まで)", maxlength:"150" %>
+              <%= f.text_area :cons_c_text, class:"input-form", id:"cons_c_text", placeholder:"コメントを入力（150文字まで)", maxlength:"150" %>
               <div class="button-box">
                 <%= f.submit '送信', class:"submit-btn" %>
               </div>
@@ -180,6 +176,7 @@
           <% end %>
         
         <div class="cons-comments-wrapper", id="comments">
+          <p id="comment_num"><%= "#{@cons_comments.size}件のコメント" %></p>
           <% @cons_comments.each do |comment| %>
             <div class="cons-comment-box-sub">
               <p class="cons-comment-text-sub"><%= comment.cons_c_text %></p>

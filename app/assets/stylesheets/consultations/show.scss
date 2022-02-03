@@ -287,6 +287,10 @@
         border-radius    : 10px;
         padding-top      : 10px;
         overflow-y       : scroll;
+        p {
+          margin-bottom : 5px;
+          color         : #dddddd;
+        }
 
         .answer-box-sub {
           width            : 90%;
@@ -316,6 +320,7 @@
 
           p {
             padding   : 5px;
+            margin    : 0;
             color     : #dddddd;
             font-size : 15px;
           }
@@ -363,6 +368,14 @@
 
         .cons-comments-wrapper {
           width : 100%;
+          display          : flex;
+          flex-direction   : column;
+          align-items      : center;
+          p {
+            margin-bottom  : 5px;
+            color          : #dddddd;
+          }
+
           .cons-comment-box-sub {
             width            : 90%;
             height           : fit-content;
@@ -370,6 +383,7 @@
             border           : 1px solid #555555;
             border-radius    : 5px;
             margin           : 10px;
+            color           : #8a8a8a;
 
             .cons-comment-text-sub {
               margin : 3px 0 0 5px;
