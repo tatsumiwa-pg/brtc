@@ -2,10 +2,8 @@ import consumer from "./consumer"
 
 document.addEventListener('turbolinks:load', function() { 
 
-  if(location.pathname.match(/\/consultations\/\d/)){
- 
+  if (location.pathname.match(/\/consultations/) && location.pathname.match(/\d$/) && location.pathname.match(/^(?<!answers)/)){
   
-
     consumer.subscriptions.create({
       channel: "ConsCommentChannel",
       consultation_id: location.pathname.match(/\d+/)[0]
@@ -20,19 +18,28 @@ document.addEventListener('turbolinks:load', function() {
       },
       received(data) {
         const html = `
-          <div class="cons-comment-box-sub">
+          <div class="cons-comment-box-sub" id="added_box_${data.cons_comments.length}">
             <p class="cons-comment-text-sub">${data.cons_comment.cons_c_text}</p>
             <p class="cons-comment-username-sub">by: <a href="#">${data.user.nickname}</a></p>
             <p class="cons-comment-date-sub">__New!</p>
           </div>`
-        const comments = document.getElementById("comments")
-        comments.insertAdjacentHTML('afterbegin', html)
-        const commentForm = document.getElementById("comment-form-wrapper")
+        const commentNum = document.getElementById('comment_num');
+        commentNum.innerHTML = `${data.cons_comments.length}件のコメント`;
+        const addedBox = document.getElementById(`added_box_${data.cons_comments.length}`);
+        if (addedBox === null) {
+          commentNum.insertAdjacentHTML('afterend', html);
+        }
+        const commentForm = document.getElementById('comment_form_wrapper');
         commentForm.reset();
+
         const delete_btn = document.getElementById('delete_btn'); 
-        delete_btn.remove();
-        const delete_btn2 = document.getElementById('delete_btn2'); 
-        delete_btn2.remove();
+        const delete_btn2 = document.getElementById('delete_btn2');
+        if (delete_btn !== null) {
+          delete_btn.remove();
+        }
+        if (delete_btn !== null) {
+          delete_btn2.remove();
+        }
       }
 
     });

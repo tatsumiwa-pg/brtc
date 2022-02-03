@@ -1,7 +1,8 @@
 class Answer < ApplicationRecord
-  belongs_to :user
-  belongs_to :consultation
-  has_one_attached :ans_image
+  belongs_to        :user
+  belongs_to        :consultation
+  has_one_attached  :ans_image
+  has_many          :ans_comments
 
   with_options presence: true do
     validates :ans_title, length: { maximum: 40 }

@@ -96,22 +96,27 @@
     <p class="comment-menu-title">コメント</p>
 
     <div class="comment-menu">
-      <div class="comment-form-wrapper">
-        <p class="message">※コメントは取り消せません<br>※投稿者は自身のコメントに責任を持ちます</p>
+      <%= form_with model: [@answer, @ans_comment], class:"comment-form-wrapper", id:"comment_form_wrapper" do |f| %>
+        <p><strong>※コメントは取り消せません<br>※投稿者は自身のコメントに責任を持ちます</strong></p>
         <% if user_signed_in? %>
-          <div class="comment-form-box">
-            <p>テキストが入ります</p>
-            <div class="post-btn-contents">
-              <p class="post-btn">送信</p>
-            </div>
+          <%= f.text_area :ans_c_text, class:"input-form", id:"ans_c_text", placeholder:"コメントを入力（150文字まで)", maxlength:"150" %>
+          <div class="button-box">
+            <%= f.submit '送信', class:"submit-btn" %>
           </div>
         <% else %>
-          <p class="message">※コメントをするにはログインが必要です</p>
+          <p class="message"><strong>※コメントをするにはログインが必要です</strong></p>
         <% end %>
-      </div>
+      <% end %>
 
-      <div class="comments-list-wrapper">
-        <p class="list-label"><%= "●件のコメント" %></p>
+      <div class="comments-list-wrapper" id="comments">
+        <p id="comment_num"><%= "#{@ans_comments.size}件のコメント" %></p>
+        <% @ans_comments.each do |comment| %>
+          <div class="ans-comment-box">
+            <p class="ans-comment-text"><%= comment.ans_c_text %></p>
+            <p class="ans-comment-username">by: <%= link_to comment.user.nickname, "#" %></p>
+            <p class="ans-comment-date">__<%= comment.created_at %></p>
+          </div>
+        <% end %>
       </div>
 
     </div>
