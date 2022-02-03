@@ -96,7 +96,7 @@
     <p class="comment-menu-title">コメント</p>
 
     <div class="comment-menu">
-      <%= form_with model: [@answer, @ans_comment], class:"comment-form-wrapper", id:"comment_form_wrapper", local: true do |f| %>
+      <%= form_with model: [@answer, @ans_comment], class:"comment-form-wrapper", id:"comment_form_wrapper" do |f| %>
         <p><strong>※コメントは取り消せません<br>※投稿者は自身のコメントに責任を持ちます</strong></p>
         <% if user_signed_in? %>
           <%= f.text_area :ans_c_text, class:"input-form", id:"ans_c_text", placeholder:"コメントを入力（150文字まで)", maxlength:"150" %>

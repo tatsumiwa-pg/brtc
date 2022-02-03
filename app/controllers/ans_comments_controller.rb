@@ -3,9 +3,10 @@ class AnsCommentsController < ApplicationController
 
   def create
     @answer = Answer.find(params[:answer_id])
+    @ans_comments = @answer.ans_comments
     @ans_comment = AnsComment.new(ans_comment_params)
     if @ans_comment.save
-      redirect_to answer_path(@answer.id)
+      AnsCommentChannel.broadcast_to @answer, { ans_comment: @ans_comment, user: @ans_comment.user, ans_comments: @ans_comments }
     end
   end
 
