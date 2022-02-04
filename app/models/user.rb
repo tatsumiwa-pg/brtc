@@ -12,4 +12,5 @@ class User < ApplicationRecord
   has_many :answers
   has_many :cons_comments
   has_many :ans_comments
+  has_many :reviews
 end
