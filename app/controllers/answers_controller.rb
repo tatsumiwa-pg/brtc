@@ -25,6 +25,7 @@ class AnswersController < ApplicationController
     @consultation = Consultation.find_by(id: @answer.consultation_id)
     @ans_comment = AnsComment.new
     @ans_comments = AnsComment.where(answer_id: @answer.id).includes(:user).order('created_at DESC')
+    @review = Review.new
   end
 
   private

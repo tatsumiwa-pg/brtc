@@ -15,6 +15,91 @@
     flex-direction   : column;
     align-items      : center;
 
+    .float-message-box{
+      width            : 500px;
+      height           : fit-content;
+      display          : none;
+      display          : flex;
+      flex-direction   : column;
+      align-items      : center;
+      background-color : #555555;
+      border           : 2px solid #dddddd;
+      border-radius    : 10px;
+      position         : absolute;
+      top              : 310px;
+      left             : 100px;
+      z-index          : 1;
+
+      .message-title {
+        width            : 95%;
+        text-align       : center;
+        background-color : #222222;
+        border           : 2px solid #dddddd;
+        border-radius    : 10px;
+        margin           : 5px 10px;
+        padding          : 5px;
+        color            : #dddddd;
+        font-size        : 25px;
+      }
+
+      .review-menu {
+        width            : 95%;
+        height           : fit-content;
+        background-color : #111111;
+        border           : 2px solid #dddddd;
+        border-radius    : 10px;
+        color            : #dddddd;
+
+        p {
+          font-size : 20px;
+        }
+
+        .nikukyu3 {
+          width  : 50px;
+          height : 17px;
+        }
+        .nikukyu2 {
+          width  : 32px;
+          height : 17px;
+        }
+        .nikukyu1 {
+          width  : 17px;
+          height : 17px;
+        }
+
+        .nikukyu-field {
+          display         : flex;
+          flex-direction  : row-reverse;
+          justify-content : flex-end;
+          margin-left     : 20px;
+
+          input {
+            display: none;
+            &:checked ~ label {
+              filter:brightness(1.0);
+            }
+          }
+
+          label {
+            padding-right: 10px;
+            cursor : pointer;
+            filter:brightness(0.5);
+            img {
+              width :100px;
+              height : 100px;
+            }
+            &:hover, &:hover ~ label {
+              filter:brightness(1.0);
+            }
+          }
+
+          .hidden-btn {
+            display: hidden;
+          }
+        }
+      }
+    }
+
 
     .page-title {
       font-size : 30px;
@@ -53,7 +138,7 @@
         color         : #dddddd;
         margin-bottom : 20px;
 
-        a {
+        p {
           height          : 50px;
           min-width       : 150px;
           background      : #222222;
@@ -66,7 +151,26 @@
           color           : #dddddd;
           text-decoration : none;
           transition      : .3s;
-          
+          &:hover {
+            box-shadow    : none;
+            color         : #dddddd;
+            background    : #a3a2a2;
+          }
+        }
+
+        a {
+          height          : 50px;
+          min-width       : 150px;
+          background      : #222222;
+          border-radius   : 5px;
+          border          : 2px solid #c5c5c5;
+          cursor          : pointer;
+          display         : flex;
+          align-items     : center;
+          justify-content : center;
+          color           : #dddddd;
+          text-decoration : none;
+          transition      : .3s; 
           &:hover {
             box-shadow    : none;
             color         : #dddddd;

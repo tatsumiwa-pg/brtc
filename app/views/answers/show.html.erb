@@ -1,6 +1,30 @@
 <div class="ans-s-content-wrapper">
+  
+  <div class="top-content" id="top_content">
 
-  <div class="top-content">
+    <div class="float-message-box">
+      <p class="message-title">評価について</p>
+      <div class="review-menu">
+        <p>評価は以下の基準で判断してください</p>
+        <ul class="message-list">
+          <li>文句なしの満点回答！・・・<img class="nikukyu3" src="/assets/nikukyu-3.png"></li>
+          <li>まあまあ助かりました・・・<img class="nikukyu2" src="/assets/nikukyu-2.png"></li>
+          <li>ちょっと助かったかも・・・<img class="nikukyu1" src="/assets/nikukyu-1.png"></li>
+        </ul>
+        <p>この回答の評価は？</p>
+        <%= form_with model: [@answer, @review], class:"review-form-wrapper", id:"review_form_wrapper" do |f| %>
+          <div class="nikukyu-field">
+            <%= f.radio_button :point, 3 %>
+            <%= f.label :point, image_tag('/assets/nikukyu-1.png'), value: 3 %>
+            <%= f.radio_button :point, 2 %>
+            <%= f.label :point, image_tag('/assets/nikukyu-1.png'), value: 2 %>
+            <%= f.radio_button :point, 1 %>
+            <%= f.label :point, image_tag('/assets/nikukyu-1.png'), value: 1 %>
+            <%= f.submit '評価決定', class:"hidden-btn" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
     <p class="page-title">回答詳細</p>
     <div class="review-box">
@@ -10,7 +34,7 @@
     <div class="button-box">
       <% if user_signed_in? && current_user.id == @consultation.user.id %>
         <div class="button">
-          <%= link_to '評価する', "#" %>
+          <p id="review_button1">評価する</p>
         </div>
       <% end %>
       <div class="button">
