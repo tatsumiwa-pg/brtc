@@ -7,6 +7,104 @@
   padding-top      : 50px;
   overflow         : scroll;
 
+  .float-message-box{
+    width            : 500px;
+    height           : fit-content;
+    display          : none;
+    flex-direction   : column;
+    align-items      : center;
+    background-color : #555555;
+    border           : 2px solid #dddddd;
+    border-radius    : 10px;
+    position         : absolute;
+    top              : 310px;
+    left             : 100px;
+    z-index          : 1;
+    @media (max-width: 600px) {
+      width : 95%;
+      top   : 20vh;
+      left  : 1vh;      
+    }
+
+    .message-title {
+      width            : 98%;
+      text-align       : end;
+      background-color : #222222;
+      border           : 2px solid #dddddd;
+      border-radius    : 10px;
+      margin           : 5px 10px;
+      padding          : 5px;
+      color            : #dddddd;
+      font-size        : 25px;
+
+      .close-btn {
+        border       : 1px solid #dddddd;
+        margin-left  : 120px;
+        margin-right : 5px;
+        cursor       : pointer;
+        z-index      : 2;
+      }
+    }
+
+    .review-menu {
+      width            : 98%;
+      height           : fit-content;
+      background-color : #111111;
+      border           : 2px solid #dddddd;
+      border-radius    : 10px;
+      padding          : 10px;
+      color            : #dddddd;
+
+      p {
+        font-size : 20px;
+      }
+
+      .nikukyu3 {
+        width  : 50px;
+        height : 17px;
+      }
+      .nikukyu2 {
+        width  : 32px;
+        height : 17px;
+      }
+      .nikukyu1 {
+        width  : 17px;
+        height : 17px;
+      }
+
+      .nikukyu-field {
+        display         : flex;
+        flex-direction  : row-reverse;
+        justify-content : flex-end;
+        margin-left     : 20px;
+
+        input {
+          display: none;
+          &:checked ~ label {
+            filter:brightness(1.0);
+          }
+        }
+
+        label {
+          padding-right: 10px;
+          cursor : pointer;
+          filter:brightness(0.5);
+          img {
+            width :100px;
+            height : 100px;
+          }
+          &:hover, &:hover ~ label {
+            filter:brightness(1.0);
+          }
+        }
+
+        .hidden-btn {
+          display: hidden;
+        }
+      }
+    }
+  }
+
   .top-content {
     width            : 20%;
     height           : 100%;
@@ -14,92 +112,6 @@
     display          : flex;
     flex-direction   : column;
     align-items      : center;
-
-    .float-message-box{
-      width            : 500px;
-      height           : fit-content;
-      display          : none;
-      display          : flex;
-      flex-direction   : column;
-      align-items      : center;
-      background-color : #555555;
-      border           : 2px solid #dddddd;
-      border-radius    : 10px;
-      position         : absolute;
-      top              : 310px;
-      left             : 100px;
-      z-index          : 1;
-
-      .message-title {
-        width            : 95%;
-        text-align       : center;
-        background-color : #222222;
-        border           : 2px solid #dddddd;
-        border-radius    : 10px;
-        margin           : 5px 10px;
-        padding          : 5px;
-        color            : #dddddd;
-        font-size        : 25px;
-      }
-
-      .review-menu {
-        width            : 95%;
-        height           : fit-content;
-        background-color : #111111;
-        border           : 2px solid #dddddd;
-        border-radius    : 10px;
-        color            : #dddddd;
-
-        p {
-          font-size : 20px;
-        }
-
-        .nikukyu3 {
-          width  : 50px;
-          height : 17px;
-        }
-        .nikukyu2 {
-          width  : 32px;
-          height : 17px;
-        }
-        .nikukyu1 {
-          width  : 17px;
-          height : 17px;
-        }
-
-        .nikukyu-field {
-          display         : flex;
-          flex-direction  : row-reverse;
-          justify-content : flex-end;
-          margin-left     : 20px;
-
-          input {
-            display: none;
-            &:checked ~ label {
-              filter:brightness(1.0);
-            }
-          }
-
-          label {
-            padding-right: 10px;
-            cursor : pointer;
-            filter:brightness(0.5);
-            img {
-              width :100px;
-              height : 100px;
-            }
-            &:hover, &:hover ~ label {
-              filter:brightness(1.0);
-            }
-          }
-
-          .hidden-btn {
-            display: hidden;
-          }
-        }
-      }
-    }
-
 
     .page-title {
       font-size : 30px;
@@ -117,9 +129,14 @@
       margin-bottom    : 20px;
       font-size        : 25px;
 
-      .review-stars {
+      .review-num {
+        display : flex;
         margin : 5px auto;
-        color  : #dddddd;
+        color : #dddddd;
+        img {
+          width  : 35px;
+          height : 35px;
+        }
       }
     }
 
@@ -138,7 +155,7 @@
         color         : #dddddd;
         margin-bottom : 20px;
 
-        p {
+        p, a {
           height          : 50px;
           min-width       : 150px;
           background      : #222222;
@@ -151,26 +168,6 @@
           color           : #dddddd;
           text-decoration : none;
           transition      : .3s;
-          &:hover {
-            box-shadow    : none;
-            color         : #dddddd;
-            background    : #a3a2a2;
-          }
-        }
-
-        a {
-          height          : 50px;
-          min-width       : 150px;
-          background      : #222222;
-          border-radius   : 5px;
-          border          : 2px solid #c5c5c5;
-          cursor          : pointer;
-          display         : flex;
-          align-items     : center;
-          justify-content : center;
-          color           : #dddddd;
-          text-decoration : none;
-          transition      : .3s; 
           &:hover {
             box-shadow    : none;
             color         : #dddddd;
@@ -293,7 +290,7 @@
       }
     }
 
-    .top-menus {
+    .bottom-menus {
       display :none;
     }
 
@@ -462,20 +459,29 @@
           align-items      : center;
           font-size        : 20px;
           color            : #dddddd;
- 
-          .review-stars {
-            min-width        : 150px;
-            height           : fit-content;
-            background-color : #000000;
-            border           : 2px solid #dddddd;
-            border-radius    : 5px;
-            margin           : 5px auto;
-            text-align       : center;
+
+          .review-label {
+            margin: auto 10px;
           }
+ 
+          .review-num, .no-review {
+            min-width       : 150px;
+            display         : flex;
+            justify-content : center;
+            border          : 2px solid #dddddd;
+            border-radius   : 10px;
+            margin          : 5px auto;
+            padding         : 5px;
+            img {
+              width  : 35px;
+              height : 35px;
+            }
+          }
+          
         }
       }
 
-      .top-menus {
+      .bottom-menus {
         width            : 95%;
         height           : fit-content;
         display          : flex;
@@ -497,26 +503,27 @@
             color         : #dddddd;
             margin-bottom : 10px;
     
-            a {
+            p, a {
               height          : 50px;
               min-width       : 150px;
-              background      : #222222;
-              border-radius   : 5px;
-              border          : 2px solid #c5c5c5;
-              cursor          : pointer;
               display         : flex;
               align-items     : center;
               justify-content : center;
+              background      : #222222;
+              border-radius   : 5px;
+              border          : 2px solid #c5c5c5;
+              margin          : 0;
+              cursor          : pointer;
               color           : #dddddd;
               text-decoration : none;
               transition      : .3s;
-            
               &:hover {
                 box-shadow : none;
                 color      : #dddddd;
                 background : #a3a2a2;
               }
             }
+           
           }
         }
     
@@ -553,6 +560,15 @@
       width      : 100%;
       height     : fit-content;
       overflow-y : scroll;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .main-top-line {
+    flex-direction: column;
+    .review-box {
+      margin-left : 30%;
     }
   }
 }
