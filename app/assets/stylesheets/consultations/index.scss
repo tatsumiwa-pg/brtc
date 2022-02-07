@@ -1,7 +1,7 @@
 .content-wrap {
   width            : 100vw;
   height           : 100%;
-  background-color : #444444;
+  background-color : #111111;
   display          : flex;
   justify-content  : space-around;
   align-items      : flex-start ;
@@ -39,6 +39,12 @@
     p {
       color      : #d6d6d6;
       text-align : center;
+    }
+    img {
+      width      : 3vw;
+      height     : 3vw;
+      min-width  : 25px;
+      min-height : 25px;
     }
   }
 
