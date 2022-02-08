@@ -1,5 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe "ConsComments", type: :request do
-
+RSpec.describe 'ConsComments', type: :request do
 end

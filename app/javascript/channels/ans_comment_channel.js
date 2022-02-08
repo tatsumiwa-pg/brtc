@@ -3,8 +3,6 @@ import consumer from "./consumer"
 document.addEventListener('turbolinks:load', function() { 
 
   if (location.pathname.match(/\/answer/) && location.pathname.match(/\d$/)) {
-
-    console.log('読み込み完了')
     
     consumer.subscriptions.create({
       channel: "AnsCommentChannel",

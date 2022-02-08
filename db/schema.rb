@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_01_082607) do
+ActiveRecord::Schema.define(version: 2022_02_04_071343) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -84,6 +84,16 @@ ActiveRecord::Schema.define(version: 2022_02_01_082607) do
     t.index ["consultation_id"], name: "index_reconciliations_on_consultation_id"
   end
 
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "point", null: false
+    t.bigint "user_id", null: false
+    t.bigint "answer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["answer_id"], name: "index_reviews_on_answer_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -107,4 +117,6 @@ ActiveRecord::Schema.define(version: 2022_02_01_082607) do
   add_foreign_key "cons_comments", "users"
   add_foreign_key "consultations", "users"
   add_foreign_key "reconciliations", "consultations"
+  add_foreign_key "reviews", "answers"
+  add_foreign_key "reviews", "users"
 end
