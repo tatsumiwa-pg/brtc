@@ -29,8 +29,8 @@ ___
 ### Association
 - has_many :consultations
 - has_many :answers
-- has_many :c_comments
-- has_many :a_comments
+- has_many :cons_comments
+- has_many :ans_comments
 - has_many :reviews
 - has_one  :profile
 
@@ -43,15 +43,15 @@ ___
 ## profiles
 | Column      | Type       | Options                        |
 |-------------|------------|--------------------------------|
-| age         | integer    |                                |
-| job         | string     |                                |
-| skill       | string     |                                |
-| address     | string     |                                |
-| cat_exp     | string     |                                |
-| family_type | string     |                                |
-| house_env   | string     |                                |
-| my_cat      | string     |                                |
-| introduce   | text       |                                |
+| age         | integer    | null: false                    |
+| job         | string     | null: false                    |
+| skills      | string     | null: false                    |
+| address     | string     | null: false                    |
+| cat_exp     | string     | null: false                    |
+| family_type | integer    | null: false                    |
+| house_env   | integer    | null: false                    |
+| my_cats     | text       | null: false                    |
+| introduce   | text       | null: false                    |
 | user        | references | null: false, foreign_key: true |
 
 <br>
@@ -76,7 +76,7 @@ ___
 - belongs_to :user
 - has_many   :answers
 - has_one    :reconciliation
-- has_many   :c_comments
+- has_many   :cons_comments
 
 ---
 
@@ -127,7 +127,7 @@ ___
 - belongs_to :user
 - belongs_to :consultation
 - has_one    :review
-- has_many   :a_comments
+- has_many   :ans_comments
 
 <br>
 
