@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :review do
-    point { rand(4) + 1 }
+    point { rand(1..4) }
 
     association :user
     association :answer

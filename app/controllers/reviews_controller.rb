@@ -4,9 +4,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.find_or_initialize_by(answer_id: @answer.id)
-    if @review.update(review_params)
-      render json: { review: @review }
-    end
+    render json: { review: @review } if @review.update(review_params)
   end
 
   private

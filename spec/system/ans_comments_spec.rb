@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "回答へのコメント投稿", type: :system do
+RSpec.describe '回答へのコメント投稿', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @consultation = FactoryBot.create(:consultation, user_id: @user.id)

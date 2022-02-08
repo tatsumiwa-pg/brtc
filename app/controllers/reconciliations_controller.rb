@@ -17,7 +17,7 @@ class ReconciliationsController < ApplicationController
       @reconciliation.save
       redirect_to consultation_path(@consultation.id)
     else
-      redirect_to consultation_path(@consultation.id), alert: "This consultation already have reconciliation! 既に和解済みの相談です"
+      redirect_to consultation_path(@consultation.id), alert: 'This consultation already have reconciliation! 既に和解済みの相談です'
     end
   end
 

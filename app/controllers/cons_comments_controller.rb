@@ -6,7 +6,8 @@ class ConsCommentsController < ApplicationController
     @cons_comments = @consultation.cons_comments
     @cons_comment = ConsComment.new(cons_comment_params)
     if @cons_comment.save
-      ConsCommentChannel.broadcast_to @consultation, { cons_comment: @cons_comment, user: @cons_comment.user, cons_comments: @cons_comments }
+      ConsCommentChannel.broadcast_to @consultation,
+                                      { cons_comment: @cons_comment, user: @cons_comment.user, cons_comments: @cons_comments }
     end
   end
 
