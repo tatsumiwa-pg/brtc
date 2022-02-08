@@ -46,5 +46,5 @@ end
   AnsComment.create(
     ans_c_text: Faker::Lorem.characters(number: 1..150),
     answer_id:  Faker::Number.between(from: 1, to: 50)
-  }
+  )
 end
