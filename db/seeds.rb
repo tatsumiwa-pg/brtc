@@ -35,16 +35,15 @@ end
   )
 end
 
-
 100.times do |i|
-  ConsComment.create{
+  ConsComment.create(
     cons_c_text:     Faker::Lorem.characters(number: 1..150),
     consultation_id: Faker::Number.between(from: 1, to: 17)
-  }
+  )
 end
 
 200.times do |i|
-  AnsComment.create{
+  AnsComment.create(
     ans_c_text: Faker::Lorem.characters(number: 1..150),
     answer_id:  Faker::Number.between(from: 1, to: 50)
   }
