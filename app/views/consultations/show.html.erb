@@ -149,11 +149,11 @@
       <div class="sub-content-box">
         <p><%= "#{@answers.size}件の回答" %></p>
         <% @answers.each do |answer| %>
-          <%= link_to answer_path(answer.id), class:"answer-box-sub" do %>
+          <%= link_to answer_path(answer.id), class:"answer-box-sub", id:"answer_box_sub_#{answer.id}" do %>
             <% if answer.review.present? %>
               <p class="ans-review">
                 <% answer.review.point.times do %>
-                  <%= image_tag('/assets/nikukyu-1.png') %>
+                  <%= image_tag '/assets/nikukyu-1.png', class:"review-image" %>
                 <% end %>
               </p>
             <% end %>

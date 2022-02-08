@@ -13,11 +13,11 @@
       <%= form_with model: [@answer, @review], class:"review-form-wrapper", id:"review_form_wrapper" do |f| %>
         <div class="nikukyu-field">
           <%= f.radio_button :point, 3, class:"btns" %>
-          <%= f.label :point, image_tag('/assets/nikukyu-1.png'), value: 3 %>
+          <%= f.label :point, image_tag('/assets/nikukyu-1.png'), value: 3, id:"review_point_btn_3" %>
           <%= f.radio_button :point, 2, class:"btns" %>
-          <%= f.label :point, image_tag('/assets/nikukyu-1.png'), value: 2 %>
+          <%= f.label :point, image_tag('/assets/nikukyu-1.png'), value: 2, id:"review_point_btn_2" %>
           <%= f.radio_button :point, 1, class:"btns" %>
-          <%= f.label :point, image_tag('/assets/nikukyu-1.png'), value: 1 %>
+          <%= f.label :point, image_tag('/assets/nikukyu-1.png'), value: 1, id:"review_point_btn_1" %>
           <%= f.submit '評価決定', class:"hidden-btn", id:"submit" %>
         </div>
       <% end %>
@@ -31,7 +31,7 @@
       <p class="review-num" id="review_num1">
         <% if @answer.review.present? %>
           <% @answer.review.point.times do %>
-            <%= image_tag('/assets/nikukyu-1.png') %>
+            <%= image_tag '/assets/nikukyu-1.png', class:"review-image" %>
           <% end %>
         <% else %>
           未評価
@@ -68,7 +68,7 @@
         <p class="review-num" id="review_num2">
           <% if @answer.review.present? %>
             <% @answer.review.point.times do %>
-              <%= image_tag('/assets/nikukyu-1.png') %>
+              <%= image_tag '/assets/nikukyu-1.png', class:"review-image" %>
             <% end %>
           <% else %>
             未評価
