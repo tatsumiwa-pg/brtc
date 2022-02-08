@@ -17,7 +17,7 @@ end
     summary:     Faker::Lorem.characters(number: 1..150),
     situation:   Faker::Lorem.characters(number: 1..2000),
     problem:     Faker::Lorem.characters(number: 1..2000),
-    user_id:     Faker::Number.between(from: 1, to: 3),
+    user_id:     Faker::Number.between(from: 1, to: 3)
   )
 end
 
@@ -27,7 +27,7 @@ end
     ans_title:       Faker::Lorem.characters(number: 1..40),
     ans_text:        Faker::Lorem.characters(number: 1..2000),
     user_id:         Faker::Number.between(from: 4, to: 5),
-    consultation_id: Faker::Number.between(from: 1, to: 15),
+    consultation_id: Faker::Number.between(from: 1, to: 15)
   )
 end
 
@@ -44,7 +44,7 @@ end
   ConsComment.create{
     id:              i + 1,
     cons_c_text:     Faker::Lorem.characters(number: 1..150),
-    consultation_id: Faker::Number.between(from: 1, to: 17),
+    consultation_id: Faker::Number.between(from: 1, to: 17)
   }
 end
 
@@ -52,6 +52,6 @@ end
   AnsComment.create{
     id:              i + 1,
     ans_c_text:     Faker::Lorem.characters(number: 1..150),
-    answer_id: Faker::Number.between(from: 1, to: 50),
+    answer_id: Faker::Number.between(from: 1, to: 50)
   }
 end
