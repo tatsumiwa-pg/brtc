@@ -21,16 +21,30 @@
     </div>
 
     <div class="user-menu-wrap">
-      <ul class="user-menu-list">
+      <ul class="user-menu">
         <% if user_signed_in? %>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-        <li><%= link_to current_user.nickname, edit_user_registration_path %></li>
+          <li class="user-image" id="user_image">
+            <% if current_user.profile.user_image.present? %>
+              <%= image_tag current_user.profile.user_image %>
+            <% else %>
+              <%= (current_user.nickname).slice(0) %>
+            <% end %>
+            <ul class="user-menu-lists" id="hidden_list1">
+              <li><%= link_to 'マイページへ', "#" %></li>
+              <li><%= link_to 'アカウント編集', edit_user_registration_path %></li>
+              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
         <% else %>
-        <li><%= link_to '新規登録', new_user_registration_path %></li>
-        <li><%= link_to 'ログイン', new_user_session_path %></li>
+          <li class="user-menu-btn" id="user_menu_btn">
+            <%= image_tag '/assets/nikukyu-1.png' %>
+            <ul class="user-menu-lists" id="hidden_list2">
+              <li><%= link_to 'ログイン', new_user_session_path %></li>
+              <li><%= link_to '新規登録', new_user_registration_path %></li>
+            </ul>
+          </li>
         <% end %>
       </ul>
     </div>
-
   </div>
 </header>
