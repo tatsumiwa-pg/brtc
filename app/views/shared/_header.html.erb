@@ -30,7 +30,7 @@
               <%= (current_user.nickname).slice(0) %>
             <% end %>
             <ul class="user-menu-lists" id="hidden_list1">
-              <li><%= link_to 'マイページへ', "#" %></li>
+              <li><%= link_to 'マイページへ', new_profile_path %></li>
               <li><%= link_to 'アカウント編集', edit_user_registration_path %></li>
               <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
             </ul>
