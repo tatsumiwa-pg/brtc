@@ -21,7 +21,7 @@ end
   )
 end
 
-100.times do |i|
+50.times do |i|
   Answer.create(
     id:              i + 1,
     ans_title:       Faker::Lorem.characters(number: 1..40),
@@ -49,7 +49,7 @@ end
   )
 end
 
-200.times do |i|
+100.times do |i|
   AnsComment.create(
     id:         i + 1,
     ans_c_text: Faker::Lorem.characters(number: 1..150),
