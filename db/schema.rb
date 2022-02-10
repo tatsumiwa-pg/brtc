@@ -77,13 +77,13 @@ ActiveRecord::Schema.define(version: 2022_02_08_162234) do
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "age", null: false
+    t.integer "age_id", null: false
     t.string "job", null: false
     t.string "skills", null: false
     t.string "address", null: false
     t.string "cat_exp", null: false
-    t.integer "family_type", null: false
-    t.integer "house_env", null: false
+    t.integer "family_type_id", null: false
+    t.integer "house_env_id", null: false
     t.text "my_cats", null: false
     t.text "introduction", null: false
     t.bigint "user_id", null: false
