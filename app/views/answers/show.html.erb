@@ -97,7 +97,7 @@
     <div class="answer-text-wrapper">
       <p class="answer-text-label">-TEXT-</p>
       <div class="answer-text-box">
-        <p class="answer-text"><%= @answer.ans_text %></p>
+        <p><%= simple_format(h(@answer.ans_text)) %></p>
       </div>
     </div>
 
@@ -153,7 +153,7 @@
         <p id="comment_num"><%= "#{@ans_comments.size}件のコメント" %></p>
         <% @ans_comments.each do |comment| %>
           <div class="ans-comment-box">
-            <p class="ans-comment-text"><%= comment.ans_c_text %></p>
+            <p class="ans-comment-text"><%= simple_format(h(comment.ans_c_text)) %></p>
             <p class="ans-comment-username">by: <%= link_to comment.user.nickname, "#" %></p>
             <p class="ans-comment-date">__<%= comment.created_at %></p>
           </div>

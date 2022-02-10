@@ -77,21 +77,21 @@
       <div class="content-parts">
         <p class="content-label">要約するとこんな話 -summary-</p>
         <div class="content-text">
-          <p><%= @consultation.summary %></p>
+          <p><%= simple_format(h(@consultation.summary)) %></p>
         </div>
       </div>
 
       <div class="content-parts">
         <p class="content-label">こんな状況です -situation-</p>
         <div class="content-text">
-          <p><%= @consultation.situation %></p>
+          <p><%= simple_format(h(@consultation.situation)) %></p>
         </div>
       </div>
 
       <div class="content-parts">
         <p class="content-label">何が問題？どう解決したい？ -problem & solution-</p>
         <div class="content-text">
-          <p><%= @consultation.problem %></p>
+          <p><%= simple_format(h(@consultation.problem)) %></p>
         </div>
       </div>
     </div>
@@ -186,7 +186,7 @@
           <p id="comment_num"><%= "#{@cons_comments.size}件のコメント" %></p>
           <% @cons_comments.each do |comment| %>
             <div class="cons-comment-box-sub">
-              <p class="cons-comment-text-sub"><%= comment.cons_c_text %></p>
+              <p class="cons-comment-text-sub"><%= simple_format(h(comment.cons_c_text)) %></p>
               <p class="cons-comment-username-sub">by: <%= link_to comment.user.nickname, "#" %></p>
               <p class="cons-comment-date-sub">__<%= comment.created_at %></p>
             </div>

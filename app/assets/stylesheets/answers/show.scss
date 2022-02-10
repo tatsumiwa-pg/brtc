@@ -268,10 +268,10 @@
         font-size : 15px;
       }
       .answer-text-box {
-        .answer-text {
-          border        : 2px solid #aaaaaa;
-          border-radius : 10px;
-          margin        : 5px 3px;
+        border        : 2px solid #aaaaaa;
+        border-radius : 10px;
+        p {
+          margin        : 3px 3px;
           padding       : 10px;
           font-size     : 15px;
         }
