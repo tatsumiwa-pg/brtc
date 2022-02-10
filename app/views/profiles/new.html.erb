@@ -1,0 +1,66 @@
+<div class="profile-content-wrapper">
+  <div class="left-bar">
+    <h1>info.</h1>
+    <ul>
+      <li><p>ここではあなたのプロフィールを作成していただきます</p></li>
+      <li><p>現時点ではすべて未記入・未選択のままでもかまいません</p></li>
+      <li><p>プロフィールは後から何度でも修正することができます</p></li>
+      <li><p>プロフィールを充実させることで、あなたの質問や回答を見た人から信頼を得ることが可能です</p></li>
+      <li><p>個人情報保護のため、個人が特定できる内容はお控えください</p></li>
+      <li><p>アップロードされた画像は、あなたのアイコンとなります。</p></li>
+    </ul>
+  </div>
+  <div class="main-content">
+    <h1>-profile maiking-<br>プロフィール作成</h1>
+    <%= form_with model: @profile, class: "profile-form", local: true do |f| %>
+      <div class="content-box">
+        <h3 class="profile-form-label">年齢 -age-</h3>
+        <%= f.collection_select(:age_id, Age.all, :id, :name, {}, { class:"profile-select-box", id:"profile_age" }) %>
+      </div>
+      <div class="content-box">
+        <h3 class="profile-form-label">職業 -job-</h3>
+        <%= f.text_area :job, class:"job-input", id:"job_input", placeholder:"例）動物病院スタッフ など(100文字まで)", maxlength:"100" %>
+      </div>
+      <div class="content-box">
+        <h3 class="profile-form-label">保有資格 -skills-</h3>
+        <%= f.text_area :skill, class:"skill-input", id:"skills_input", placeholder:"例）アニマル・ヘルス・テクニシャン(AHT) など(200文字まで)", maxlength:"200" %>
+      </div>
+      <div class="content-box">
+        <h3 class="profile-form-label">住所 -address-</h3>
+        <%= f.text_field :address, class:"address-input", id:"address_input", placeholder:"例）東京都, カリフォルニア州、など(個人情報がわかるような内容はお控えください)", maxlength:"50" %>
+      </div>
+      <div class="content-box">
+        <h3 class="profile-form-label">ﾈｺ歴 -cat exp-</h3>
+        <%= f.text_area :cat_exp, class:"cat-exp-input", id:"cat_exp_input", placeholder:"例）保護猫10年, ブリーダー歴5年 など(200文字まで)", maxlength:"200" %>
+      </div>
+      <div class="content-box">
+        <h3 class="profile-form-label">家族構成 -family type-</h3>
+        <%= f.collection_select(:family_type_id, FamilyType.all, :id, :name, {}, { class:"profile-select-box", id:"profile_family_type" }) %>
+      </div>
+      <div class="content-box">
+        <h3 class="profile-form-label">住環境 -house environment-</h3>
+        <%= f.collection_select(:house_env_id, HouseEnv.all, :id, :name, {}, { class:"profile-select-box", id:"profile_house_env" }) %>
+      </div>
+      <div class="content-box">
+        <h3 class="profile-form-label">わたしのﾈｺ -my cats-</h3>
+        <%= f.text_area :my_cats, class:"my-cats-input", id:"my_cats_input", placeholder:"あなたと共にあるﾈｺについて熱く語ってください（500文字まで)", maxlength:"500" %>
+      </div>
+      <div class="content-box">
+        <h3 class="profile-form-label">自己紹介 -self introduction-</h3>
+        <%= f.text_area :introduction, class:"introduction-input", id:"introduction_input", placeholder:"あなたのことについて自由に語ってください（個人を特定できるような内容はお控えください(1000文字まで)", maxlength:"1000" %>
+      </div>
+      <div class="image-field">
+        <%#  <div id="previews"></div>  %>
+        <div class="file-upload">
+          <%# f.label :user_image, image_tag('/assets/nikukyu-1.png'), id:"profile_user_image"  %>
+          <%= f.file_field :user_image %>
+        </div>
+      </div>
+      <div class="post-btn-box">
+        <%= f.submit "保存", class:"post-btn" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="sub-bar">
+  </div>
+</div>

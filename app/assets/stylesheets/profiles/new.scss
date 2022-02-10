@@ -1,0 +1,139 @@
+.profile-content-wrapper {
+  width            : 100%;
+  height           : 100%;
+  background-color : #000000;
+  display          : flex;
+  padding-top      : 50px;
+  overflow-y       : scroll;
+  color            : #dddddd;
+
+  .left-bar {
+    width  : 30%;
+    height : 100%;
+    padding-right : 10px;
+    @media (max-width: 1024px) {
+      display :none;
+    }
+
+    h1 {
+      margin-left : 10px;
+    }
+  }
+
+  .main-content{
+    width            : 70%;
+    height           : 100%;
+    display          : flex;
+    flex-direction   : column;
+    align-items      : center;
+    background-color : #000000;
+    border-left      : 2px solid #dddddd;
+    
+    @media (max-width: 1024px) {
+      border-bottom : 2px solid #dddddd;
+      border-left   : none;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      width : 90%;
+      height : fit-content;
+
+      .content-box {
+        width         : 100%;
+        height        : fit-content;
+        border        : 1px double #dddddd;
+        border-radius : 10px;
+        padding       : 10px;
+
+        h3 {
+          margin : 5px 0;
+        }
+
+        .profile-select-box {
+          width            : 50%;
+          min-width        : 200px;
+          height           : 50px;
+          background-color : #222222;
+          border-radius    : 10px;
+          padding-left     : 10px;
+          font-size        : 20px;
+          color            : #dddddd;
+        } 
+
+        textarea {
+          @extend .profile-select-box;
+          width            : 100%;
+          height       : 100px;
+          font-size        : 16px;
+        }
+
+        .my-cats-input {
+          height : 200px;
+        }
+
+        .introduction-input {
+          height : 400px;
+        }
+
+        input {
+          @extend .profile-select-box;
+          width            : 100%;
+          font-size        : 16px;
+        }      
+      }
+
+      .image-field {
+        width : 100%;
+        height : fit-content;
+
+        .file-upload {
+          width       : 100%;
+          height      : 100px;
+          padding     : 10px;
+          display     : flex;
+          align-items : center;
+          
+        }
+      }
+
+      .post-btn-box {
+        width : 100%;
+        display : flex;
+        justify-content: flex-end;
+        padding-right   : 20px;
+        .post-btn {
+          width            : 30%;
+          min-width        : 150px;
+          height           : 10%;
+          min-height       : 50px;
+          background-color : #000000;
+          display          : flex;
+          justify-content  : center;
+          align-items      : center;
+          border           : 2px solid #ffffff;
+          border-radius    : 10px;
+          margin           : 5px 0;
+          color            : #dddddd;
+          text-decoration  : none;
+          font-size        : 30px;
+          &:hover {
+            box-shadow    : none;
+            color         : #ffffff;
+            background    : #a3a2a2;
+          }
+        }
+      }
+    }
+  }
+
+  .sub-bar {
+    width  : 20%;
+    height : 100%;
+    display: none;
+    
+  }
+}
