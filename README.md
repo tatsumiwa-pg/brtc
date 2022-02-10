@@ -41,18 +41,18 @@ ___
 <br>
 
 ## profiles
-| Column      | Type       | Options                        |
-|-------------|------------|--------------------------------|
-| age         | integer    | null: false                    |
-| job         | string     | null: false                    |
-| skills      | string     | null: false                    |
-| address     | string     | null: false                    |
-| cat_exp     | string     | null: false                    |
-| family_type | integer    | null: false                    |
-| house_env   | integer    | null: false                    |
-| my_cats     | text       | null: false                    |
-| introduce   | text       | null: false                    |
-| user        | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+|--------------|------------|--------------------------------|
+| age          | integer    | null: false                    |
+| job          | string     | null: false                    |
+| skills       | string     | null: false                    |
+| address      | string     | null: false                    |
+| cat_exp      | string     | null: false                    |
+| family_type  | integer    | null: false                    |
+| house_env    | integer    | null: false                    |
+| my_cats      | text       | null: false                    |
+| introduction | text       | null: false                    |
+| user         | references | null: false, foreign_key: true |
 
 <br>
 

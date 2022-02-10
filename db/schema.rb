@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2022_02_08_162234) do
     t.integer "family_type", null: false
     t.integer "house_env", null: false
     t.text "my_cats", null: false
-    t.text "introduce", null: false
+    t.text "introduction", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
