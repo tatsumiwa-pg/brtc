@@ -24,17 +24,18 @@
       <ul class="user-menu">
         <% if user_signed_in? %>
           <li class="user-image" id="user_image">
-            <% if current_user.profile.user_image.present? %>
-              <%= image_tag current_user.profile.user_image %>
+            <% if current_user.profile.blank? || current_user.profile.user_image.blank? %>
+              <%= current_user.nickname.slice(0) %>
             <% else %>
-              <%= (current_user.nickname).slice(0) %>
+              <%= image_tag current_user.profile.user_image %>
             <% end %>
             <ul class="user-menu-lists" id="hidden_list1">
-              <li><%= link_to 'マイページへ', new_profile_path %></li>
+              <li class="user-nickname-cell"><%= current_user.nickname %></li>
+              <li><%= link_to 'マイページへ', "#" %></li>
               <li><%= link_to 'アカウント編集', edit_user_registration_path %></li>
               <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
             </ul>
-          </li>
+          </ul>
         <% else %>
           <li class="user-menu-btn" id="user_menu_btn">
             <%= image_tag '/assets/nikukyu-1.png' %>
