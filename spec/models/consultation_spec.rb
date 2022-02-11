@@ -15,7 +15,7 @@ RSpec.describe Consultation, type: :model do
     end
   end
   context '相談情報の入力内容に問題がある場合' do
-    it 'cons_titleがカラではユーザー登録できない' do
+    it 'cons_titleがカラでは相談登録できない' do
       @consultation.cons_title = ''
       @consultation.valid?
       expect(@consultation.errors.full_messages).to include("Cons title can't be blank")
@@ -25,17 +25,22 @@ RSpec.describe Consultation, type: :model do
       @consultation.valid?
       expect(@consultation.errors.full_messages).to include('Cons title is too long (maximum is 50 characters)')
     end
-    it 'category_idがカラではユーザー登録できない' do
+    it 'category_idがカラでは相談登録できない' do
       @consultation.category_id = ''
       @consultation.valid?
       expect(@consultation.errors.full_messages).to include("Category can't be blank")
+    end
+    it 'summaryがカラでは相談登録できない' do
+      @consultation.sammary = ''
+      @consultation.valid?
+      expect(@consultation.errors.full_messages).to include("Summary can't be blank")
     end
     it 'summaryが150文字を超過した場合は登録できない' do
       @consultation.summary = Faker::Lorem.characters(number: 151)
       @consultation.valid?
       expect(@consultation.errors.full_messages).to include('Summary is too long (maximum is 150 characters)')
     end
-    it 'situationがカラではユーザー登録できない' do
+    it 'situationがカラでは相談登録できない' do
       @consultation.situation = ''
       @consultation.valid?
       expect(@consultation.errors.full_messages).to include("Situation can't be blank")
@@ -45,7 +50,7 @@ RSpec.describe Consultation, type: :model do
       @consultation.valid?
       expect(@consultation.errors.full_messages).to include('Situation is too long (maximum is 2000 characters)')
     end
-    it 'problemがカラではユーザー登録できない' do
+    it 'problemがカラでは相談登録できない' do
       @consultation.problem = ''
       @consultation.valid?
       expect(@consultation.errors.full_messages).to include("Problem can't be blank")
