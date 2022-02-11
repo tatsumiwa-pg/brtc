@@ -9,10 +9,16 @@
       <li><p>個人情報保護のため、個人が特定できる内容はお控えください</p></li>
       <li><p>アップロードされた画像は、あなたのアイコンとなります。</p></li>
     </ul>
+    <div class="skip-button-box">
+      <%= link_to '後にする', root_path, class:"skip-button" %>
+    </div>
   </div>
   <div class="main-content">
     <h1>-profile maiking-<br>プロフィール作成</h1>
-    <%= form_with model: @profile, class: "profile-form", local: true do |f| %>
+    <%= form_with model: @profile, url: profiles_path, class: "profile-form", local: true do |f| %>
+
+      <%= render 'shared/errors_messages', model: @profile %>
+
       <div class="content-box">
         <h3 class="profile-form-label">年齢 -age-</h3>
         <%= f.collection_select(:age_id, Age.all, :id, :name, {}, { class:"profile-select-box", id:"profile_age" }) %>
@@ -23,7 +29,7 @@
       </div>
       <div class="content-box">
         <h3 class="profile-form-label">保有資格 -skills-</h3>
-        <%= f.text_area :skill, class:"skill-input", id:"skills_input", placeholder:"例）アニマル・ヘルス・テクニシャン(AHT) など(200文字まで)", maxlength:"200" %>
+        <%= f.text_area :skills, class:"skill-input", id:"skills_input", placeholder:"例）アニマル・ヘルス・テクニシャン(AHT) など(200文字まで)", maxlength:"200" %>
       </div>
       <div class="content-box">
         <h3 class="profile-form-label">住所 -address-</h3>
@@ -51,8 +57,8 @@
       </div>
       <div class="image-field">
         <%#  <div id="previews"></div>  %>
+        <h3>プロフィール画像</h3>
         <div class="file-upload">
-          <%# f.label :user_image, image_tag('/assets/nikukyu-1.png'), id:"profile_user_image"  %>
           <%= f.file_field :user_image %>
         </div>
       </div>
@@ -60,7 +66,6 @@
         <%= f.submit "保存", class:"post-btn" %>
       </div>
     <% end %>
-  </div>
-  <div class="sub-bar">
+
   </div>
 </div>
