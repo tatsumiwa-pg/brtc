@@ -2,7 +2,7 @@
   <div class="bg">
     <div class="content">
       <%= link_to '一覧へ戻る', root_path, class:"back-btn" %>
-      <h1 class="message">Edit User - ユーザー情報編集 -</h2>
+      <h1 class="message">Edit User<br>- ユーザー情報編集 -</h1>
 
       <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
         <%= render "users/shared/error_messages", resource: f.object %>
@@ -28,7 +28,7 @@
         <br>
 
         <h4>パスワードに変更がない場合は、すべて同じパスワードで埋めてください</h4>
-        <h5>Fill in below all with your current-password, if you won't to change.<h5> 
+        <h5>Fill in below all with your current-password, if you won't to change.</h5> 
 
         <div class="form-group">
           <div class='form-text-wrap'>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_04_071343) do
+ActiveRecord::Schema.define(version: 2022_02_08_162234) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -76,6 +76,22 @@ ActiveRecord::Schema.define(version: 2022_02_04_071343) do
     t.index ["user_id"], name: "index_consultations_on_user_id"
   end
 
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "age_id", null: false
+    t.string "job", null: false
+    t.string "skills", null: false
+    t.string "address", null: false
+    t.string "cat_exp", null: false
+    t.integer "family_type_id", null: false
+    t.integer "house_env_id", null: false
+    t.text "my_cats", null: false
+    t.text "introduction", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "reconciliations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "rec_text", null: false
     t.bigint "consultation_id", null: false
@@ -116,6 +132,7 @@ ActiveRecord::Schema.define(version: 2022_02_04_071343) do
   add_foreign_key "cons_comments", "consultations"
   add_foreign_key "cons_comments", "users"
   add_foreign_key "consultations", "users"
+  add_foreign_key "profiles", "users"
   add_foreign_key "reconciliations", "consultations"
   add_foreign_key "reviews", "answers"
   add_foreign_key "reviews", "users"

@@ -89,6 +89,7 @@
         color         : #ffffff;
         background    : #a3a2a2;
       }
+
     }
   }
   
@@ -96,12 +97,14 @@
     width  : calc(10% + 20px);
     height : 90%;
   
-    .user-menu-list  {
+    .user-menu  {
       width                : 100%;
       height               : 100%;
       display              : flex;
-      justify-content      : center;
+      justify-content      : flex-end;
       align-items          : center;
+      margin               : 2px;
+      padding              : 1px;
       list-style           : none;
       font-size            : 13px;
       padding-inline-start : 1px;
@@ -114,6 +117,71 @@
           color  : white;
           margin : 1px;
         }
+      }
+      .user-image, .user-menu-btn {
+        width            : 38px;
+        height           : 38px;
+        display          : flex;
+        justify-content  : center;
+        align-items      : center;
+        background-color : #000000;
+        border           : 1px solid #dddddd;
+        border-radius    : 50%;
+        cursor           : pointer;
+        color            : #dddddd;
+        font-size        :  18px;
+        list-style       : none;
+
+        img {
+          width         : 30px;
+          height        : 30px;
+          border-radius : 50%;
+        }
+      }
+
+
+
+      .user-menu-lists {
+        width            : fit-content;
+        height           : fit-content;
+        display          : none;
+        flex-direction   : column;
+        justify-content  : center;
+        position         : absolute;
+        top              : 53px;
+        right            : 20px;
+        z-index          : 1;
+        background-color : #aaaaaa;
+        padding          : 3px;
+        list-style       : none;
+
+        li {
+          width            : 200px;
+          height           : auto;
+          background-color : #444444;
+          border           : 1px solid #dddddd;
+          padding-left     : 5px;
+          color            : #dddddd;
+          font-size        :  20px;
+          
+          a {
+            width :100%;
+            display         : block;
+            text-decoration : none;
+            cursor           : pointer;
+          }
+          &:hover {
+            background-color : #777777;
+          }
+        }
+        .user-nickname-cell {
+          background-color: #000000;
+          &:hover {
+            background-color : #000000;
+            cursor           :text;
+          }
+        }
+
       }
     }
   }
@@ -158,18 +226,19 @@
         justify-content : space-between;
   
         .btn {
-          width           : 45%;
-          padding         : 0.1vh 0.1vw;
-          margin-right    : 1%;
-          font-size       : 1vw;
+          width        : 45%;
+          padding      : 0.1vh 0.1vw;
+          margin-right : 1%;
+          font-size    : 1vw;
         }
       }
     }
   
     .user-menu-wrap {
       width : 15%;
-      .user-menu-list {
-        font-size : 2%;
+
+      .user-menu .default-image {
+        margin-right : 10px;
       }
     }
   }
