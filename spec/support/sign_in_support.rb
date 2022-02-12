@@ -1,7 +1,7 @@
 module SignInSupport
   def sign_in(user)
     # Basic 認証
-    basic_auth root_path
+    basic_auth(root_path)
     # ログイン
     visit new_user_session_path
     fill_in 'session_email', with: user.email
