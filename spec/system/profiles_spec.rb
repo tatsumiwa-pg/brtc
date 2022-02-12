@@ -13,18 +13,18 @@ RSpec.describe 'プロフィール新規登録', type: :system do
       # 現在のページがプロフィール新規作成ページであることを確認する
       expect(current_path).to eq(new_profile_path)
       # プロフィール情報を入力する(セレクトボックスはchromedriverが関数エラーを起こすため物理的に数字を入れる)
-      find("#profile_age").find("option[value='2']").select_option
+      find('#profile_age').find("option[value='2']").select_option
       fill_in 'job_input', with: @profile.job
       fill_in 'skills_input', with: @profile.skills
       fill_in 'address_input', with: @profile.address
       fill_in 'cat_exp_input', with: @profile.cat_exp
-      find("#profile_family_type").find("option[value='2']").select_option
-      find("#profile_house_env").find("option[value='2']").select_option
+      find('#profile_family_type').find("option[value='2']").select_option
+      find('#profile_house_env').find("option[value='2']").select_option
       fill_in 'my_cats_input', with: @profile.my_cats
       fill_in 'introduction_input', with: @profile.introduction
       attach_file 'profile_user_image', 'public/images/test_image.png'
       # 「保存」ボタンをクリックすると、プロフィールモデルのレコードが１上がっていることを確認する
-      expect  do
+      expect do
         find('input[name="commit"]').click
       end.to change { Profile.count }.by(1)
       # トップページへ遷移したことを確認する
@@ -45,13 +45,13 @@ RSpec.describe 'プロフィール新規登録', type: :system do
       # 現在のページがプロフィール新規作成ページであることを確認する
       expect(current_path).to eq(new_profile_path)
       # プロフィール情報を入力する(セレクトボックスはchromedriverが関数エラーを起こすため物理的に数字を入れる)
-      find("#profile_age").find("option[value='2']").select_option
+      find('#profile_age').find("option[value='2']").select_option
       fill_in 'job_input', with: @profile.job
       fill_in 'skills_input', with: @profile.skills
       fill_in 'address_input', with: @profile.address
       fill_in 'cat_exp_input', with: @profile.cat_exp
-      find("#profile_family_type").find("option[value='2']").select_option
-      find("#profile_house_env").find("option[value='2']").select_option
+      find('#profile_family_type').find("option[value='2']").select_option
+      find('#profile_house_env').find("option[value='2']").select_option
       fill_in 'my_cats_input', with: @profile.my_cats
       fill_in 'introduction_input', with: @profile.introduction
       # 「保存」ボタンをクリックすると、プロフィールモデルのレコードが１上がっていることを確認する
@@ -62,7 +62,7 @@ RSpec.describe 'プロフィール新規登録', type: :system do
       expect(current_path).to eq(root_path)
       # ユーザーのニックネームの頭文字がヘッダーに存在することを確認する
       within('ul', class: 'user-menu') do
-        expect(page).to have_content("#{@user.nickname.slice(0)}")
+        expect(page).to have_content(@user.nickname.slice(0).to_s)
       end
       # 隠されたリストを表示するためのボタンをクリックする
       find('#user_image').click
@@ -85,7 +85,7 @@ RSpec.describe 'プロフィール新規登録', type: :system do
       expect(current_path).to eq(root_path)
       # ユーザーのニックネームの頭文字がヘッダーに存在することを確認する
       within('ul', class: 'user-menu') do
-        expect(page).to have_content("#{@user.nickname.slice(0)}")
+        expect(page).to have_content(@user.nickname.slice(0).to_s)
       end
       # 隠されたリストを表示するためのボタンをクリックする
       find('#user_image').click
@@ -104,7 +104,7 @@ RSpec.describe 'プロフィール新規登録', type: :system do
       # 画像だけをアップロードする
       attach_file 'profile_user_image', 'public/images/test_image.png'
       # 「保存」ボタンをクリックすると、プロフィールモデルのレコードが１上がっていることを確認する
-      expect  do
+      expect do
         find('input[name="commit"]').click
       end.to change { Profile.count }.by(1)
       # トップページへ遷移したことを確認する
@@ -130,14 +130,14 @@ RSpec.describe 'プロフィール新規登録', type: :system do
       # 現在のページがプロフィール新規作成ページであることを確認する
       expect(current_path).to eq(new_profile_path)
       # 「保存」ボタンをクリックしても、プロフィールモデルのレコードが増えていないことを確認する
-      expect  do
+      expect do
         find('input[name="commit"]').click
       end.to change { Profile.count }.by(0)
       # トップページに遷移したことを確認する
       expect(current_path).to eq root_path
       # ユーザーのニックネームの頭文字がヘッダーに存在することを確認する
       within('ul', class: 'user-menu') do
-        expect(page).to have_content("#{@user.nickname.slice(0)}")
+        expect(page).to have_content(@user.nickname.slice(0).to_s)
       end
       # 隠されたリストを表示するためのボタンをクリックする
       find('#user_image').click

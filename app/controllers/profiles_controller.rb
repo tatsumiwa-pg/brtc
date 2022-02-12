@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
 
   def new
     @profile = Profile.new
-    render :layout => 'users'
+    render layout: 'users'
   end
 
   def create
@@ -34,11 +34,11 @@ class ProfilesController < ApplicationController
       @params[:cat_exp],
       @params[:my_cats],
       @params[:introduction],
-      @params[:user_image],
+      @params[:user_image]
     ]
 
-    if ids.all? {|id| id == '1'}
-      others.all? {|other| other.blank?} ? false : true
+    if ids.all? { |id| id == '1' }
+      others.all? { |other| other.blank? } ? false : true
     else
       true
     end
