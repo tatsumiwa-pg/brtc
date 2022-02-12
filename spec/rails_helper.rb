@@ -36,6 +36,7 @@ RSpec.configure do |config|
   config.include BasicAuthSupport
   config.include SignInSupport
   config.include DeleteUserSupport
+  config.include SignUpSupport
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
