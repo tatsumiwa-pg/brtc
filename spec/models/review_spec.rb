@@ -17,11 +17,6 @@ RSpec.describe Review, type: :model do
       @review.valid?
       expect(@review.errors.full_messages).to include("Point can't be blank")
     end
-    it 'userが存在しなければ登録できない' do
-      @review.user = nil
-      @review.valid?
-      expect(@review.errors.full_messages).to include('User must exist')
-    end
     it 'answerが存在しなければ登録できない' do
       @review.answer = nil
       @review.valid?

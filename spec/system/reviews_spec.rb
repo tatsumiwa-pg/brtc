@@ -10,7 +10,7 @@ RSpec.describe '回答へのレビュー', type: :system do
     @answer2 = FactoryBot.create(:answer, user_id: @user2.id, consultation_id: @consultation.id)
     @ans_title = @answer.ans_title
     @ans_title2 = @answer2.ans_title
-    @review2 = FactoryBot.create(:review, point: 1, user_id: @user.id, answer_id: @answer2.id)
+    @review2 = FactoryBot.create(:review, point: 1, answer_id: @answer2.id)
   end
 
   context '回答を評価できるとき' do

@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:point).merge(user_id: current_user.id, answer_id: @answer.id)
+    params.require(:review).permit(:point).merge(answer_id: @answer.id)
   end
 
   def refuse_review
