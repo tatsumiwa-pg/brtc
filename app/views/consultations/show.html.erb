@@ -27,7 +27,7 @@
 
         </div>
       <% else %>
-        <p class="what-do-you-want"><%= link_to @consultation.user.nickname, "#" %>さんの投稿</p>
+        <p class="what-do-you-want"><%= link_to @consultation.user.nickname, default_profile_path(@consultation.user_id)  %>さんの投稿</p>
         <% if @consultation.reconciliation.blank? %>
           <div class="button-box">
             <%= link_to '回答する', new_consultation_answer_path(@consultation.id) %>
@@ -56,10 +56,19 @@
 
     <% if @consultation.reconciliation.present? %>
       <div class="is-reconciled">
-        <%# link_to image_tag(@consultation.user.profile.image), class:"cons-user-image" %>
-        <p class="cons-user-nickname">相談者より</p>
+        <p class="cons-user-nickname">
+          <%= link_to default_profile_path(@consultation.user_id), class:"consultation-user-link" do %>
+            <span class="user-image-c-show">
+              <% if @consultation.user.profile.present? %>
+                <%= image_tag(@consultation.user.profile.user_image) %>
+              <% else %>
+                <%= @consultation.user.nickname.slice(0) %>
+              <% end %>
+            </span>
+          <% end %>
+        </p>
         <div class="rec-text-box">
-          <p><%= "#{@consultation.reconciliation.rec_text}" %>
+          <p><%= @consultation.reconciliation.rec_text %>
         </div>
       </div>
     <% end %>
@@ -187,7 +196,7 @@
           <% @cons_comments.each do |comment| %>
             <div class="cons-comment-box-sub">
               <p class="cons-comment-text-sub"><%= simple_format(h(comment.cons_c_text)) %></p>
-              <p class="cons-comment-username-sub">by: <%= link_to comment.user.nickname, "#" %></p>
+              <p class="cons-comment-username-sub">by: <%= link_to comment.user.nickname, default_profile_path(comment.user_id) %></p>
               <p class="cons-comment-date-sub">__<%= comment.created_at %></p>
             </div>
           <% end %>

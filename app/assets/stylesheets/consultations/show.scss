@@ -28,6 +28,7 @@
       color     : #dddddd; 
       a {
         color :#dddddd;
+        &:hover { color : #777777;}
       }
     }
 
@@ -119,10 +120,26 @@
       justify-content: flex-end;
 
       p {
-        display :flex;
-        align-items : center;
-        color     : #dddddd;
-        font-size : 20px;
+        display      :flex;
+        align-items  : center;
+        margin-right : 10px;
+        color        : #dddddd;
+        font-size    : 20px;
+        .user-image-c-show {
+          width            : 40px;
+          height           : 40px;
+          display          : flex;
+          justify-content  : center;
+          align-items      : center;
+          background-color : #000000;
+          border           : 1px solid #dddddd;
+          border-radius    : 50%;
+          cursor           : pointer;
+          color            : #dddddd;
+          font-size        :  16px;
+          list-style       : none;
+          img { @extend .user-image-c-show; }
+        }
       }
 
       .rec-text-box {
@@ -300,6 +317,7 @@
           border-radius    : 5px;
           margin           : 10px;
           text-decoration  : none;
+          &:hover { background-color: #333333;}
 
           .ans-review {
             width         : fit-content;
@@ -406,6 +424,7 @@
               a {
                 color           : #8a8a8a;
                 text-decoration : none;
+                &:hover { color : #dddddd; }
               }
             }
             .cons-comment-date-sub {
