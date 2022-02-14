@@ -252,6 +252,7 @@
           a {
             color           : #dddddd;
             text-decoration : none;
+            &:hover { color : #777777;}
           }
         }
       }
@@ -407,6 +408,7 @@
             a {
               color           : #8a8a8a;
               text-decoration : none;
+              &:hover { color : #dddddd;}
             }
           }
           .ans-comment-date {

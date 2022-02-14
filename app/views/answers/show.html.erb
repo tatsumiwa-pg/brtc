@@ -90,7 +90,7 @@
 
     <div class="answer-user-wrapper">
       <div class="answer-user-box">
-        <p class="answer-user-nickname">by: <%= link_to @answer.user.nickname, "#" %></p>
+        <p class="answer-user-nickname">by: <%= link_to @answer.user.nickname, default_profile_path(@answer.user_id) %></p>
       </div>
     </div>
 
@@ -154,7 +154,7 @@
         <% @ans_comments.each do |comment| %>
           <div class="ans-comment-box">
             <p class="ans-comment-text"><%= simple_format(h(comment.ans_c_text)) %></p>
-            <p class="ans-comment-username">by: <%= link_to comment.user.nickname, "#" %></p>
+            <p class="ans-comment-username">by: <%= link_to comment.user.nickname, default_profile_path(comment.user_id) %></p>
             <p class="ans-comment-date">__<%= comment.created_at %></p>
           </div>
         <% end %>
