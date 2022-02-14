@@ -2,7 +2,6 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    redirect_to root_path
   end
 
   def new
@@ -23,6 +22,11 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    @reviews = @user.reviews
+    @consultations = @user.consultations.preload(:reconciliation)
+    @answers = @user.answers.preload(:review)
+    @profile = Profile.find_by(user_id: @user.id)
   end
 
   def default
