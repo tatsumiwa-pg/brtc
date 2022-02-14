@@ -1,0 +1,47 @@
+<h2><%= "#{@user.nickname}さんの評価" %></h2>
+<div class="review-box-wrapper">
+  <div class="review-box">
+    <p class="nikukyu-img"><%= image_tag '/assets/nikukyu-3.png', class:"nikukyu-3" %></p>
+    <p><%= @reviews.where(point: 3).size %>件</p>
+  </div>
+  <div class="review-box">
+    <p class="nikukyu-img"><%= image_tag '/assets/nikukyu-2.png', class:"nikukyu-2" %></p>
+    <p><%= @reviews.where(point: 2).size %>件</p>
+  </div>
+  <div class="review-box">
+    <p class="nikukyu-img"><%= image_tag '/assets/nikukyu-1.png', class:"nikukyu-1" %></p>
+    <p><%= @reviews.where(point: 1).size %>件</p>
+  </div>
+</div>
+
+<h2>相談一覧</h2>
+<div class="consultation-list"> 
+  <p>-<%= @consultations.size %>件の投稿-</p>
+  <% @consultations.each do |consultation| %>
+    <div class="consultations">
+      <p class="is-reconciled">
+        <% if consultation.reconciliation.present? %>
+          <%= image_tag 'wakaizumi-3-500px.png' %>
+        <% end %>
+      </p>
+      <%= link_to consultation.cons_title, consultation_path(consultation.id) %>
+    </div>
+  <% end %>
+</div>
+
+<h2>回答一覧</h2>
+<div class="answer-list">
+  <p>-<%= @answers.size %>件の投稿-</p>
+  <% @answers.each do |answer| %>
+    <div class="answers">
+      <p class="ans-review">
+        <% if answer.review.present? %>
+          <% answer.review.point.times do %>
+            <%= image_tag '/assets/nikukyu-1.png' %>
+          <% end %>
+        <% end %>
+      </p>
+      <%= link_to answer.ans_title, answer_path(answer.id) %>
+    </div>
+  <% end %>
+</div>
