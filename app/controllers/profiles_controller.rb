@@ -22,6 +22,19 @@ class ProfilesController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+  end
+
+  def default
+    @user = User.find(params[:id])
+    @reviews = @user.reviews
+    @consultations = @user.consultations.preload(:reconciliation)
+    @answers = @user.answers.preload(:review)
+    if @user.profile.present?
+      redirect_to profile_path(@user.profile.id) and return
+    end
+  end
+
   private
 
   def check_params
@@ -65,4 +78,5 @@ class ProfilesController < ApplicationController
       :user_image
     ).merge(user_id: current_user.id)
   end
+
 end
