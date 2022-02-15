@@ -1,6 +1,5 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_instances, only: [:show, :default]
 
   def index
   end
@@ -23,10 +22,20 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find_by(user_id: @user.id)
+    @profile = Profile.find(params[:id])
+    @user = @profile.user
+    binding.pry
+    @reviews = @user.reviews
+    @consultations = @user.consultations.preload(:reconciliation)
+    @answers = @user.answers.preload(:review)
+
   end
 
   def default
+    @user = User.find(params[:id])
+    @reviews = @user.reviews
+    @consultations = @user.consultations.preload(:reconciliation)
+    @answers = @user.answers.preload(:review)
     if @user.profile.present?
       redirect_to profile_path(@user.profile.id) and return
     end
@@ -74,12 +83,5 @@ class ProfilesController < ApplicationController
       :introduction,
       :user_image
     ).merge(user_id: current_user.id)
-  end
-
-  def set_instances
-    @user = User.find(params[:id])
-    @reviews = @user.reviews
-    @consultations = @user.consultations.preload(:reconciliation)
-    @answers = @user.answers.preload(:review)
   end
 end
