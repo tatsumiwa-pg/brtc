@@ -24,11 +24,9 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
     @user = @profile.user
-    binding.pry
     @reviews = @user.reviews
     @consultations = @user.consultations.preload(:reconciliation)
     @answers = @user.answers.preload(:review)
-
   end
 
   def default
