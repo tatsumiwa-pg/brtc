@@ -73,9 +73,11 @@
     </div>
 
     <div class="button-box">
-      <div class="button">
-        <%= link_to '編集', new_profile_path %>
-      </div>
+      <% if current_user.id == @user.id%>
+        <div class="button">
+          <%= link_to '編集', new_profile_path %>
+        </div>
+      <% end %>
       <div class="button">
         <%= link_to '一覧へ', root_path %>
       </div>
