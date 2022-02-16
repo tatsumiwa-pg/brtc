@@ -24,55 +24,55 @@
 
     <div class="profile-contents">
       <h3 class="content-title">年齢 -age-</h3>
-      <div class="content">
+      <div class="content", id="profile_age">
         <%= @profile.age.name%>
       </div>
     </div>
     <div class="profile-contents">
       <h3 class="content-title">職業 -job-</h3>
-      <div class="content">
+      <div class="content", id="profile_job">
         <%= simple_format(h(@profile.job)) %>
       </div>
     </div>
     <div class="profile-contents">
       <h3 class="content-title">保有資格 -skills-</h3>
-      <div class="content">
+      <div class="content", id="profile_skills">
         <%= simple_format(h(@profile.skills)) %>
       </div>
     </div>
     <div class="profile-contents">
       <h3 class="content-title">住所 -address-</h3>
-      <div class="content">
+      <div class="content", id="profile_address">
         <%= simple_format(h(@profile.address)) %>
       </div>
     </div>
     <div class="profile-contents">
       <h3 class="content-title">ﾈｺ歴 -cat experience-</h3>
-      <div class="content">
+      <div class="content", id="profile_cat_exp">
         <%= simple_format(h(@profile.cat_exp)) %>
       </div>
     </div>
     <div class="profile-contents">
       <h3 class="content-title">家族構成 -family type-</h3>
-      <div class="content">
+      <div class="content", id="profile_family_type">
         <%= @profile.family_type.name %>
       </div>
     </div>
     <div class="profile-contents">
       <h3 class="content-title">住環境 -house environment-</h3>
-      <div class="content">
+      <div class="content", id="profile_house_env">
         <%= @profile.house_env.name %>
       </div>
     </div>
     <div class="profile-contents">
       <h3 class="content-title">わたしのﾈｺ -my cats-</h3>
-      <div class="content">
+      <div class="content", id="profile_my_cats">
         <%= simple_format(h(@profile.my_cats)) %>
       </div>
     </div>
     <div class="profile-contents">
       <h3 class="content-title">自己紹介 -self introduction-</h3>
-      <div class="content">
+      <div class="content", id="profile_introduction">
         <%= simple_format(h(@profile.introduction)) %>
       </div>
     </div>
