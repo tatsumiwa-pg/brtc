@@ -23,7 +23,7 @@ RSpec.describe '相談へのコメント投稿', type: :system do
       find('input[name="commit"]').click
       # 相談詳細表示ページには先ほど保存した内容が存在する（テキスト）
       expect(page).to have_content(@cons_c_text)
-      # 相談詳細表示ページには先ほど保存した内容の存在する（ユーザーニックネーム）
+      # 相談詳細表示ページには先ほど保存した内容が存在する（ユーザーニックネーム）
       within('div#comments') do
         expect(page).to have_selector('a', text: @user.nickname)
       end
