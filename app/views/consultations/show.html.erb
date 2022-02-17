@@ -167,7 +167,14 @@
               </p>
             <% end %>
             <p class="ans-title-sub"><%= answer.ans_title %></p>
-            <p class="ans-username-sub">by: <%= answer.user.nickname %></p>
+            <div class="ans-username-sub">by: 
+              <% if answer.user.profile.present? && answer.user.profile.user_image.attached? %>
+                <%= image_tag answer.user.profile.user_image, class:"answer-user-image" %>
+              <% else %>
+                <p class="answer-user-image"><%= answer.user.nickname.slice(0) %></p>
+              <%end%>
+              <%= answer.user.nickname %>
+            </div>
           <% end %>
         <% end%>
       </div>
@@ -195,8 +202,15 @@
           <p id="comment_num"><%= "#{@cons_comments.size}件のコメント" %></p>
           <% @cons_comments.each do |comment| %>
             <div class="cons-comment-box-sub">
-              <p class="cons-comment-text-sub"><%= simple_format(h(comment.cons_c_text)) %></p>
-              <p class="cons-comment-username-sub">by: <%= link_to comment.user.nickname, default_profile_path(comment.user_id) %></p>
+              <%= simple_format(h(comment.cons_c_text)) %>
+              <%= link_to default_profile_path(comment.user_id), class:"cons-comment-username-sub" do %>by:
+                <% if comment.user.profile.present? && comment.user.profile.user_image.attached? %>
+                  <%= image_tag comment.user.profile.user_image, class:"comment-user-image" %>
+                <% else %>
+                  <p class="comment-user-image"><%= comment.user.nickname.slice(0) %></p>
+                <% end %>
+                <%= comment.user.nickname %>
+              <% end %>
               <p class="cons-comment-date-sub">__<%= comment.created_at %></p>
             </div>
           <% end %>

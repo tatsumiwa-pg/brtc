@@ -335,9 +335,33 @@
             margin : 3px 0 0 5px;
             color  : #dddddd;
           }
+          
           .ans-username-sub {
-            margin : 0 3px 0 5px;
-            color  : #8a8a8a;
+            margin      : 0 3px 0 5px;
+            color       : #8a8a8a;
+            display     : flex;
+            align-items : center;
+
+            .answer-user-image {
+              width            : 16px;
+              height           : 16px;
+              display          : flex;
+              justify-content  : center;
+              align-items      : center;
+              background-color : #000000;
+              border           : 1px solid #dddddd;
+              border-radius    : 50%;
+              margin           : 0 5px 0 10px;
+              cursor           : pointer;
+              color            : #dddddd;
+              font-size        :  16px;
+              list-style       : none;
+    
+              img {
+                @extend .answer-user-image;
+                margin  : 0 7px 0 7px
+              }
+            }
           }
         }
 
@@ -415,18 +439,48 @@
             margin           : 10px;
             color           : #8a8a8a;
 
-            .cons-comment-text-sub {
-              margin : 3px 0 0 5px;
-              color  : #dddddd;
+            p {
+              margin-top : 5px;
+              margin-bottom : 3px;
+              padding : 5px;
+              color   : #dddddd;
             }
+
             .cons-comment-username-sub {
-              margin : 0 3px 0 5px;
-              a {
-                color           : #8a8a8a;
-                text-decoration : none;
-                &:hover { color : #dddddd; }
+              height      : 20px;
+              display     : flex;
+              align-items : center; 
+              margin      : 0 3px 0 5px;
+              color           : #8a8a8a;
+              text-decoration : none;
+              &:hover { color : #dddddd; }
+
+              .comment-user-image {
+                width            : 16px;
+                height           : 16px;
+                display          : flex;
+                justify-content  : center;
+                align-items      : center;
+                background-color : #000000;
+                border           : 1px solid #dddddd;
+                border-radius    : 50%;
+                margin           : 0 5px 0 10px;
+                cursor           : pointer;
+                color            : #dddddd;
+                font-size        :  16px;
+                list-style       : none;
+      
+                img {
+                  @extend .comment-user-image;
+                  margin  : 0 7px 0 7px
+                }
+
+                p {
+                  margin : 0 auto;
+                }
               }
             }
+
             .cons-comment-date-sub {
               color     : #8a8a8a;
               font-size : 14px;
