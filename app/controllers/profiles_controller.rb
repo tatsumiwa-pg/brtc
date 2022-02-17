@@ -41,19 +41,27 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
+  def update
+    @profile = Profile.find(params[:id])
+    if @profile.update(profile_params)
+      redirect_to profile_path(@profile.id) and return
+    else
+      render :new
+    end
+  end
+
   private
 
   def check_params
-    @params = params[:profile]
-    ids = [@params[:age_id], @params[:family_type_id], @params[:house_env_id]]
+    ids = [ params[:profile][:age_id], params[:profile][:family_type_id], params[:profile][:house_env_id] ]
     others = [
-      @params[:job],
-      @params[:skills],
-      @params[:address],
-      @params[:cat_exp],
-      @params[:my_cats],
-      @params[:introduction],
-      @params[:user_image]
+      params[:profile][:job],
+      params[:profile][:skills],
+      params[:profile][:address],
+      params[:profile][:cat_exp],
+      params[:profile][:my_cats],
+      params[:profile][:introduction],
+      params[:profile][:user_image]
     ]
 
     if ids.all? { |id| id == '1' }
@@ -64,12 +72,12 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    @params[:job] = '未記入' if @params[:job].blank?
-    @params[:skills] = '未記入' if @params[:skills].blank?
-    @params[:address] = '未記入' if @params[:address].blank?
-    @params[:cat_exp] = '未記入' if @params[:cat_exp].blank?
-    @params[:my_cats] = '未記入' if @params[:my_cats].blank?
-    @params[:introduction] = '未記入' if @params[:introduction].blank?
+    params[:profile][:job] = '未記入' if params[:profile][:job].blank?
+    params[:profile][:skills] = '未記入' if params[:profile][:skills].blank?
+    params[:profile][:address] = '未記入' if params[:profile][:address].blank?
+    params[:profile][:cat_exp] = '未記入' if params[:profile][:cat_exp].blank?
+    params[:profile][:my_cats] = '未記入' if params[:profile][:my_cats].blank?
+    params[:profile][:introduction] = '未記入' if params[:profile][:introduction].blank?
 
     params.require(:profile).permit(
       :age_id,
