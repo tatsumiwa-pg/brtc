@@ -20,7 +20,7 @@ document.addEventListener('turbolinks:load', function() {
         const html = `
           <div class="cons-comment-box-sub" id="added_box_${data.cons_comments.length}">
             <p class="cons-comment-text-sub">${data.cons_comment.cons_c_text}</p>
-            <p class="cons-comment-username-sub">by: <a href=/profiles/${data.user.id}/default>${data.user.nickname}</a></p>
+            <a href=/profiles/${data.user.id}/default class="cons-comment-username-sub">by: ${data.user.nickname}</a>
             <p class="cons-comment-date-sub">__${data.cons_comment.created_at}__New!</p>
           </div>`
         const commentNum = document.getElementById('comment_num');
