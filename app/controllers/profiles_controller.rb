@@ -34,9 +34,7 @@ class ProfilesController < ApplicationController
     @reviews = @user.reviews
     @consultations = @user.consultations.preload(:reconciliation)
     @answers = @user.answers.preload(:review)
-    if @user.profile.present?
-      redirect_to profile_path(@user.profile.id) and return
-    end
+    redirect_to profile_path(@user.profile.id) and return if @user.profile.present?
   end
 
   private
@@ -55,7 +53,7 @@ class ProfilesController < ApplicationController
     ]
 
     if ids.all? { |id| id == '1' }
-      others.all? { |other| other.blank? } ? false : true
+      others.all?(&:blank?) ? false : true
     else
       true
     end

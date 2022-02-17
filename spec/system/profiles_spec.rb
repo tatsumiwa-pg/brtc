@@ -150,7 +150,6 @@ RSpec.describe 'プロフィール新規登録', type: :system do
   end
 end
 
-
 RSpec.describe 'プロフィール詳細表示', type: :system do
   before do
     @user = FactoryBot.create(:user)
@@ -204,11 +203,11 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
         expect(1).to eq @user.consultations.size
       end
       # 過去に投稿した相談のタイトルが表示されている
-      within('div', class:'consultation-list') do
+      within('div', class: 'consultation-list') do
         expect(page).to have_content(@consultation.cons_title)
       end
       # 和解済みの相談には「済」マークがタイトル横に表示されている
-      within('div', class:'consultations', match: :first) do
+      within('div', class: 'consultations', match: :first) do
         expect(page).to have_selector('#wakaizumi_img')
       end
       # 過去に投稿した回答件数が表示されている
@@ -216,7 +215,7 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
         expect(1).to eq @user.answers.size
       end
       # 過去に投稿した回答のタイトルが表示されている
-      within('div', class:'answer-list') do
+      within('div', class: 'answer-list') do
         expect(page).to have_content(@answer2.ans_title)
       end
       # 評価された回答には、その評価のマークが表示されている
@@ -224,16 +223,15 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
         expect(page.all('img', class: 'review-image').count).to eq @review.point
       end
 
-      
       # 登録してあるユーザーニックネームが表示されている
       within('h2', class: 'profile-title') do
         expect(page).to have_content(@user.nickname)
       end
       # 登録してあるプロフィール情報が表示されている（画像）
-      expect(page).to have_selector('img', class:'user-image')
+      expect(page).to have_selector('img', class: 'user-image')
       # プロフィール画像の下に「編集」ボタンが表示されている
-      within('div', class:'button-box-top') do
-        expect(page).to have_selector('a', text:'編集')
+      within('div', class: 'button-box-top') do
+        expect(page).to have_selector('a', text: '編集')
       end
       # 登録してあるプロフィール情報が表示されている（年齢）
       within('#profile_age') do
@@ -272,16 +270,16 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
         expect(page).to have_content(@profile.introduction)
       end
       # 画面下部に「編集」ボタンが表示されている
-      within('div', class:'button-box') do
-        expect(page).to have_selector('a', text:'編集')
+      within('div', class: 'button-box') do
+        expect(page).to have_selector('a', text: '編集')
       end
       # 画面下部に「一覧へ」ボタンが表示されている
-      within('div', class:'button-box') do
-        expect(page).to have_selector('a', text:'一覧へ')
+      within('div', class: 'button-box') do
+        expect(page).to have_selector('a', text: '一覧へ')
       end
       # 画面下部に「戻る」ボタンが表示されている
-      within('div', class:'button-box') do
-        expect(page).to have_selector('a', text:'戻る')
+      within('div', class: 'button-box') do
+        expect(page).to have_selector('a', text: '戻る')
       end
     end
 
@@ -304,7 +302,7 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
       # 現在のページが相談詳細表示ページであること確認する
       expect(current_path).to eq consultation_path(@consultation.id)
       # 和解済みの際に表示されるユーザーアイコンをクリックする
-      find('a', class:'consultation-user-link').click
+      find('a', class: 'consultation-user-link').click
       # 現在のページが自身のプロフィール詳細表示ページであることを確認する
       expect(page).to have_content("#{@user.nickname}さんのプロフィール")
       # 「一覧へ」ボタンを押す
@@ -383,12 +381,12 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
       expect(page).to have_content(@ans_c_text)
       # 回答詳細表示ページには先ほど保存した内容の存在する（ユーザーニックネーム）
       within('div#comments') do
-       find('a', text: @user.nickname, match: :first).click
+        find('a', text: @user.nickname, match: :first).click
       end
       # 現在のページが自身のプロフィール詳細表示ページであることを確認する
       expect(page).to have_content("#{@user.nickname}さんのプロフィール")
     end
-    
+
     it '他のユーザーのニックネームをクリックすると、そのユーザーのプロフィール詳細表示ページへ遷移できる' do
       # ログインする
       sign_in(@user2)
@@ -414,11 +412,11 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
         expect(1).to eq @user.consultations.size
       end
       # 過去に投稿した相談のタイトルが表示されている
-      within('div', class:'consultation-list') do
+      within('div', class: 'consultation-list') do
         expect(page).to have_content(@consultation.cons_title)
       end
       # 和解済みの相談には「済」マークがタイトル横に表示されている
-      within('div', class:'consultations', match: :first) do
+      within('div', class: 'consultations', match: :first) do
         expect(page).to have_selector('#wakaizumi_img')
       end
       # 過去に投稿した回答件数が表示されている
@@ -426,7 +424,7 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
         expect(1).to eq @user.answers.size
       end
       # 過去に投稿した回答のタイトルが表示されている
-      within('div', class:'answer-list') do
+      within('div', class: 'answer-list') do
         expect(page).to have_content(@answer2.ans_title)
       end
       # 評価された回答には、その評価のマークが表示されている
@@ -439,9 +437,9 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
         expect(page).to have_content(@user.nickname)
       end
       # 該当ユーザーのプロフィール情報が表示されている（画像）
-      expect(page).to have_selector('img', class:'user-image')
+      expect(page).to have_selector('img', class: 'user-image')
       # プロフィール画像の下に「編集」ボタンが表示されていない
-      expect(page).to have_no_selector('div', class:'button-box-top')
+      expect(page).to have_no_selector('div', class: 'button-box-top')
       # 該当ユーザーのプロフィール情報が表示されている（年齢）
       within('#profile_age') do
         expect(page).to have_content(@profile.age.name)
@@ -479,16 +477,16 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
         expect(page).to have_content(@profile.introduction)
       end
       # 画面下部に「編集」ボタンが表示されていない
-      within('div', class:'button-box') do
-        expect(page).to have_no_selector('a', text:'編集')
+      within('div', class: 'button-box') do
+        expect(page).to have_no_selector('a', text: '編集')
       end
       # 画面下部に「一覧へ」ボタンが表示されている
-      within('div', class:'button-box') do
-        expect(page).to have_selector('a', text:'一覧へ')
+      within('div', class: 'button-box') do
+        expect(page).to have_selector('a', text: '一覧へ')
       end
       # 画面下部に「戻る」ボタンが表示されている
-      within('div', class:'button-box') do
-        expect(page).to have_selector('a', text:'戻る')
+      within('div', class: 'button-box') do
+        expect(page).to have_selector('a', text: '戻る')
       end
     end
 
@@ -511,7 +509,7 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
       # 現在のページが相談詳細表示ページであること確認する
       expect(current_path).to eq consultation_path(@consultation.id)
       # 和解済みの際に表示されるユーザーアイコンをクリックする
-      find('a', class:'consultation-user-link').click
+      find('a', class: 'consultation-user-link').click
       # 現在のページが該当ユーザーのプロフィール詳細表示ページであることを確認する
       expect(page).to have_content("#{@user.nickname}さんのプロフィール")
       # 「一覧へ」ボタンを押す
@@ -595,11 +593,11 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
         expect(1).to eq @user2.consultations.size
       end
       # 過去に投稿した相談のタイトルが表示されている
-      within('div', class:'consultation-list') do
+      within('div', class: 'consultation-list') do
         expect(page).to have_content(@consultation2.cons_title)
       end
       # 和解済みの相談には「済」マークがタイトル横に表示されている
-      within('div', class:'consultations', match: :first) do
+      within('div', class: 'consultations', match: :first) do
         expect(page).to have_selector('#wakaizumi_img')
       end
       # 過去に投稿した回答件数が表示されている
@@ -607,14 +605,14 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
         expect(1).to eq @user2.answers.size
       end
       # 過去に投稿した回答のタイトルが表示されている
-      within('div', class:'answer-list') do
+      within('div', class: 'answer-list') do
         expect(page).to have_content(@answer.ans_title)
       end
       # 評価された回答には、その評価のマークが表示されている
       within('p', class: 'ans-review') do
         expect(page.all('img', class: 'review-image').count).to eq @review2.point
       end
-      
+
       # 登録してあるユーザーニックネームが表示されている
       within('h2', class: 'profile-title') do
         expect(page).to have_content(@user2.nickname)
@@ -622,8 +620,8 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
       # プロフィール画像がない場合の表示があることを確認する（画像）
       expect(page).to have_selector('p', class: 'no-images')
       # プロフィール画像の下に「編集」ボタンが表示されている
-      within('div', class:'button-box-top') do
-        expect(page).to have_selector('a', text:'編集')
+      within('div', class: 'button-box-top') do
+        expect(page).to have_selector('a', text: '編集')
       end
       # 登録してあるプロフィール情報が表示されている（年齢）
       within('#profile_age') do
@@ -662,16 +660,16 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
         expect(page).to have_content('未記入')
       end
       # 画面下部に「編集」ボタンが表示されている
-      within('div', class:'button-box') do
-        expect(page).to have_selector('a', text:'編集')
+      within('div', class: 'button-box') do
+        expect(page).to have_selector('a', text: '編集')
       end
       # 画面下部に「一覧へ」ボタンが表示されている
-      within('div', class:'button-box') do
-        expect(page).to have_selector('a', text:'一覧へ')
+      within('div', class: 'button-box') do
+        expect(page).to have_selector('a', text: '一覧へ')
       end
       # 画面下部に「戻る」ボタンが表示されている
-      within('div', class:'button-box') do
-        expect(page).to have_selector('a', text:'戻る')
+      within('div', class: 'button-box') do
+        expect(page).to have_selector('a', text: '戻る')
       end
     end
 
@@ -694,7 +692,7 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
       # 現在のページが相談詳細表示ページであること確認する
       expect(current_path).to eq consultation_path(@consultation2.id)
       # 和解済みの際に表示されるユーザーアイコンをクリックする
-      find('a', class:'consultation-user-link').click
+      find('a', class: 'consultation-user-link').click
       # 現在のページが自身のプロフィール詳細表示ページであることを確認する
       expect(current_path).to eq default_profile_path(@user2.id)
       # 「一覧へ」ボタンを押す
@@ -773,7 +771,7 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
       expect(page).to have_content('テスト')
       # 回答詳細表示ページには先ほど保存した内容の存在する（ユーザーニックネーム）
       within('div#comments') do
-       find('a', text: @user2.nickname, match: :first).click
+        find('a', text: @user2.nickname, match: :first).click
       end
       # 現在のページが自身のプロフィール詳細表示ページであることを確認する
       expect(current_path).to eq default_profile_path(@user2.id)
@@ -804,11 +802,11 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
         expect(1).to eq @user2.consultations.size
       end
       # 過去に投稿した相談のタイトルが表示されている
-      within('div', class:'consultation-list') do
+      within('div', class: 'consultation-list') do
         expect(page).to have_content(@consultation2.cons_title)
       end
       # 和解済みの相談には「済」マークがタイトル横に表示されている
-      within('div', class:'consultations', match: :first) do
+      within('div', class: 'consultations', match: :first) do
         expect(page).to have_selector('#wakaizumi_img')
       end
       # 過去に投稿した回答件数が表示されている
@@ -816,7 +814,7 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
         expect(1).to eq @user2.answers.size
       end
       # 過去に投稿した回答のタイトルが表示されている
-      within('div', class:'answer-list') do
+      within('div', class: 'answer-list') do
         expect(page).to have_content(@answer.ans_title)
       end
       # 評価された回答には、その評価のマークが表示されている
@@ -831,7 +829,7 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
       # プロフィール画像がない場合の表示があることを確認する（画像）
       expect(page).to have_selector('p', class: 'no-images')
       # プロフィール画像の下に「編集」ボタンが表示されていないことを確認する
-      expect(page).to have_no_selector('div', class:'button-box-top')
+      expect(page).to have_no_selector('div', class: 'button-box-top')
       # 初期プロフィール情報が表示されている（年齢）
       within('#profile_age') do
         expect(page).to have_content('未選択')
@@ -869,16 +867,16 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
         expect(page).to have_content('未記入')
       end
       # 画面下部に「編集」ボタンが表示されていないことを確認する
-      within('div', class:'button-box') do
-        expect(page).to have_no_selector('a', text:'編集')
+      within('div', class: 'button-box') do
+        expect(page).to have_no_selector('a', text: '編集')
       end
       # 画面下部に「一覧へ」ボタンが表示されている
-      within('div', class:'button-box') do
-        expect(page).to have_selector('a', text:'一覧へ')
+      within('div', class: 'button-box') do
+        expect(page).to have_selector('a', text: '一覧へ')
       end
       # 画面下部に「戻る」ボタンが表示されている
-      within('div', class:'button-box') do
-        expect(page).to have_selector('a', text:'戻る')
+      within('div', class: 'button-box') do
+        expect(page).to have_selector('a', text: '戻る')
       end
     end
 
@@ -901,7 +899,7 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
       # 現在のページが相談詳細表示ページであること確認する
       expect(current_path).to eq consultation_path(@consultation2.id)
       # 和解済みの際に表示されるユーザーアイコンをクリックする
-      find('a', class:'consultation-user-link').click
+      find('a', class: 'consultation-user-link').click
       # 現在のページが該当ユーザーのプロフィール詳細表示ページであることを確認する
       expect(page).to have_content("#{@user2.nickname}さんのプロフィール")
       # 「一覧へ」ボタンを押す
@@ -939,7 +937,7 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
       # 現在のページが該当ユーザーのプロフィール詳細表示ページであることを確認する
       expect(current_path).to eq default_profile_path(@user2.id)
     end
-    
+
     it 'ログアウト状態ではユーザーのプロフィール詳細表示ページへ遷移できず、ログインページへ遷移する' do
       # Basic認証（ログインはしない）
       basic_auth(path)

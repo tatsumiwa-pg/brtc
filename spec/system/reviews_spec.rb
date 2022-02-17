@@ -18,7 +18,7 @@ RSpec.describe '回答へのレビュー', type: :system do
       # ログインする
       sign_in(@user)
       # 相談詳細表示ページへ移動する
-      within('div', class:'content-wrap') do
+      within('div', class: 'content-wrap') do
         find('a', text: @cons_title, match: :first).click
       end
       # 現在のページが相談詳細表示ページであること確認する
