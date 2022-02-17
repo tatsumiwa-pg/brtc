@@ -6,10 +6,10 @@ class ConsultationsController < ApplicationController
   def index
     @consultations = Consultation.left_joins(:reconciliation).where(
       reconciliations: { consultation_id: nil }
-    ).includes(:user, :answers).order('updated_at DESC')
-    @reconciled_consultations = Consultation.left_joins(:reconciliation).where.not(
+    ).preload([user: :profile], :answers).order('updated_at DESC')
+    @reconciled_consultations = Consultation.joins(:reconciliation).where.not(
       reconciliations: { consultation_id: nil }
-    ).includes(:user, :answers).order('updated_at DESC')
+    ).preload([user: :profile], :answers).order('updated_at DESC')
   end
 
   def new
@@ -26,9 +26,9 @@ class ConsultationsController < ApplicationController
   end
 
   def show
-    @answers = Answer.where(consultation_id: @consultation.id).includes(:user, :review).order('updated_at DESC')
+    @answers = @consultation.answers.preload([user: :profile], :review).order('updated_at DESC')
     @cons_comment = ConsComment.new
-    @cons_comments = ConsComment.where(consultation_id: @consultation.id).includes(:user, :consultation).order('created_at DESC')
+    @cons_comments = @consultation.cons_comments.preload(user: :profile).order('created_at DESC')
   end
 
   def edit
@@ -50,8 +50,14 @@ class ConsultationsController < ApplicationController
   private
 
   def consultation_params
-    params.require(:consultation).permit(:cons_title, :category_id, :summary, :situation, :problem,
-                                         :cons_image).merge(user_id: current_user.id)
+    params.require(:consultation).permit(
+      :cons_title,
+      :category_id,
+      :summary,
+      :situation,
+      :problem,
+      :cons_image
+    ).merge(user_id: current_user.id)
   end
 
   def set_consultation
