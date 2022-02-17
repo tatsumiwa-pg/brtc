@@ -12,5 +12,9 @@ Rails.application.routes.draw do
     resources :reconciliations, only: [:index, :new, :create]
     resources :cons_comments, only: :create
   end
-  resources :profiles, only: [:index, :new, :create]
+  resources :profiles, only: [:index, :new, :create, :show] do
+    member do
+      get 'default'
+    end
+  end
 end

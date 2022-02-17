@@ -22,9 +22,9 @@ class AnswersController < ApplicationController
 
   def show
     @answer = Answer.find(params[:id])
-    @consultation = Consultation.find_by(id: @answer.consultation_id)
+    @consultation = @answer.consultation
     @ans_comment = AnsComment.new
-    @ans_comments = @answer.ans_comments.includes(:user).order('created_at DESC')
+    @ans_comments = @answer.ans_comments.preload(user: :profile).order('created_at DESC')
     @review = Review.new
   end
 
@@ -35,8 +35,11 @@ class AnswersController < ApplicationController
   end
 
   def answer_params
-    params.require(:answer).permit(:ans_title, :ans_text, :ans_image).merge(user_id: current_user.id,
-                                                                            consultation_id: @consultation.id)
+    params.require(:answer).permit(
+      :ans_title,
+      :ans_text,
+      :ans_image
+    ).merge(user_id: current_user.id, consultation_id: @consultation.id)
   end
 
   def refuse_answer

@@ -31,7 +31,6 @@ ___
 - has_many :answers
 - has_many :cons_comments
 - has_many :ans_comments
-- has_many :reviews
 - has_one  :profile
 
 <br>
@@ -139,11 +138,9 @@ ___
 | Column  | Type       | Options                        |
 |---------|------------|--------------------------------|
 | point   | integer    | null: false                    |
-| user    | references | null: false, foreign_key: true |
 | answer  | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user
 - belongs_to :answer
 
 <br>

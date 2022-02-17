@@ -23,7 +23,7 @@ RSpec.describe '相談へのコメント投稿', type: :system do
       find('input[name="commit"]').click
       # 相談詳細表示ページには先ほど保存した内容が存在する（テキスト）
       expect(page).to have_content(@cons_c_text)
-      # 相談詳細表示ページには先ほど保存した内容の存在する（ユーザーニックネーム）
+      # 相談詳細表示ページには先ほど保存した内容が存在する（ユーザーニックネーム）
       within('div#comments') do
         expect(page).to have_selector('a', text: @user.nickname)
       end
@@ -86,9 +86,6 @@ RSpec.describe '相談へのコメント投稿', type: :system do
       end
       # 連続投稿しても投稿内容が反映されることを確認
       fill_in 'cons_comment[cons_c_text]', with: @cons_c_text
-      expect do
-        find('input[name="commit"]').click
-      end.to change { ConsComment.count }.by(1)
       expect(page).to have_content(@cons_c_text)
       within('p#comment_num') do
         expect(page).to have_content(@consultation.cons_comments.size)

@@ -4,8 +4,13 @@ document.addEventListener('turbolinks:load', function() {
 
     const reviewButton1 = document.getElementById('review_button1');
     const reviewButton2 = document.getElementById('review_button2');
-    reviewButton1.addEventListener('click', startReview);
-    reviewButton2.addEventListener('click', startReview);
+    
+    if (reviewButton1 !== null ) {
+      reviewButton1.addEventListener('click', startReview);
+    }
+    if (reviewButton1 !== null ) {
+      reviewButton2.addEventListener('click', startReview);
+    }
 
     function startReview() {
       const floatMessageBox = document.getElementById("float_message_box");
@@ -29,7 +34,6 @@ document.addEventListener('turbolinks:load', function() {
       };
 
     function postReview() {
-      console.log('読み込み完了')
       const form = document.getElementById('review_form_wrapper');    
       this.floats.removeAttribute('style', 'display: flex');
       const formData = new FormData(form);

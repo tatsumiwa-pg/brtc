@@ -2,7 +2,6 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    redirect_to root_path
   end
 
   def new
@@ -22,6 +21,22 @@ class ProfilesController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+    @profile = Profile.find(params[:id])
+    @user = @profile.user
+    @reviews = @user.reviews
+    @consultations = @user.consultations.preload(:reconciliation)
+    @answers = @user.answers.preload(:review)
+  end
+
+  def default
+    @user = User.find(params[:id])
+    @reviews = @user.reviews
+    @consultations = @user.consultations.preload(:reconciliation)
+    @answers = @user.answers.preload(:review)
+    redirect_to profile_path(@user.profile.id) and return if @user.profile.present?
+  end
+
   private
 
   def check_params
@@ -38,7 +53,7 @@ class ProfilesController < ApplicationController
     ]
 
     if ids.all? { |id| id == '1' }
-      others.all? { |other| other.blank? } ? false : true
+      others.all?(&:blank?) ? false : true
     else
       true
     end

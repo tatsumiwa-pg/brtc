@@ -6,7 +6,6 @@ document.addEventListener('turbolinks:load', function() {
   if (userImage !== null) {
   
     userImage.addEventListener('click', () => {
-      console.log('a')
       if (hiddenList.getAttribute('style') == 'display: block;') {
         hiddenList.removeAttribute('style', 'display: block;')
       } else {

@@ -1,0 +1,211 @@
+.content-wrapper {
+  width       : 100%;
+  height      : fit-content;
+  display     : flex;
+  padding-top : 50px;
+  color       : #dddddd;
+  @media (max-width: 858px) {
+    flex-direction : column-reverse;
+    justify-content: flex-end;
+  }
+  
+  .side-bar {
+    width          : 30%;
+    height         : 100%;
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    border-right   : 1px solid #dddddd;
+    @media (max-width: 858px) {
+      width : 100%;
+      height : fit-content;
+      border-right : none;
+    }
+
+    h2 {
+      margin    : 15px auto 5px auto;
+      font-size : 22px;
+    }
+
+    .review-box-wrapper {
+      width         : 90%;
+      border        : 2px solid #dddddd;
+      border-radius : 5px;
+
+      .review-box {
+        display : flex;
+        height  : 35px;
+        
+        .nikukyu-img {
+          width  : 100px;
+          height : 25px;
+          margin : 2px 10px;
+          .nikukyu-3 { width : 75px; height : 25px; }
+          .nikukyu-2 { width : 50px; height : 25px; }
+          .nikukyu-1 { width : 25px; height : 25px; }
+        }
+
+        p {
+          margin    : 5px auto 5px 10px;
+          font-size : 20px;
+        }
+      }
+    }
+
+    .consultation-list {
+      width          : 90%;
+      height         : fit-content;
+      min-height     : 300px;
+      display        : flex;
+      flex-direction : column;
+      align-items    : center;
+      overflow-y     : scroll;
+      border         : 2px solid #dddddd;
+      border-radius  : 5px;
+
+      .consultations {
+        width        : 95%;
+        display      : flex;
+        table-layout : fixed;
+        border       : 1px solid #555555;
+        margin       : 5px auto;
+        padding      : 2px 5px;
+        
+        .is-reconciled {
+          width           : 10%;
+          min-width       : 25px;
+          min-height      : 25px;
+          display         : flex;
+          justify-content : center;
+          align-items     : center;
+          margin          : auto 3px;
+          img { width : 25px; height : 25px; }
+        }
+      
+        a {
+          width      : 85%;
+          min-height : 25px;
+          word-wrap  : break-word;
+          color      :#bbbbbb;
+          &:hover { color : #777777; }
+        }
+      }
+    }
+
+    .answer-list {
+      @extend .consultation-list;
+      margin-bottom  : 30px;
+      
+      .answers {
+        @extend .consultations;
+        flex-direction : column;
+        @media (max-width: 858px) {
+          flex-direction : row;
+        }
+        @media (max-width: 500px) {
+          flex-direction : column;
+        }
+        
+        .ans-review {
+          width       : 100px;
+          height      : fit-content;
+          display     : flex;
+          align-items : center;
+          margin      : 3px 0 0 0;
+          img { width: 15px; height: 15px; }
+
+          @media (max-width: 858px) {
+            width : 75px;
+          }
+          @media (max-width: 500px) {
+            width : 100px;
+          }
+          a { word-wrap  : break-word; }
+        }
+      }
+    }
+  }
+
+  .main-content {
+    width          : 70%;
+    height         : 100%;
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    border-left    : 2px solid #dddddd;
+    @media (max-width: 858px) {
+      width         : 100%;
+      height        : fit-content;
+      border-left   : none;
+      border-bottom : 2px solid #dddddd;
+    }
+
+    .profile-title {
+      margin  : 20px;
+    }
+
+    .user-image {
+      max-width  : 500px;
+      min-width  : 100px;
+      @media(max-width: 500px) {
+        max-width :300px;
+      }
+    }
+
+    .profile-contents {
+      width          : 90%;
+      display        : flex;
+      flex-direction : column;
+      padding        : 10px;
+
+      .content-title {
+        margin-bottom : 3px;
+      }
+      .content {
+        border        : 2px solid #dddddd;
+        border-radius : 10px;
+        padding       : 10px;
+      }
+    }
+
+    .button-box {
+      width   : 90%;
+      display : flex;
+      margin          : 30px auto;
+      padding-right   : 20px;
+      @media (max-width : 400px) {
+        flex-direction : column;
+        align-items    : flex-end;
+      }
+
+      .button {
+        width            : 30%;
+        min-width        : 150px;
+        height           : 10%;
+        min-height       : 50px;
+        background-color : #000000;
+        display          : flex;
+        justify-content  : center;
+        align-items      : center;
+        border           : 2px solid #ffffff;
+        border-radius    : 10px;
+        margin           : 10px 15px;
+        font-size        : 30px;
+        a { color            : #dddddd;
+            text-decoration  : none;
+          }
+        &:hover {
+          box-shadow    : none;
+          color         : #ffffff;
+          background    : #a3a2a2; 
+        }
+      }
+    }
+
+    .button-box-top {
+      @extend .button-box;
+      justify-content: flex-end;
+      margin          : 5px
+    }
+  }
+}
