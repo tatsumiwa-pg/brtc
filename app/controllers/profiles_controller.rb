@@ -31,10 +31,10 @@ class ProfilesController < ApplicationController
 
   def default
     @user = User.find(params[:id])
+    redirect_to profile_path(@user.profile.id) and return if @user.profile.present?
     @reviews = @user.reviews
     @consultations = @user.consultations.preload(:reconciliation)
     @answers = @user.answers.preload(:review)
-    redirect_to profile_path(@user.profile.id) and return if @user.profile.present?
   end
 
   def edit
@@ -51,6 +51,10 @@ class ProfilesController < ApplicationController
   end
 
   private
+
+  #def check_user_and_profile
+  #  redirect_to default_profile_path 
+  #end
 
   def check_params
     ids = [ params[:profile][:age_id], params[:profile][:family_type_id], params[:profile][:house_env_id] ]
