@@ -120,7 +120,7 @@ RSpec.describe 'ログイン', type: :system do
       # サインアップページへ遷移するボタンやログインページへ遷移するボタンが表示されていないことを確認する
       expect(page).to have_no_content('新規登録')
       expect(page).to have_no_content('ログイン')
-      # カーソルを合わせるとログアウトボタンが表示されることを確認する
+      # リストの中にログアウトボタンが表示されることを確認する
       expect(page).to have_content('ログアウト')
     end
   end
@@ -245,7 +245,7 @@ RSpec.describe 'ユーザー削除', type: :system do
       end
       # ユーザーモデルのdeleted_atカラムがnullではないことが確認できる
       # データベースが処理完了するまで待機
-      sleep 0.1
+      sleep 0.5
       expect(User.find_by(id: @user.id).deleted_at.present?).to be true
       # トップページへ遷移することを確認する
       expect(current_path).to eq(root_path)

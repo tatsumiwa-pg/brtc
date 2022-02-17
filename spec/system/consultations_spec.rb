@@ -210,8 +210,8 @@ RSpec.describe '編集', type: :system do
       expect(page).to have_no_selector('a', text: '編集する')
       # 編集ページへ遷移する
       visit edit_consultation_path(@consultation.id)
-      # トップページへ戻されることを確認する
-      expect(current_path).to eq root_path
+      # 元の相談詳細表示ページへ戻されることを確認する
+      expect(current_path).to eq consultation_path(@consultation.id)
     end
 
     it 'ログアウト状態で編集画面へ遷移しようとしても、ログインページへ遷移する' do

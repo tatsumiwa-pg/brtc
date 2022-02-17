@@ -86,9 +86,6 @@ RSpec.describe '相談へのコメント投稿', type: :system do
       end
       # 連続投稿しても投稿内容が反映されることを確認
       fill_in 'cons_comment[cons_c_text]', with: @cons_c_text
-      expect do
-        find('input[name="commit"]').click
-      end.to change { ConsComment.count }.by(1)
       expect(page).to have_content(@cons_c_text)
       within('p#comment_num') do
         expect(page).to have_content(@consultation.cons_comments.size)

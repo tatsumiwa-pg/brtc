@@ -18,7 +18,9 @@ RSpec.describe '回答へのレビュー', type: :system do
       # ログインする
       sign_in(@user)
       # 相談詳細表示ページへ移動する
-      find('a', text: @cons_title).click
+      within('div', class:'content-wrap') do
+        find('a', text: @cons_title, match: :first).click
+      end
       # 現在のページが相談詳細表示ページであること確認する
       expect(current_path).to eq consultation_path(@consultation.id)
       # 未評価の回答には評価の画像が存在しない
@@ -137,6 +139,7 @@ RSpec.describe '回答へのレビュー', type: :system do
       # フォームが非表示になったことを確認する
       expect(page).to have_no_selector('div', class: 'float-message-box')
       # 回答詳細表示ページには先ほど保存した評価が存在する（画像）
+      sleep 0.1
       within('p#review_num1') do
         expect(page.all('img', class: 'review-image').count).to eq 3
       end
@@ -145,6 +148,7 @@ RSpec.describe '回答へのレビュー', type: :system do
       # 現在のページが相談詳細表示ページであること確認する
       expect(current_path).to eq consultation_path(@consultation.id)
       # 回答情報の欄に先程の評価と同じだけ画像が挿入されている(今回は3)
+      sleep 0.1
       within("a#answer_box_sub_#{@answer2.id}") do
         expect(page.all('img', class: 'review-image').count).to eq 3
       end

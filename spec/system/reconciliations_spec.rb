@@ -62,6 +62,8 @@ RSpec.describe '和解情報登録', type: :system do
         expect(page).to have_selector('a', text: @cons_title)
       end
       # ログアウトする
+      find('#user_image').click
+      expect(page).to have_selector('ul', class: 'user-menu-lists')
       find('a', text: 'ログアウト').click
       # 別ユーザーでログインする
       sign_in(@user2)
