@@ -37,6 +37,10 @@ class ProfilesController < ApplicationController
     redirect_to profile_path(@user.profile.id) and return if @user.profile.present?
   end
 
+  def edit
+    @profile = Profile.find(params[:id])
+  end
+
   private
 
   def check_params
