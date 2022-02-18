@@ -1,10 +1,12 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_profile, only: [:show, :edit, :update]
 
   def index
   end
 
   def new
+    redirect_to default_profile_path(current_user.id) and return unless current_user.profile.blank? 
     @profile = Profile.new
     render layout: 'users'
   end
@@ -22,7 +24,6 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find(params[:id])
     @user = @profile.user
     @reviews = @user.reviews
     @consultations = @user.consultations.preload(:reconciliation)
@@ -38,11 +39,10 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = Profile.find(params[:id])
+    redirect_to profile_path(@profile.id) if current_user.id != @profile.user_id || current_user.profile.nil?
   end
 
   def update
-    @profile = Profile.find(params[:id])
     if @profile.update(profile_params)
       redirect_to profile_path(@profile.id) and return
     else
@@ -52,10 +52,11 @@ class ProfilesController < ApplicationController
 
   private
 
-  #def check_user_and_profile
-  #  redirect_to default_profile_path 
-  #end
-
+  def set_profile
+    redirect_to root_path and return unless Profile.find_by(id: params[:id]).present? 
+    @profile = Profile.find(params[:id])
+  end
+  
   def check_params
     ids = [ params[:profile][:age_id], params[:profile][:family_type_id], params[:profile][:house_env_id] ]
     others = [
