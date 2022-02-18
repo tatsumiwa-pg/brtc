@@ -90,8 +90,12 @@
           cursor : pointer;
           filter:brightness(0.5);
           img {
-            width :100px;
+            width  : 100px;
             height : 100px;
+            @media(max-width: 400px) {
+              width  : 80px;
+              height : 80px;
+            }
           }
           &:hover, &:hover ~ label {
             filter:brightness(1.0);
