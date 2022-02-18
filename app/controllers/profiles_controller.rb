@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update]
 
   def index
+    redirect_to root_path
   end
 
   def new
