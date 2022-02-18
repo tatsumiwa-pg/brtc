@@ -1,6 +1,10 @@
 <div class="profile-content-wrapper">
-  
-  <%= render 'info' %>
+  <div class="left-bar">
+    <%= render 'info' %>
+    <div class="skip-button-box">
+      <%= link_to '後にする', root_path, class:"skip-button" %>
+    </div>
+  </div>
 
   <div class="main-content">
     <h1>-profile making-<br>プロフィール作成</h1>
