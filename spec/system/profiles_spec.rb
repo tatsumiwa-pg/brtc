@@ -949,3 +949,429 @@ RSpec.describe 'プロフィール詳細表示', type: :system do
     end
   end
 end
+
+RSpec.describe 'プロフィール編集', type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+    @user2 = FactoryBot.create(:user)
+    @user3 = FactoryBot.create(:user)
+    @profile = FactoryBot.create(:profile, user_id: @user.id)
+    @profile2 = FactoryBot.build(:profile, age_id: 3, family_type_id: 3, house_env_id: 3)
+    @profile3 = FactoryBot.create(:profile, user_id: @user3.id)
+  end
+  
+  context 'プロフィールの編集ができるとき' do
+    it '正しい情報を入力すれば、プロフィールを編集することができ、、元のプロフィール詳細表示ページへ遷移する' do
+      # ログインする
+      sign_in(@user)
+      # 現在のページがトップページであることを確認する
+      expect(current_path).to eq root_path
+      # 隠されたリストを表示するためのボタンをクリックする
+      find('#user_image').click
+      # 隠されたリストが表示されたことを確認する
+      expect(page).to have_selector('ul', class: 'user-menu-lists')
+      # リストの中に自身のプロフィール詳細表示ページへ遷移するためのボタンがあることを確認する
+      within('ul', class: 'user-menu-lists') do
+        expect(page).to have_selector('a', text: 'マイページへ')
+      end
+      # 自身のプロフィール詳細表示ページへ遷移するためのボタンをクリックする
+      find('a', text: 'マイページへ').click
+
+      # 現在のページが自身のプロフィール詳細表示ページであることを確認する
+      expect(page).to have_content("#{@user.nickname}さんのプロフィール")
+      # 「編集」ボタンをクリックする
+      find('a', text: '編集', match: :first).click
+      # 現在のページがプロフィール編集ページであることを確認する
+      expect(current_path).to eq edit_profile_path(@profile.id)
+
+      # 変更前の内容が表示されることを確認する（年齢）
+      expect(page).to have_select('profile[age_id]', selected: @profile.age.name)
+      # 変更前の内容が表示されることを確認する（職業）
+      expect(page).to have_field(id: 'job_input', with: @profile.job)
+      # 変更前の内容が表示されることを確認する（保有資格）
+      expect(page).to have_field(id: 'skills_input', with: @profile.skills)
+      # 変更前の内容が表示されることを確認する（住所）
+      expect(page).to have_field(id: 'address_input', with: @profile.address)
+      # 変更前の内容が表示されることを確認する（ﾈｺ歴）
+      expect(page).to have_field(id: 'cat_exp_input', with: @profile.cat_exp)
+      # 変更前の内容が表示されることを確認する（家族構成）
+      expect(page).to have_select('profile[family_type_id]', selected: @profile.family_type.name)
+      # 変更前の内容が表示されることを確認する（住環境）
+      expect(page).to have_select('profile[house_env_id]', selected: @profile.house_env.name)
+      # 変更前の内容が表示されることを確認する（わたしのﾈｺ）
+      expect(page).to have_field(id: 'my_cats_input', with: @profile.my_cats)
+      # 変更前の内容が表示されることを確認する（自己紹介）
+      expect(page).to have_field(id: 'introduction_input', with: @profile.introduction)
+
+      # 新しい相談情報を入力する（画像も差し替える）
+      find('#profile_age').find("option[value='3']").select_option
+      fill_in 'job_input', with: @profile2.job
+      fill_in 'skills_input', with: @profile2.skills
+      fill_in 'address_input', with: @profile2.address
+      fill_in 'cat_exp_input', with: @profile2.cat_exp
+      find('#profile_family_type').find("option[value='3']").select_option
+      find('#profile_house_env').find("option[value='3']").select_option
+      fill_in 'my_cats_input', with: @profile2.my_cats
+      fill_in 'introduction_input', with: @profile2.introduction
+      attach_file 'profile_user_image', 'public/images/test_image2.png'
+      # 「保存」ボタンを押す
+      find('input[name="commit"]').click
+
+      # 現在のページがプロフィール詳細表示ページであることを確認する
+      expect(current_path).to eq profile_path(@profile.id)
+      # 変更後のプロフィール情報が表示されている（画像）
+      within('div', class: 'main-content') do
+        expect(page).to have_selector("img[src$='test_image2.png']")
+      end
+      # 変更後のプロフィール情報が表示されている（年齢）
+      within('#profile_age') do
+        expect(page).to have_content(@profile2.age.name)
+      end
+      # 変更後のプロフィール情報が表示されている（職業）
+      within('#profile_job') do
+        expect(page).to have_content(@profile2.job)
+      end
+      # 変更後のプロフィール情報が表示されている（保有資格）
+      within('#profile_skills') do
+        expect(page).to have_content(@profile2.skills)
+      end
+      # 変更後のプロフィール情報が表示されている（住所）
+      within('#profile_address') do
+        expect(page).to have_content(@profile2.address)
+      end
+      # 変更後のプロフィール情報が表示されている（ﾈｺ歴）
+      within('#profile_cat_exp') do
+        expect(page).to have_content(@profile2.cat_exp)
+      end
+      # 変更後のプロフィール情報が表示されている（家族構成）
+      within('#profile_family_type') do
+        expect(page).to have_content(@profile2.family_type.name)
+      end
+      # 変更後のプロフィール情報が表示されている（住環境）
+      within('#profile_house_env') do
+        expect(page).to have_content(@profile2.house_env.name)
+      end
+      # 変更後のプロフィール情報が表示されている（わたしのﾈｺ）
+      within('#profile_my_cats') do
+        expect(page).to have_content(@profile2.my_cats)
+      end
+      # 変更後のプロフィール情報が表示されている（自己紹介）
+      within('#profile_introduction') do
+        expect(page).to have_content(@profile2.introduction)
+      end
+      # ヘッダーメニューに新しいユーザーアイコンが表示されている
+      within('li', class: 'user-image') do
+        expect(page).to have_selector("img[src$='test_image2.png']")
+      end
+    end
+
+    it '画像を変更しなくてもプロフィール編集ができる' do
+      sign_in(@user)
+      # 現在のページがトップページであることを確認する
+      expect(current_path).to eq root_path
+      # 隠されたリストを表示するためのボタンをクリックする
+      find('#user_image').click
+      # 隠されたリストが表示されたことを確認する
+      expect(page).to have_selector('ul', class: 'user-menu-lists')
+      # リストの中に自身のプロフィール詳細表示ページへ遷移するためのボタンがあることを確認する
+      within('ul', class: 'user-menu-lists') do
+        expect(page).to have_selector('a', text: 'マイページへ')
+      end
+      # 自身のプロフィール詳細表示ページへ遷移するためのボタンをクリックする
+      find('a', text: 'マイページへ').click
+
+      # 現在のページが自身のプロフィール詳細表示ページであることを確認する
+      expect(page).to have_content("#{@user.nickname}さんのプロフィール")
+      # 変更前の内容が表示されている（画像）
+      within('div', class: 'main-content') do
+        expect(page).to have_selector("img[src$='test_image.png']")
+      end
+      # 「編集」ボタンをクリックする
+      find('a', text: '編集', match: :first).click
+      # 現在のページがプロフィール編集ページであることを確認する
+      expect(current_path).to eq edit_profile_path(@profile.id)
+
+      # 新しい相談情報を入力する（画像は変更しない）
+      find('#profile_age').find("option[value='3']").select_option
+      fill_in 'job_input', with: @profile2.job
+      fill_in 'skills_input', with: @profile2.skills
+      fill_in 'address_input', with: @profile2.address
+      fill_in 'cat_exp_input', with: @profile2.cat_exp
+      find('#profile_family_type').find("option[value='3']").select_option
+      find('#profile_house_env').find("option[value='3']").select_option
+      fill_in 'my_cats_input', with: @profile2.my_cats
+      fill_in 'introduction_input', with: @profile2.introduction
+      # 「保存」ボタンを押す
+      find('input[name="commit"]').click
+
+      # 現在のページがプロフィール詳細表示ページであることを確認する
+      expect(current_path).to eq profile_path(@profile.id)
+      # プロフィール変更前の画像が表示されている（画像）
+      within('div', class: 'main-content') do
+        expect(page).to have_selector("img[src$='test_image.png']")
+      end
+      # 変更後のプロフィール情報が表示されている（年齢）
+      within('#profile_age') do
+        expect(page).to have_content(@profile2.age.name)
+      end
+      # 変更後のプロフィール情報が表示されている（職業）
+      within('#profile_job') do
+        expect(page).to have_content(@profile2.job)
+      end
+      # 変更後のプロフィール情報が表示されている（保有資格）
+      within('#profile_skills') do
+        expect(page).to have_content(@profile2.skills)
+      end
+      # 変更後のプロフィール情報が表示されている（住所）
+      within('#profile_address') do
+        expect(page).to have_content(@profile2.address)
+      end
+      # 変更後のプロフィール情報が表示されている（ﾈｺ歴）
+      within('#profile_cat_exp') do
+        expect(page).to have_content(@profile2.cat_exp)
+      end
+      # 変更後のプロフィール情報が表示されている（家族構成）
+      within('#profile_family_type') do
+        expect(page).to have_content(@profile2.family_type.name)
+      end
+      # 変更後のプロフィール情報が表示されている（住環境）
+      within('#profile_house_env') do
+        expect(page).to have_content(@profile2.house_env.name)
+      end
+      # 変更後のプロフィール情報が表示されている（わたしのﾈｺ）
+      within('#profile_my_cats') do
+        expect(page).to have_content(@profile2.my_cats)
+      end
+      # 変更後のプロフィール情報が表示されている（自己紹介）
+      within('#profile_introduction') do
+        expect(page).to have_content(@profile2.introduction)
+      end
+      # ヘッダーメニューにプロフィール変更前と同じユーザーアイコンが表示されている
+      within('li', class: 'user-image') do
+        expect(page).to have_selector("img[src$='test_image.png']")
+      end
+    end
+
+    it '変更を加えなくても元のプロフィール情報が表示される' do
+      sign_in(@user)
+      # 現在のページがトップページであることを確認する
+      expect(current_path).to eq root_path
+      # 隠されたリストを表示するためのボタンをクリックする
+      find('#user_image').click
+      # 隠されたリストが表示されたことを確認する
+      expect(page).to have_selector('ul', class: 'user-menu-lists')
+      # リストの中に自身のプロフィール詳細表示ページへ遷移するためのボタンがあることを確認する
+      within('ul', class: 'user-menu-lists') do
+        expect(page).to have_selector('a', text: 'マイページへ')
+      end
+      # 自身のプロフィール詳細表示ページへ遷移するためのボタンをクリックする
+      find('a', text: 'マイページへ').click
+
+      # 現在のページが自身のプロフィール詳細表示ページであることを確認する
+      expect(page).to have_content("#{@user.nickname}さんのプロフィール")
+      # 変更前の内容が表示されている（画像）
+      within('div', class: 'main-content') do
+        expect(page).to have_selector("img[src$='test_image.png']")
+      end
+      # 「編集」ボタンをクリックする
+      find('a', text: '編集', match: :first).click
+      # 現在のページがプロフィール編集ページであることを確認する
+      expect(current_path).to eq edit_profile_path(@profile.id)
+
+      # 何も変更せずに「保存」ボタンを押す
+      find('input[name="commit"]').click
+
+      # 現在のページがプロフィール詳細表示ページであることを確認する
+      expect(current_path).to eq profile_path(@profile.id)
+      # プロフィール変更前の画像が表示されている（画像）
+      within('div', class: 'main-content') do
+        expect(page).to have_selector("img[src$='test_image.png']")
+      end
+      # 変更前のプロフィール情報が表示されている（年齢）
+      within('#profile_age') do
+        expect(page).to have_content(@profile.age.name)
+      end
+      # 変更前のプロフィール情報が表示されている（職業）
+      within('#profile_job') do
+        expect(page).to have_content(@profile.job)
+      end
+      # 変更前のプロフィール情報が表示されている（保有資格）
+      within('#profile_skills') do
+        expect(page).to have_content(@profile.skills)
+      end
+      # 変更前のプロフィール情報が表示されている（住所）
+      within('#profile_address') do
+        expect(page).to have_content(@profile.address)
+      end
+      # 変更前のプロフィール情報が表示されている（ﾈｺ歴）
+      within('#profile_cat_exp') do
+        expect(page).to have_content(@profile.cat_exp)
+      end
+      # 変更前のプロフィール情報が表示されている（家族構成）
+      within('#profile_family_type') do
+        expect(page).to have_content(@profile.family_type.name)
+      end
+      # 変更前のプロフィール情報が表示されている（住環境）
+      within('#profile_house_env') do
+        expect(page).to have_content(@profile.house_env.name)
+      end
+      # 変更前のプロフィール情報が表示されている（わたしのﾈｺ）
+      within('#profile_my_cats') do
+        expect(page).to have_content(@profile.my_cats)
+      end
+      # 変更前のプロフィール情報が表示されている（自己紹介）
+      within('#profile_introduction') do
+        expect(page).to have_content(@profile.introduction)
+      end
+      # ヘッダーメニューにプロフィール変更前と同じユーザーアイコンが表示されている
+      within('li', class: 'user-image') do
+        expect(page).to have_selector("img[src$='test_image.png']")
+      end
+    end
+
+    it 'すべての項目をカラにしても保存できるが、画像は以前のままとなる' do
+      sign_in(@user)
+      # 現在のページがトップページであることを確認する
+      expect(current_path).to eq root_path
+      # 隠されたリストを表示するためのボタンをクリックする
+      find('#user_image').click
+      # 隠されたリストが表示されたことを確認する
+      expect(page).to have_selector('ul', class: 'user-menu-lists')
+      # リストの中に自身のプロフィール詳細表示ページへ遷移するためのボタンがあることを確認する
+      within('ul', class: 'user-menu-lists') do
+        expect(page).to have_selector('a', text: 'マイページへ')
+      end
+      # 自身のプロフィール詳細表示ページへ遷移するためのボタンをクリックする
+      find('a', text: 'マイページへ').click
+
+      # 現在のページが自身のプロフィール詳細表示ページであることを確認する
+      expect(page).to have_content("#{@user.nickname}さんのプロフィール")
+      # 変更前の内容が表示されている（画像）
+      within('div', class: 'main-content') do
+        expect(page).to have_selector("img[src$='test_image.png']")
+      end
+      # 「編集」ボタンをクリックする
+      find('a', text: '編集', match: :first).click
+      # 現在のページがプロフィール編集ページであることを確認する
+      expect(current_path).to eq edit_profile_path(@profile.id)
+
+      # 新しい相談情報を入力する（画像は変更しない）
+      find('#profile_age').find("option[value='1']").select_option
+      fill_in 'job_input', with: ''
+      fill_in 'skills_input', with: ''
+      fill_in 'address_input', with: ''
+      fill_in 'cat_exp_input', with: ''
+      find('#profile_family_type').find("option[value='1']").select_option
+      find('#profile_house_env').find("option[value='1']").select_option
+      fill_in 'my_cats_input', with: ''
+      fill_in 'introduction_input', with: ''
+      # 「保存」ボタンを押す
+      find('input[name="commit"]').click
+
+      # 現在のページがプロフィール詳細表示ページであることを確認する
+      expect(current_path).to eq profile_path(@profile.id)
+      # プロフィール変更前の画像が表示されている（画像）
+      within('div', class: 'main-content') do
+        expect(page).to have_selector("img[src$='test_image.png']")
+      end
+      # 変更後のプロフィール情報が表示されている（年齢）
+      within('#profile_age') do
+        expect(page).to have_content('未選択')
+      end
+      # 変更後のプロフィール情報が表示されている（職業）
+      within('#profile_job') do
+        expect(page).to have_content('未記入')
+      end
+      # 変更後のプロフィール情報が表示されている（保有資格）
+      within('#profile_skills') do
+        expect(page).to have_content('未記入')
+      end
+      # 変更後のプロフィール情報が表示されている（住所）
+      within('#profile_address') do
+        expect(page).to have_content('未記入')
+      end
+      # 変更後のプロフィール情報が表示されている（ﾈｺ歴）
+      within('#profile_cat_exp') do
+        expect(page).to have_content('未記入')
+      end
+      # 変更後のプロフィール情報が表示されている（家族構成）
+      within('#profile_family_type') do
+        expect(page).to have_content('未選択')
+      end
+      # 変更後のプロフィール情報が表示されている（住環境）
+      within('#profile_house_env') do
+        expect(page).to have_content('未選択')
+      end
+      # 変更後のプロフィール情報が表示されている（わたしのﾈｺ）
+      within('#profile_my_cats') do
+        expect(page).to have_content('未記入')
+      end
+      # 変更後のプロフィール情報が表示されている（自己紹介）
+      within('#profile_introduction') do
+        expect(page).to have_content('未記入')
+      end
+      # ヘッダーメニューにプロフィール変更前と同じユーザーアイコンが表示されている
+      within('li', class: 'user-image') do
+        expect(page).to have_selector("img[src$='test_image.png']")
+      end
+    end
+  end
+
+  context 'プロフィール編集ができないとき' do
+    it 'プロフィールがない状態ではプロフィール新規作成ページへ遷移する' do
+      # ログインする
+      sign_in(@user2)
+      # 現在のページがトップページであることを確認する
+      expect(current_path).to eq root_path
+      # 隠されたリストを表示するためのボタンをクリックする
+      find('#user_image').click
+      # 隠されたリストが表示されたことを確認する
+      expect(page).to have_selector('ul', class: 'user-menu-lists')
+      # リストの中に自身のプロフィール詳細表示ページへ遷移するためのボタンがあることを確認する
+      within('ul', class: 'user-menu-lists') do
+        expect(page).to have_selector('a', text: 'マイページへ')
+      end
+      # 自身のプロフィール詳細表示ページへ遷移するためのボタンをクリックする
+      find('a', text: 'マイページへ').click
+
+      # 現在のページが自身のプロフィール詳細表示ページであることを確認する
+      expect(page).to have_content("#{@user2.nickname}さんのプロフィール")
+      # 「編集」ボタンをクリックする
+      find('a', text: '編集', match: :first).click
+      # 現在のページがプロフィール新規作成ページであることを確認する
+      expect(current_path).to eq new_profile_path
+      # 自身の初期プロフィール詳細表示ページへ遷移する
+      visit default_profile_path(@user2.id)
+      # urlを直接入力してプロフィール編集ページへ遷移しようとする
+      visit edit_profile_path(@user2.id)
+      # 自身のユーザーIDと一致するプロフィールIDのプロフィール詳細表示ページまたはトップページへ遷移したことを確認する
+      expect(current_path).to eq(profile_path(@user2.id)).or eq(root_path) 
+    end
+
+    it '他のユーザーのプロフィールを編集しようとしても、そのユーザーのプロフィール詳細表示ページへ遷移する' do
+      # ログインする
+      sign_in(@user2)
+      # 現在のページがトップページであることを確認する
+      expect(current_path).to eq root_path
+      # 他人のプロフィール詳細表示ページへ遷移する
+      visit profile_path(@profile.id)
+      # 現在のページが他人のプロフィール詳細表示ページであることを確認する
+      expect(current_path).to eq profile_path(@profile.id)
+      # urlを直接入力して、そのユーザーのプロフィール編集ページへ遷移しようとする
+      visit edit_profile_path(@profile.id)
+      # 元のプロフィール詳細表示ページへ戻されていることを確認する
+      expect(current_path).to eq profile_path(@profile.id)
+    end
+
+    it 'ログアウト状態では、プロフィール編集ページへ遷移できず、ログインページへ遷移する' do
+      # Basic認証（ログインはしない）
+      basic_auth(path)
+      # 現在のページがトップページであることを確認する
+      expect(current_path).to eq root_path
+      # urlを直接入力して、誰かのプロフィール編集ページへ遷移しようとする
+      visit edit_profile_path(@profile.id)
+      # ログインページへ遷移したことを確認する
+      expect(current_path).to eq new_user_session_path
+    end
+  end
+end
