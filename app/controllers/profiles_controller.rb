@@ -6,7 +6,8 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    redirect_to default_profile_path(current_user.id) and return unless current_user.profile.blank? 
+    redirect_to default_profile_path(current_user.id) and return unless current_user.profile.blank?
+
     @profile = Profile.new
     render layout: 'users'
   end
@@ -33,6 +34,7 @@ class ProfilesController < ApplicationController
   def default
     @user = User.find(params[:id])
     redirect_to profile_path(@user.profile.id) and return if @user.profile.present?
+
     @reviews = @user.reviews
     @consultations = @user.consultations.preload(:reconciliation)
     @answers = @user.answers.preload(:review)
@@ -53,12 +55,13 @@ class ProfilesController < ApplicationController
   private
 
   def set_profile
-    redirect_to root_path and return unless Profile.find_by(id: params[:id]).present? 
+    redirect_to root_path and return unless Profile.find_by(id: params[:id]).present?
+
     @profile = Profile.find(params[:id])
   end
-  
+
   def check_params
-    ids = [ params[:profile][:age_id], params[:profile][:family_type_id], params[:profile][:house_env_id] ]
+    ids = [params[:profile][:age_id], params[:profile][:family_type_id], params[:profile][:house_env_id]]
     others = [
       params[:profile][:job],
       params[:profile][:skills],

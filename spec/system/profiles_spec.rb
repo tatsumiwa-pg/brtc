@@ -959,7 +959,7 @@ RSpec.describe 'プロフィール編集', type: :system do
     @profile2 = FactoryBot.build(:profile, age_id: 3, family_type_id: 3, house_env_id: 3)
     @profile3 = FactoryBot.create(:profile, user_id: @user3.id)
   end
-  
+
   context 'プロフィールの編集ができるとき' do
     it '正しい情報を入力すれば、プロフィールを編集することができ、、元のプロフィール詳細表示ページへ遷移する' do
       # ログインする
@@ -1345,7 +1345,7 @@ RSpec.describe 'プロフィール編集', type: :system do
       # urlを直接入力してプロフィール編集ページへ遷移しようとする
       visit edit_profile_path(@user2.id)
       # 自身のユーザーIDと一致するプロフィールIDのプロフィール詳細表示ページまたはトップページへ遷移したことを確認する
-      expect(current_path).to eq(profile_path(@user2.id)).or eq(root_path) 
+      expect(current_path).to eq(profile_path(@user2.id)).or eq(root_path)
     end
 
     it '他のユーザーのプロフィールを編集しようとしても、そのユーザーのプロフィール詳細表示ページへ遷移する' do
