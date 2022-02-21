@@ -16,9 +16,7 @@
     
     <% if current_user.id == @user.id%>
       <div class="button-box-top">
-        <div class="button">
-          <%= link_to '編集', edit_profile_path(@profile.id) %>
-        </div>
+        <%= link_to '編集', edit_profile_path(@profile.id), class:"button" %>
       </div>
     <% end %>
 
@@ -79,16 +77,10 @@
 
     <div class="button-box">
       <% if current_user.id == @user.id%>
-        <div class="button">
-          <%= link_to '編集', edit_profile_path(@profile.id) %>
-        </div>
+        <%= link_to '編集', edit_profile_path(@profile.id), class:"button" %>
       <% end %>
-      <div class="button">
-        <%= link_to '一覧へ', root_path %>
-      </div>
-      <div class="button">
-        <%= link_to '戻る', :back %>
-      </div>
+      <%= link_to '一覧へ', root_path, class:"button"%>
+      <%= link_to '戻る', :back, class:"button" %>
     </div>
 
   </div>
