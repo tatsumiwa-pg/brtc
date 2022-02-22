@@ -335,7 +335,7 @@ ___
 - has_many :cons_comments
 - has_many :ans_comments
 - has_one  :profile
-- has_many :reviews, through: :answer
+- has_many :reviews, through: :answers
 
 <br>
 
