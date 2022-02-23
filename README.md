@@ -225,7 +225,8 @@ Basic認証が必要です。サイト訪問時に出現するフォームに以
 
 ### 3. Turbolinksを同居させたままAjax通信を実装
 <br>
-JavaScriptファイルが読み込まれない可能性があるためひとまずTurbolinksをoffにするという手法をこれまで取ってきましたが、今回はそのTurbolinksの利点を殺さずに導入できないかと模索した結果、なんとか同居させることに成功しました。
+JavaScriptファイルが読み込まれない可能性があるためひとまずTurbolinksをoffにするという手法をこれまで取ってきましたが、今回はそのTurbolinksの利点を殺さずに導入できないかと模索した結果、なんとか同居させることに成功しました。<br>
+↓ その時のQiita記事です
 
 [【Rails6】Turbolinksを同居させたままActionCableで非同期通信コメント機能を実装したい！](https://qiita.com/tatsumiwa/items/3ca1e2d034e5ae36bc43)
 
