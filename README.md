@@ -108,7 +108,7 @@ Basic認証が必要です。サイト訪問時に出現するフォームに以
 
 ### トップページ
 
-[![Image from Gyazo](https://i.gyazo.com/5a7ffd5a7bad5fd5ac7877b01676ef53.png)](https://gyazo.com/5a7ffd5a7bad5fd5ac7877b01676ef53)
+[![Image from Gyazo](https://i.gyazo.com/3e029da066a59cb7a57be74092fe5785.png)](https://gyazo.com/3e029da066a59cb7a57be74092fe5785)
 
 <br>
 
@@ -122,7 +122,7 @@ Basic認証が必要です。サイト訪問時に出現するフォームに以
 
 <br>
 
-### アカウント登録がすむとプロフィール作成画面に移ります！
+### アカウント登録が済むとプロフィール作成画面に移ります！
 
 [![Image from Gyazo](https://i.gyazo.com/08289844145e79106994f075e312c3d8.gif)](https://gyazo.com/08289844145e79106994f075e312c3d8)
 
